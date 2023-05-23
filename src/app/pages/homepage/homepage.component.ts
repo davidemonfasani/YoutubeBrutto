@@ -8,21 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent {
 constructor(private router : Router) {}
-firstClick = true
-ricercaValue = 'Inserisci il titolo del video...'
 
 
-clickText() {
-  if(this.firstClick = true)
-  {
-    this.ricercaValue = ''
-    this.firstClick = false
-    console.log('ciao')
-  }
-}
 
-clickProfile() {
-this.router.navigateByUrl('/profile')
-}
 
 }

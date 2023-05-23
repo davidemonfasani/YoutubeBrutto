@@ -28,6 +28,10 @@ export class ProfileComponent {
     this.auth.login(body)
   }
 
+  goHomepage(){
+    this.router.navigateByUrl('/homepage')
+  }
+
   // clickText(value : string) {
   //   if(this.firstClick = true)
   //   {
