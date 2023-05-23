@@ -9,7 +9,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AppbarComponent } from './appbar/appbar.component'
+import { AppbarComponent } from './appbar/appbar.component';
+import { VideocontainerComponent } from './videocontainer/videocontainer.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AppbarComponent } from './appbar/appbar.component'
     VideoComponent,
     ProfileComponent,
     RegisterComponent,
-    AppbarComponent
+    AppbarComponent,
+    VideocontainerComponent
   ],
   imports: [
     BrowserModule,
