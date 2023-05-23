@@ -1,0 +1,28 @@
+<div id="appbar">
+  <h2 id="titolo"><b>Iutubo</b></h2>
+</div>
+
+<div *ngIf="primoAccesso">
+  <form (submit)="login()">
+    <div id="credenziali">
+    <p id="titoletto"><b>Inserisci le tue credenziali:</b></p>
+    <div>
+      <input type="text" [(ngModel)]="useremail" class="input-field" placeholder="Email" required>
+    </div>
+    <div>
+      <input type="password" [(ngModel)]="password"  class="input-field" placeholder="Password" required>
+    </div>
+    <div>
+      <button type="submit" class="btn">Login</button>
+    </div>
+    <div><a (click)="goRegister()">Non hai ancora un account? Registrati!</a></div>
+  </div>
+  </form>
+</div>
+
+<div *ngIf="!primoAccesso">
+  <!-- Show other options for returning users -->
+  <div>
+    <!-- Add your content for returning users here -->
+  </div>
+</div>

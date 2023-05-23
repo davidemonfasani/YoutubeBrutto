@@ -1,0 +1,31 @@
+<div id="appbar">
+  <h2 id="titolo"><b>Iutubo</b></h2>
+</div>
+  <form>
+    <div id="credenziali">
+    <p id="titoletto"><b>Inserisci le tue credenziali:</b></p>
+    <div>
+      <input type="text" [(ngModel)]="username" class="input-field" placeholder="Username" required>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="email" class="input-field" placeholder="Email" required>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="nome" class="input-field" placeholder="Nome" required>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="cognome" class="input-field" placeholder="Cognome" required>
+    </div>
+    <div>
+      <input type="password" [(ngModel)]="password"  class="input-field" placeholder="Password" required>
+    </div>
+    <div>
+      <input type="file" (change)="onFileSelected($event)">
+    </div>
+
+    <div>
+      <button type="submit" class="btn" (click)="uploadData()">Register</button>
+    </div>
+    <div><a (click)="goLogin()">Hai già un account? Effettua il Login</a></div>
+  </div>
+  </form>
