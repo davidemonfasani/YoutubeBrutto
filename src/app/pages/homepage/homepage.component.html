@@ -1,10 +1,7 @@
 <app-appbar></app-appbar>
-<div id="restpage" *ngFor="let video of videos">
+<div id="restpage">
 
-  <app-videocontainer></app-videocontainer>
-  <app-videocontainer></app-videocontainer>
-  <app-videocontainer></app-videocontainer>
-  <app-videocontainer></app-videocontainer>
+<app-videocontainer *ngFor="let video of videos" [video]="video"></app-videocontainer>
 
 
 
