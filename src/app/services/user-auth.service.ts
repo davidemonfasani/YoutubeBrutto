@@ -15,7 +15,7 @@ export class UserAuthService {
 
     const option = {headers: headers};
 
-    this.http.post('/api/upload', body, option).subscribe(
+    this.http.post('127.0.0.1:8000/api/signIn', body, option).subscribe(
       (response) => {
         console.log('Image uploaded successfully');
         // Handle the response from the server, if needed

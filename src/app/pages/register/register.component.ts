@@ -14,7 +14,7 @@ export class RegisterComponent {
   email = ''
   password = ''
   nome = ''
-  body : any
+  image : any
 
   goLogin() {
     this.router.navigateByUrl('/profile')
@@ -31,19 +31,19 @@ onFileSelected(event: any) {
 tryRegister() {
   if (this.selectedFile) {
     const formData = new FormData();
-
-    const body = {
-      image : formData,
-      nome : this.nome,
-      cognome : this.cognome,
-      email : this.email,
-      password : this.password,
-      username : this.username
-    }
-
+      this.image = formData
   }
+  const body = {
+    image : this.image,
+    nome : this.nome,
+    cognome : this.cognome,
+    email : this.email,
+    password : this.password,
+    username : this.username
+  }
+  console.log(body)
 
-  this.auth.register(this.body)
+  this.auth.register(body)
 }
 
 

@@ -5,19 +5,19 @@
     <div id="credenziali">
     <p id="titoletto"><b>Inserisci le tue credenziali:</b></p>
     <div>
-      <input type="text" [(ngModel)]="username" class="input-field" placeholder="Username" required>
+      <input type="text" [(ngModel)]="username" class="input-field" placeholder="Username" required name="username" >
     </div>
     <div>
-      <input type="text" [(ngModel)]="email" class="input-field" placeholder="Email" required>
+      <input type="text" [(ngModel)]="email" class="input-field" placeholder="Email" required  name="email" >
     </div>
     <div>
-      <input type="text" [(ngModel)]="nome" class="input-field" placeholder="Nome" required>
+      <input type="text" [(ngModel)]="nome" class="input-field" placeholder="Nome" required  name="nome" >
     </div>
     <div>
-      <input type="text" [(ngModel)]="cognome" class="input-field" placeholder="Cognome" required>
+      <input type="text" [(ngModel)]="cognome" class="input-field" placeholder="Cognome" required name="cognome" >
     </div>
     <div>
-      <input type="password" [(ngModel)]="password"  class="input-field" placeholder="Password" required>
+      <input type="password" [(ngModel)]="password"  class="input-field" placeholder="Password" required  name="password" >
     </div>
     <div class="file-input-container">
       <input type="file" (change)="onFileSelected($event)">
