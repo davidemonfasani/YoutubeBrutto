@@ -76,3 +76,8 @@ a {
 a:hover{
   cursor: pointer;
 }
+
+#titolo:hover {
+  cursor: pointer;
+  color: red;
+}

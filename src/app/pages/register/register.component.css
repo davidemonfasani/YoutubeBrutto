@@ -19,6 +19,11 @@
   font-family: monospace;
 }
 
+#titolo:hover {
+  cursor: pointer;
+  color: red;
+}
+
 .btn {
   width: 62.7%;
   padding: 8px 16px;

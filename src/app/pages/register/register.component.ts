@@ -20,6 +20,10 @@ export class RegisterComponent {
     this.router.navigateByUrl('/profile')
   }
 
+  goHomepage(){
+    this.router.navigateByUrl('/homepage')
+  }
+
 
   selectedFile: File | null = null
 
