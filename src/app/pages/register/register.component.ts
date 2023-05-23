@@ -28,10 +28,9 @@ onFileSelected(event: any) {
 }
 
 
-uploadData() {
+tryRegister() {
   if (this.selectedFile) {
     const formData = new FormData();
-    formData.append('image', this.selectedFile);
 
     const body = {
       image : formData,

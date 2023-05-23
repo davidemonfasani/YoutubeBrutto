@@ -76,3 +76,14 @@ a {
 a:hover{
   cursor: pointer;
 }
+
+.file-input-container {
+  display: flex;
+  align-items: left;
+  margin-top: 2px;
+  margin-left: 112px;
+}
+
+.file-input-container input[type="file"] {
+  margin: 0;
+}

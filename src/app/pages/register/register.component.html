@@ -19,12 +19,12 @@
     <div>
       <input type="password" [(ngModel)]="password"  class="input-field" placeholder="Password" required>
     </div>
-    <div>
+    <div class="file-input-container">
       <input type="file" (change)="onFileSelected($event)">
     </div>
 
     <div>
-      <button type="submit" class="btn" (click)="uploadData()">Register</button>
+      <button type="submit" class="btn" (click)="tryRegister()">Register</button>
     </div>
     <div><a (click)="goLogin()">Hai già un account? Effettua il Login</a></div>
   </div>

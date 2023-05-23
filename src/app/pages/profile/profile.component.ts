@@ -18,15 +18,9 @@ export class ProfileComponent {
   }
 
 
-  login() {
+  tryLogin() {
     this.primoAccesso = false
 
-  }
-
-
-  register() {
-
-    this.primoAccesso = false
   }
 
   // clickText(value : string) {
