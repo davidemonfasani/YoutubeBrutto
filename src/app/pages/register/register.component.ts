@@ -38,14 +38,13 @@ tryRegister() {
       this.image = formData
   }
   const body = {
-    image : this.image,
     nome : this.nome,
     cognome : this.cognome,
     email : this.email,
     password : this.password,
     username : this.username
   }
-  console.log(body)
+
 
   this.auth.register(body)
 }
