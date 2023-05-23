@@ -41,30 +41,37 @@ export class UserAuthService {
         localStorage.setItem('token', Response.token);
         console.log('Token:', this.getToken());
         console.log('Is token valid:', this.isValidToken(this.getToken()));
-        this.router.navigateByUrl('/HomePage');
+        this.router.navigateByUrl('/homepage');
       },
     });
   }
 
-  login(body1: any): Observable<boolean> {
-    return this.http.post<string>('http://127.0.0.1:8000/api/login', body1, { observe: 'response' }).pipe(
-      map((data: any) => {
-        const check = data.status;
-        if (check === 212) {
+  async login(body: any) {
 
-          //Controlla il check
-          return true;
-        } else {
-
-          return false;
-        }
-      }),
-      catchError((error: any) => {
-        console.log(error)
-        //Prendi errore
-        return of(false); // Return false as an Observable
+    return this.http
+    .post<{ token: string }>(
+      'http://127.0.0.1:8000/api/login',
+      body,
+    )
+    .pipe(
+      tap({
+        error: (error) => {
+          var check = error.status;
+          let errorMessage = error.error.error;
+          console.log(errorMessage);
+          this.errorMessage$.next(errorMessage);
+        },
       })
-    );
+    )
+    .subscribe({
+      next: (Response) => {
+        console.log('Response:', Response);
+        localStorage.setItem('token', Response.token);
+        console.log('Token:', this.getToken());
+        console.log('Is token valid:', this.isValidToken(this.getToken()));
+        this.router.navigateByUrl('/homepage');
+      },
+    });
   }
   isValidToken(token: string | null): boolean {
     try {
