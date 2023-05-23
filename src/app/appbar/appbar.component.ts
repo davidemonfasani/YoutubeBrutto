@@ -9,17 +9,9 @@ import { Router } from '@angular/router';
 export class AppbarComponent {
   constructor(private router: Router) {}
   firstClick = true
-  ricercaValue = 'Inserisci il titolo del video...'
+  ricercaValue = ''
 
 
-  clickText() {
-    if(this.firstClick = true)
-    {
-      this.ricercaValue = ''
-      this.firstClick = false
-      console.log('ciao')
-    }
-  }
 
   clickProfile() {
     this.router.navigateByUrl('/profile')
