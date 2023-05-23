@@ -7,13 +7,13 @@
     <div id="credenziali">
     <p id="titoletto"><b>Inserisci le tue credenziali:</b></p>
     <div>
-      <input type="text" [(ngModel)]="useremail" class="input-field" placeholder="Email" required>
+      <input type="text" [(ngModel)]="useremail" class="input-field" placeholder="Email" required name="useremail">
     </div>
     <div>
-      <input type="password" [(ngModel)]="password"  class="input-field" placeholder="Password" required>
+      <input type="password" [(ngModel)]="password"  class="input-field" placeholder="Password" required name="password">
     </div>
     <div>
-      <button type="submit" class="btn">Login</button>
+      <button type="submit" class="btn" (click)="tryLogin()">Login</button>
     </div>
     <div><a (click)="goRegister()">Non hai ancora un account? Registrati!</a></div>
   </div>
