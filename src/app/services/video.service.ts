@@ -12,6 +12,6 @@ export class VideoService {
 
 
   fetchVideos(): Observable<Video[]> {
-    return this.http.get<Video[]>('https://127.0.0.1:8000/api/videos');
+    return this.http.get<Video[]>('https://127.0.0.1:8000/api/fetchVideos');
   }
 }
