@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { VideoComponent } from './pages/video/video.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppbarComponent } from './appbar/appbar.component';
@@ -20,13 +20,14 @@ import { VideocontainerComponent } from './videocontainer/videocontainer.compone
     ProfileComponent,
     RegisterComponent,
     AppbarComponent,
-    VideocontainerComponent
+    VideocontainerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,13 +2,29 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserAuthService } from 'src/app/services/user-auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private router : Router, private http: HttpClient, private auth: UserAuthService){}
+  registerForm: FormGroup;
+
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    public auth: UserAuthService,
+    private formBuilder: FormBuilder
+  ) {
+    this.registerForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      nome: ['', Validators.required],
+      cognome: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
   username = ''
   cognome = ''
   email = ''
@@ -35,24 +51,18 @@ onFileSelected(event: any) {
 tryRegister() {
   if (this.selectedFile) {
     const formData = new FormData();
-      this.image = formData
+    this.image = formData;
   }
   const body = {
-    nome : this.nome,
-    cognome : this.cognome,
-    email : this.email,
-    password : this.password,
-    username : this.username
-  }
+    nome: this.registerForm.value.nome,
+    cognome: this.registerForm.value.cognome,
+    email: this.registerForm.value.email,
+    password: this.registerForm.value.password,
+    username: this.registerForm.value.username,
+  };
 
-
-  this.auth.register(body)
+  this.auth.register(body);
+}
 }
 
 
-
-
-
-
-
-}
