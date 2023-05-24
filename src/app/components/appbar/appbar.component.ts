@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { UserAuthService } from '../services/user-auth.service';
+import { UserAuthService } from '../../services/user-auth.service';
 
 
 @Component({

@@ -9,8 +9,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AppbarComponent } from './appbar/appbar.component';
-import { VideocontainerComponent } from './videocontainer/videocontainer.component'
+import { AppbarComponent } from './components/appbar/appbar.component';
+import { VideocontainerComponent } from './components/videocontainer/videocontainer.component';
+import { CommentoComponent } from './components/commento/commento.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { VideocontainerComponent } from './videocontainer/videocontainer.compone
     RegisterComponent,
     AppbarComponent,
     VideocontainerComponent,
+    CommentoComponent,
   ],
   imports: [
     BrowserModule,

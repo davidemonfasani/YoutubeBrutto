@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Video } from '../interfaces/video';
+import { Video } from '../../interfaces/video';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { VideoService } from '../services/video.service';
+import { VideoService } from '../../services/video.service';
 
 @Component({
   selector: 'app-videocontainer',
