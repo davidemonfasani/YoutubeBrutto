@@ -23,9 +23,10 @@ export class VideoService {
   }
 
   goVideo(body : any) {
-    this.router.navigateByUrl('/video')
-    console.log(body)
     this.video = body
+    console.log('sei nel video ', this.video.titolo)
+    this.router.navigateByUrl('/video')
+
 
 
   }

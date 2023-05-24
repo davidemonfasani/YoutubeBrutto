@@ -26,6 +26,22 @@ export class VideoComponent {
 
   }
 
+  ngOnInit() {
+    this.fetchComments();
+    console.log('prendo i commenti di:', this.body.titolo)
+  }
+
+  fetchComments() {
+    this.comService.fetchComments(this.body.titolo)
+      .subscribe((result: Commento[]) => {
+        this.comments = result;
+        console.log('i comment', this.comments)
+      });
+  }
+
+
+
+
 
 
 

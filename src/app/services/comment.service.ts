@@ -1,16 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Commento } from '../interfaces/commento';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
 
+  commento = {
+    utente_username: '',
+    video_titolo: '',
+    testo: '',
+  }
+
   constructor(private http : HttpClient) { }
 
 
-  fetchComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>('http://127.0.0.1:8000/api/commenti');
+  fetchComments(titolo : string): Observable<Commento[]> {
+    return this.http.get<Commento[]>('http://127.0.0.1:8000/api/commentos', {params: {titolo}});
   }
 }

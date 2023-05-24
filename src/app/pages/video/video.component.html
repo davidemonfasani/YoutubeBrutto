@@ -17,6 +17,7 @@
   <div class="comment-section">
     <h3>Commenti</h3>
     <div class="comment-list">
+      <app-commento *ngFor="let commento of comments" [commento]="commento"></app-commento>
     </div>
   </div>
 </div>

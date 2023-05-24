@@ -21,7 +21,6 @@ fetchVideos() {
   this.videoService.fetchVideos()
     .subscribe((result: Video[]) => {
       this.videos = result;
-      console.log(this.videos)
     });
 }
 
