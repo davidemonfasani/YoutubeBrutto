@@ -1,4 +1,6 @@
 .comment-card {
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 12px;
   background-color: #f4f4f4;
   border: 1px solid #ccc;
   padding: 8px;
