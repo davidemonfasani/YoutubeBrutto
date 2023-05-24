@@ -1,6 +1,6 @@
 export interface Video {
   titolo : string,
   descrizione : string,
-  linkVideo : string,
+  linkvideo : string,
   username : string,
 }
