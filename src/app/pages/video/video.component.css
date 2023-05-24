@@ -12,15 +12,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
 }
 
-.shadow {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 .video-wrapper iframe {
   width: 100%;
-  height: 510px; /* Adjust the height as needed */
+  height: 480px; /* Adjust the height as needed */
 }
 
 .video-info {
@@ -48,4 +46,28 @@
   border: none;
   color: blue;
   cursor: pointer;
+}
+
+#buttonComment {
+  background-color: tomato;
+  color: white;
+  padding: 8px;
+
+  border: 1px solid #ccc;
+}
+
+#buttonComment:hover {
+  cursor:pointer;
+  background-color: rgb(193, 67, 45);
+
+}
+
+
+
+
+#inputComment {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 358px;
 }
