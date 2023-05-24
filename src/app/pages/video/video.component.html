@@ -1,4 +1,4 @@
-<app-appbar></app-appbar>
+
 
 <div class="video-page-container shadow">
   <div class="video-wrapper">
@@ -15,8 +15,12 @@
     </div>
   </div>
   <div class="comment-section">
-    <h3>Commenti</h3>
+    <h3>Sezione commenti:</h3>
     <div class="comment-list">
+      <div class="urcomment">
+      <input id="inputComment" placeholder="Commenta..">
+      <button id="buttonComment" (click)="registerComment()">Invia</button>
+      </div>
       <app-commento *ngFor="let commento of comments" [commento]="commento"></app-commento>
     </div>
   </div>

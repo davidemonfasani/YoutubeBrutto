@@ -39,6 +39,15 @@ export class VideoComponent {
       });
   }
 
+  registerComment() {
+    const bodyComment = {
+      utente_username: null,
+      video_titolo: null,
+      testo: null,
+    };
+    this.comService.registerComment(bodyComment)
+  }
+
 
 
 

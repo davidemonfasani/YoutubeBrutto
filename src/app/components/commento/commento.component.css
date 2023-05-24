@@ -1,0 +1,20 @@
+.comment-card {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 400px; /* Adjust the width as desired */
+}
+
+.comment-card h1 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.comment-card h2 {
+  font-size: 16px;
+  color: #555;
+}
