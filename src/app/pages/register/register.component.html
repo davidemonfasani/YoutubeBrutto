@@ -1,31 +1,68 @@
-<div id="appbar">
-  <h2 id="titolo" (click)="goHomepage()"><b>Iutubo</b></h2>
-</div>
-  <form>
-    <div id="credenziali">
+<form [formGroup]="registerForm">
+  <div id="credenziali">
     <p id="titoletto"><b>Inserisci le tue credenziali:</b></p>
-    <div>
-      <input type="text" [(ngModel)]="username" class="input-field" placeholder="Username" required name="username" >
+    <div *ngIf="auth.errorMessage$ | async as errorMessage">
+      <div class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
     </div>
     <div>
-      <input type="text" [(ngModel)]="email" class="input-field" placeholder="Email" required  name="email" >
+      <input
+        type="text"
+        formControlName="username"
+        class="input-field"
+        placeholder="Username"
+        required
+        name="username"
+      />
     </div>
     <div>
-      <input type="text" [(ngModel)]="nome" class="input-field" placeholder="Nome" required  name="nome" >
+      <input
+        type="text"
+        formControlName="email"
+        class="input-field"
+        placeholder="Email"
+        required
+        name="email"
+      />
     </div>
     <div>
-      <input type="text" [(ngModel)]="cognome" class="input-field" placeholder="Cognome" required name="cognome" >
+      <input
+        type="text"
+        formControlName="nome"
+        class="input-field"
+        placeholder="Nome"
+        required
+        name="nome"
+      />
     </div>
     <div>
-      <input type="password" [(ngModel)]="password"  class="input-field" placeholder="Password" required  name="password" >
+      <input
+        type="text"
+        formControlName="cognome"
+        class="input-field"
+        placeholder="Cognome"
+        required
+        name="cognome"
+      />
+    </div>
+    <div>
+      <input
+        type="password"
+        formControlName="password"
+        class="input-field"
+        placeholder="Password"
+        required
+        name="password"
+      />
     </div>
     <div class="file-input-container">
-      <input type="file" (change)="onFileSelected($event)">
+      <input type="file" (change)="onFileSelected($event)" />
     </div>
 
     <div>
-      <button type="submit" class="btn" (click)="tryRegister()">Register</button>
+      <button type="submit" class="btn" (click)="tryRegister()" [disabled]="!registerForm.valid">Register</button>
     </div>
     <div><a (click)="goLogin()">Hai già un account? Effettua il Login</a></div>
   </div>
-  </form>
+</form>

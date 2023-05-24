@@ -1,17 +1,26 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserAuthService } from 'src/app/services/user-auth.service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  constructor(private router : Router, private auth : UserAuthService){}
+  loginForm: FormGroup;
+  constructor(
+    private router: Router,
+    public auth: UserAuthService,
+    private formBuilder: FormBuilder
+  ) {
+    this.loginForm = this.formBuilder.group({
+      useremail: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
+
   primoAccesso = true
-  useremail = ''
-  password = ''
   firstClick = true
 
   goRegister() {
@@ -20,17 +29,15 @@ export class ProfileComponent {
 
 
   tryLogin() {
-
     const body = {
-      userEmail : this.useremail,
-      password : this.password,
-    }
-    this.auth.login(body)
+      userEmail: this.loginForm.value.useremail,
+      password: this.loginForm.value.password,
+    };
+    this.auth.login(body);
   }
 
-  goHomepage(){
-    this.router.navigateByUrl('/homepage')
-  }
+
+
 
   // clickText(value : string) {
   //   if(this.firstClick = true)
