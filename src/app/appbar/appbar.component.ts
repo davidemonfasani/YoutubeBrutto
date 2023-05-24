@@ -15,5 +15,6 @@ export class AppbarComponent {
 
   clickProfile() {
     this.router.navigateByUrl('/profile')
+
     }
 }

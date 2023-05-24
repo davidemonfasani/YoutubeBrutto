@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Video } from '../interfaces/video';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { VideoService } from '../services/video.service';
 
 @Component({
   selector: 'app-videocontainer',
@@ -10,9 +12,14 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class VideocontainerComponent {
   @Input() video!: Video
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer, private router: Router, private auth: VideoService) {}
 
-  sanitizeVideoUrl(videoUrl: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+  sanitize(a : string) {
+    return this.auth.sanitizeVideoUrl(a)
   }
+
+  goVideo(){
+    this.auth.goVideo(this.video)
+  }
+
 }
