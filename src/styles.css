@@ -11,6 +11,7 @@
   border-left: 0px;
   border-style: solid;
   height: 40px;
+  margin-bottom: 1%;
 }
 
 #titolo {
@@ -125,11 +126,6 @@ a:hover{
   margin-top: 60px;
 }
 
-.video-container {
-
-}
-
-
 app-videocontainer:hover{
   cursor: pointer;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -157,35 +153,6 @@ app-videocontainer {
   transition: box-shadow 0.3s ease;
   margin-top: 20px;
 }
-
-
-#appbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  border-bottom: 1px;
-  border-top: 0px;
-  border-right: 0px;
-  border-left: 0px;
-  border-style: solid;
-  height: 40px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-
-}
-
-#titolo {
-  margin: 0;
-  width: 100px;
-  font-family: monospace;
-}
-
 
 #searchbar {
   display: flex;
