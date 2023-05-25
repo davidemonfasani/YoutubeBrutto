@@ -1,7 +1,18 @@
 <div class="app-container">
-  <div><div class="video-page-container shadow">
+  <div class="video-page-container shadow">
+  <div>
     <div class="video-wrapper">
       <iframe [src]="sanitize(body.linkvideo)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+    </div>
+  </div>
+  <div class="video-info">
+    <div class="video-title">{{ body.titolo }}</div>
+    <div class="video-details">
+      <div class="video-details-row">
+        <span class="video-username">{{ body.utente_username }}</span>
+        <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
+      </div>
+      <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>
     </div>
   </div>
   <div class="comment-section">

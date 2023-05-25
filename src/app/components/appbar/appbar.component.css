@@ -14,4 +14,5 @@
   position: fixed; /* Make it stick/fixed */
   top: 0; /* Stay on top */
   width: 100%;
+  z-index: 1000;
 }

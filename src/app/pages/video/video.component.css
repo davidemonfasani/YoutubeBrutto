@@ -1,37 +1,31 @@
-
+.app-container {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  width: auto/*calc(100% -15vh);*/
+}
 .video-page-container {
   margin-left: 120px; /* Set this value equal to the width of the sidebar */
-  width: 100%;
+  width: auto;
   margin-top: 1.5%;
   display:flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  height: 120vh; /* Adjust the height as needed */
+  height: auto; /*120vh; Adjust the height as needed */
  }
- .app-container {
-  top:7.5%;
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around
-}
-
-
 .video-wrapper {
-  width: 100%; /* Adjust the width as needed */
-  margin-bottom: 20px;
+  width:  150vh ;/* Adjust the width as needed */
   display: flex;
   justify-content: start;
   align-items: left;
-  height: 100%;
+  height: 86vh
+
 }
-
-
 .video-wrapper iframe {
   width: 100%;
-  height: 100%;
 }
-
 .video-info {
   text-align: left;
 }
@@ -57,6 +51,10 @@
   border: none;
   color: blue;
   cursor: pointer;
+}
+.comment-section{
+
+  align-items: center;
 }
 
 #buttonComment {
