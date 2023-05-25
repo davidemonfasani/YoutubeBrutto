@@ -15,6 +15,7 @@ import { CommentoComponent } from './components/commento/commento.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.comp
     CommentoComponent,
     SidebarComponent,
     HistoryComponent,
+    LoginComponent,
     SubscriptionsComponent,
   ],
   imports: [

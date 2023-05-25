@@ -110,4 +110,17 @@ export class UserAuthService {
   removeToken(): void {
     localStorage.removeItem(this.TOKEN_KEY);
   }
+
+  verifyToken(token: any): Observable<boolean> {
+    if (!token) {
+      this.router.navigateByUrl('/login');
+      return of(false);
+    } else {
+      return of(true);
+    }
+  }
 }
+
+
+
+
