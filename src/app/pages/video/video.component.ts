@@ -12,6 +12,7 @@ import { Video } from 'src/app/interfaces/video';
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent {
+  commentValue = ''; utente : any;
   comments: Commento[] = [];
   constructor(private vidService : VideoService, private comService : CommentService, private route: ActivatedRoute) {}
   body: Video = {
@@ -34,7 +35,6 @@ export class VideoComponent {
   ngOnInit() {
     this.vidService.getVideo().subscribe((video) => {
       console.log(video);
-
       this.body = video;
     });
     this.fetchComments();
@@ -52,12 +52,18 @@ export class VideoComponent {
   }
 
   registerComment() {
+
+    const utenteString = localStorage.getItem('utente')
+    if(utenteString) {
+      this.utente = JSON.parse(utenteString)
+    }
     const bodyComment = {
-      utente_username: null,
-      video_titolo: null,
-      testo: null,
+      utente_username:this.utente.username,
+      video_titolo: this.body.titolo,
+      testo: this.commentValue,
     };
     this.comService.registerComment(bodyComment)
+    this.fetchComments()
   }
 
 

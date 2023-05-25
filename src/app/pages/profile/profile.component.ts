@@ -8,49 +8,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  loginForm: FormGroup;
-  constructor(
-    private router: Router,
-    public auth: UserAuthService,
-    private formBuilder: FormBuilder
-  ) {
-    this.loginForm = this.formBuilder.group({
-      useremail: ['', Validators.required],
-      password: ['', Validators.required],
-    });
+  utente : any
+  utenteString = localStorage.getItem('utente')
+  constructor(private auth : UserAuthService) {}
+
+  ngOnInit() {
+    if(this.utenteString) {
+      this.utente = JSON.parse(this.utenteString)
+    }
   }
 
-  primoAccesso = !this.auth.isLogged
-
-  goRegister() {
-    this.router.navigateByUrl('/register')
+  logOut() {
+    this.auth.logOut()
   }
-
-
-  tryLogin() {
-    const body = {
-      userEmail: this.loginForm.value.useremail,
-      password: this.loginForm.value.password,
-    };
-    this.auth.login(body);
-  }
-
-
-
-
-  // clickText(value : string) {
-  //   if(this.firstClick = true)
-  //   {
-  //     if (value = this.useremail)
-  //     {
-  //       this.useremail = ''
-  //     }
-  //     else
-  //     {
-  //       this.password = ''
-  //     }
-  //     this.firstClick = false
-  //     console.log('ciao')
-  //   }
-  // }
 }
