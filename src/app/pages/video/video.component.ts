@@ -5,6 +5,7 @@ import { Commento } from 'src/app/interfaces/commento';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Video } from 'src/app/interfaces/video';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-video',
@@ -12,9 +13,18 @@ import { Video } from 'src/app/interfaces/video';
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent {
-  commentValue = ''; utente : any;
+  CommentForm:FormGroup;
+  utente : any;
   comments: Commento[] = [];
-  constructor(private vidService : VideoService, private comService : CommentService, private route: ActivatedRoute) {}
+  constructor(private vidService : VideoService,
+    private comService : CommentService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    ) {
+      this.CommentForm = this.formBuilder.group({
+        Text: ['', Validators.required],
+      });
+    }
   body: Video = {
     titolo : '',
     descrizione : '',
@@ -60,7 +70,7 @@ export class VideoComponent {
     const bodyComment = {
       utente_username:this.utente.username,
       video_titolo: this.body.titolo,
-      testo: this.commentValue,
+      testo: this.CommentForm.value.testo,
     };
     this.comService.registerComment(bodyComment)
     this.fetchComments()

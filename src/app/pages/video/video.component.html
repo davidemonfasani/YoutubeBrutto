@@ -1,29 +1,24 @@
 <div class="app-container">
-  <div class="video-page-container shadow">
+  <div><div class="video-page-container shadow">
     <div class="video-wrapper">
       <iframe [src]="sanitize(body.linkvideo)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
     </div>
   </div>
   <div class="comment-section">
-    <h3>Sezione commenti:</h3>
-    <div class="comment-list">
-      <div class="urcomment">
-      <input id="inputComment" placeholder="Commenta.." [(ngModel)]="commentValue" value="commentValue">
-      <button id="buttonComment" (click)="registerComment()">Invia</button>
-      </div>
-    </div>
-    <div class="comment-section">
       <h3>Sezione commenti:</h3>
       <div class="comment-list">
         <div class="urcomment">
-        <input id="inputComment" placeholder="Commenta..">
-        <button id="buttonComment" (click)="registerComment()">Invia</button>
+          <form [formGroup]="CommentForm" (submit)="registerComment()">
+            <input id="inputComment" formControlName="Text" placeholder="Commenta..">
+            <button type="Submit" id="buttonComment" [disabled]="!CommentForm.valid">Invia</button>
+          </form>
+
         </div>
         <app-commento *ngFor="let commento of comments" [commento]="commento"></app-commento>
       </div>
-    </div>
-
   </div>
+</div>
+
   <app-side-video-bar></app-side-video-bar>
 </div>
 
