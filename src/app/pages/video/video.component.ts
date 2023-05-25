@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { CommentService } from 'src/app/services/comment.service';
 import { VideoService } from 'src/app/services/video.service';
 import { Commento } from 'src/app/interfaces/commento';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Video } from 'src/app/interfaces/video';
 
 @Component({
   selector: 'app-video',
@@ -10,8 +13,14 @@ import { Commento } from 'src/app/interfaces/commento';
 })
 export class VideoComponent {
   comments: Commento[] = [];
-  constructor(private vidService : VideoService, private comService : CommentService) {}
-  body = this.vidService.video
+  constructor(private vidService : VideoService, private comService : CommentService, private route: ActivatedRoute) {}
+  body: Video = {
+    titolo : '',
+    descrizione : '',
+    linkvideo : '',
+    linkimage : '',
+    utente_username : '',
+  };
 
   showDescription = false;
 
@@ -21,15 +30,18 @@ export class VideoComponent {
 
   sanitize(a : string) {
     return this.vidService.sanitizeVideoUrl(a)
-
-
-
   }
-
   ngOnInit() {
+    this.vidService.getVideo().subscribe((video) => {
+      console.log(video);
+
+      this.body = video;
+    });
     this.fetchComments();
-    console.log('prendo i commenti di:', this.body.titolo)
+      console.log('prendo i commenti di:', this.body.titolo);
   }
+
+
 
   fetchComments() {
     this.comService.fetchComments(this.body.titolo)
