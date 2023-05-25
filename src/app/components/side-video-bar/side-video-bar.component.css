@@ -1,0 +1,25 @@
+.sidebar {
+  width: auto; /* Set the width to auto */
+  /* Adjust the background color as needed */
+  border-right: 1px;
+  border-left: 0;
+  border-top: 0;
+  border-style: solid;
+  right: 0;
+  padding-left: 10px;
+  position: sticky;
+  background-color: aqua;
+  margin-top: 15%;
+  display:flex;
+  height: 120vh;
+ }
+
+ .content {
+  flex: 1;
+ }
+
+
+.videos-container {
+ display: flex;
+ flex-direction: column;
+}

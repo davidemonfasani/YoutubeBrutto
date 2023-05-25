@@ -1,10 +1,7 @@
-.app-container {
-  display: flex;
-}
 
 .sidebar {
   width: 120px; /* Adjust the width as needed */
-   /* Adjust the background color as needed */
+  /* Adjust the background color as needed */
   border-right: 1px;
   border-left: 0;
   border-top: 0;
@@ -12,17 +9,25 @@
   position: fixed;
   height: 100%;
   top: 7.45%;
+}
+
+.sidebar:first-of-type {
   left: 0;
 }
 
-.content {
-  flex: 1;
-  padding-left: 20px; /* Adjust the padding as needed */
+.sidebar:last-of-type {
+  right: 0;
 }
 
-.appbar {
-  display: none; /* Hide the appbar by default */
+.content {
+ flex: 1;
+ padding-left: 20px; /* Adjust the padding as needed */
 }
+
+.video-page-container {
+ margin-left: 120px; /* Set this value equal to the width of the sidebar */
+}
+
 
 .button-container {
   display: flex;
