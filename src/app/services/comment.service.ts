@@ -36,33 +36,21 @@ export class CommentService {
 
   }
 
-  async registerComment(body : any) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+  registerComment(body: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers: headers };
 
-    const option = {headers: headers};
-
-
-    return this.http
-    .post<{ token: string }>(
-      'http://127.0.0.1:8000/api/commentis',
-      body,
-      option
-    )
-    .pipe(
-      tap({
-        error: (error) => {
-          var check = error.status;
-          let errorMessage = error.error.error;
+    return this.http.post<any>('http://127.0.0.1:8000/api/commentis/store', body, options)
+      .pipe(
+        catchError(error => {
+          const errorMessage = error.error.error;
           console.log(errorMessage);
           this.errorMessage$.next(errorMessage);
-        },
-      })
-    )
-    .subscribe({
-      next: (Response) => {
-        console.log('Response:', Response);
-      },
-    });
+          return throwError(errorMessage);
+        })
+      );
   }
+
+
 
 }
