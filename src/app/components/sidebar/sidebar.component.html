@@ -1,0 +1,15 @@
+<div class="app-container">
+  <div class="sidebar">
+    <div class="button-container">
+      <button id="firstBut" (click)="goHomepage()">Homepage</button>
+      <button *ngIf="routesService.getcurrentUrl()" (click)="goSubscriptions()">Inscrizioni</button>
+      <button *ngIf="routesService.getcurrentUrl()" (click)="goHistory()">Cronologia</button>
+    </div>
+  </div>
+  <div class="content">
+    <header class="appbar">
+      <!-- Appbar content goes here -->
+    </header>
+    <!-- Main content goes here -->
+  </div>
+</div>

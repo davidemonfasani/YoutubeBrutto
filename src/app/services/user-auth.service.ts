@@ -10,28 +10,15 @@ import jwt_decode from 'jwt-decode';
 export class UserAuthService {
 
   constructor(private http : HttpClient, private router: Router) {
-    this.router.events.subscribe(event => {
-    if (event instanceof NavigationEnd) {
-        this.getcurrentUrl();
     }
-});}
+
   errorMessage$ = new Subject<string>();
   private readonly TOKEN_KEY = 'token';
   CurrentUrl ='';
+  isLogged = false;
 
 
 
-  getcurrentUrl()
-  {
-    let currentUrl =  this.router.url;
-    if (currentUrl === '/homepage') {
-        return true;
-    }
-    else
-    {
-    return false;
-    }
-  }
   async register(body : any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
 
@@ -89,6 +76,7 @@ export class UserAuthService {
         console.log('Token:', this.getToken());
         console.log('Is token valid:', this.isValidToken(this.getToken()));
         this.router.navigateByUrl('/homepage');
+        this.isLogged = true;
       },
     });
   }
