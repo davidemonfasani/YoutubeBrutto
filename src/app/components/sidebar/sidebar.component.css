@@ -11,6 +11,8 @@
   border-style: solid;
   position: fixed;
   height: 100%;
+  top: 7.45%;
+  left: 0;
 }
 
 .content {
