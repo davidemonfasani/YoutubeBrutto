@@ -1,0 +1,17 @@
+#appbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border-bottom: 1px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-style: solid;
+  height: 5%;
+  position: fixed; /* Make it stick/fixed */
+  top: 0; /* Stay on top */
+  width: 100%;
+}
