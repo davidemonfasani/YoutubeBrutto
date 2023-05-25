@@ -70,7 +70,7 @@ export class VideoComponent {
     const bodyComment = {
       utente_username:this.utente.username,
       video_titolo: this.body.titolo,
-      testo: this.CommentForm.value.testo,
+      testo: this.CommentForm.value.Text,
     };
     this.comService.registerComment(bodyComment).subscribe(() => {
       this.fetchComments();
