@@ -11,7 +11,7 @@
   border-left: 0px;
   border-style: solid;
   height: 40px;
-  margin-bottom: 1%;
+  margin-bottom: 0;
 }
 
 #titolo {
@@ -125,33 +125,7 @@ a:hover{
   margin-top: 60px;
 }
 
-app-videocontainer:hover{
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 
-}
-
-app-videocontainer iframe {
-  max-width: 100%;
-  max-height: 100%;
-  margin-top: 8px;
-}
-
-app-videocontainer {
-  flex: 0 0 calc(33.33% - 20px);
-  width: 170px; /* Adjust the width as per your requirements */
-  height: auto;
-  margin-top: 16px;
-  border: 1px solid rgb(250, 249, 249);
-  box-sizing: content-box;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: box-shadow 0.3s ease;
-  margin-top: 20px;
-}
 
 #searchbar {
   display: flex;
@@ -190,3 +164,4 @@ app-videocontainer {
 #right-corner img:hover {
   cursor: pointer;
 }
+

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { UserAuthService } from '../../services/user-auth.service';
+import { RoutesService } from 'src/app/services/routes.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { UserAuthService } from '../../services/user-auth.service';
   styleUrls: ['./appbar.component.css']
 })
 export class AppbarComponent {
-  constructor(private router: Router, public auth: UserAuthService ) {
+  constructor(private router: Router, public routesService: RoutesService ) {
   }
   firstClick = true
   ricercaValue = ''

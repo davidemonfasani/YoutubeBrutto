@@ -1,0 +1,54 @@
+.app-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 120px; /* Adjust the width as needed */
+   /* Adjust the background color as needed */
+  border-right: 1px;
+  border-left: 0;
+  border-top: 0;
+  border-style: solid;
+  position: fixed;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  padding-left: 20px; /* Adjust the padding as needed */
+}
+
+.appbar {
+  display: none; /* Hide the appbar by default */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.button-container button {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 150px; /* Adjust the vertical spacing between buttons as needed */
+  border-right: 0px;
+  border-bottom: 1px;
+  border-top: 1px;
+  border-left: 1px;
+  border-style: solid;
+}
+
+
+.button-container button:hover{
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+}
+
+#firstBut {
+  border-top: 0px;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-style: solid;
+}

@@ -1,6 +1,6 @@
 <div id="appbar">
   <h2 id="titolo" (click)="goHomepage()"><b>Iutubo</b></h2>
-  <div *ngIf="auth.getcurrentUrl()" id="searchbar">
+  <div *ngIf="routesService.getcurrentUrl()" id="searchbar">
     <input type="text" [(ngModel)]="ricercaValue" placeholder="Inserisci il titolo del video..">
   </div>
   <div id="right-corner">

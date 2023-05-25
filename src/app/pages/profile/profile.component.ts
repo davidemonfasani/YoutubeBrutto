@@ -20,8 +20,7 @@ export class ProfileComponent {
     });
   }
 
-  primoAccesso = true
-  firstClick = true
+  primoAccesso = !this.auth.isLogged
 
   goRegister() {
     this.router.navigateByUrl('/register')
