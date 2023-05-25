@@ -1,10 +1,7 @@
-
-
 .video-container {
   flex: 0 0 calc(33.33% - 5px); /* Adjust the width and spacing as needed */
   height: auto;
   margin-top: 20px;
-  margin-left: 10px; /* Adjust the left margin to reduce the space between videos */
   border: 1px solid rgb(250, 249, 249);
   box-sizing: content-box;
   padding: 2px;
@@ -14,22 +11,21 @@
   justify-content: center;
   transition: box-shadow 0.3s ease;
   height: auto;
-  margin-top: 20px;
-  margin-left: 80px;
-  width: 250px;
-}
+  margin-top: 4%;
+  width: 250px; /* Set this value equal to the desired width of the video container */
+ }
 
-.video-wrapper {
+ .video-wrapper {
   width: 100%;
-}
+ }
 
-.video-wrapper iframe {
+ .video-wrapper iframe {
   max-width: 100%;
   max-height: 100%;
   margin-top: 8px;
-}
+ }
 
-.video-container:hover {
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
+ .video-container:hover {
+  cursor:pointer;
+  box-shadow:0 0 8px rgba(0,0,0,0.1);
+ }

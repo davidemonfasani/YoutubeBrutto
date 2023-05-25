@@ -16,6 +16,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SideVideoBarComponent } from './components/side-video-bar/side-video-bar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoginComponent } from './pages/login/login.component';
     HistoryComponent,
     LoginComponent,
     SubscriptionsComponent,
+    SideVideoBarComponent,
   ],
   imports: [
     BrowserModule,
