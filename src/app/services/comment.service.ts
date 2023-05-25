@@ -18,7 +18,7 @@ export class CommentService {
 
 
   fetchComments(titolo : string): Observable<Commento[]> {
-    return this.http.get<Commento[]>('http://127.0.0.1:8000/api/api/commentos', {params: {titolo}});
+    return this.http.get<Commento[]>(`http://127.0.0.1:8000/api/commentis/${titolo}`);
   }
 
   registerComment(body : any) {
