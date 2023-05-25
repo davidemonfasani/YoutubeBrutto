@@ -3,5 +3,5 @@ export interface Video {
   descrizione : string,
   linkvideo : string,
   linkimage : string,
-  username : string,
+  utente_username : string,
 }
