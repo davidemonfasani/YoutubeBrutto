@@ -8,7 +8,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+  utente : any
+  utenteString = localStorage.getItem('utente')
   constructor(private auth : UserAuthService) {}
+
+  ngOnInit() {
+    if(this.utenteString) {
+      this.utente = JSON.parse(this.utenteString)
+    }
+  }
 
   logOut() {
     this.auth.logOut()

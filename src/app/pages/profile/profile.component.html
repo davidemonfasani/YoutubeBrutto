@@ -1,2 +1,13 @@
 <!DOCTYPE html>
-<button (click)="logOut()">LogOut</button>
+<div id="credenziali">
+  <p>Ciao {{ utente.username }} questo è il tuo profilo:</p>
+
+  <div class="profile-card">
+    <img src="../../../assets/images/guest.png" alt="Profile Picture" class="profile-picture">
+    <h2>{{ utente.nome }} {{ utente.cognome }}</h2>
+    <p>Username: {{ utente.username }}</p>
+    <p>Email: {{ utente.email }}</p>
+  </div>
+
+  <button (click)="logOut()">LogOut</button>
+</div>

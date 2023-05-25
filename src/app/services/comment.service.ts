@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, Subject, catchError, switchMap, tap, throwError } from 'rxjs';
 import { Commento } from '../interfaces/commento';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CommentService {
 
+  errorMessage$ = new Subject<string>();
   commento = {
     utente_username: '',
     video_titolo: '',
@@ -35,7 +36,33 @@ export class CommentService {
 
   }
 
-  registerComment(body : any) {
+  async registerComment(body : any) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
 
+    const option = {headers: headers};
+
+
+    return this.http
+    .post<{ token: string }>(
+      'http://127.0.0.1:8000/api/commentis',
+      body,
+      option
+    )
+    .pipe(
+      tap({
+        error: (error) => {
+          var check = error.status;
+          let errorMessage = error.error.error;
+          console.log(errorMessage);
+          this.errorMessage$.next(errorMessage);
+        },
+      })
+    )
+    .subscribe({
+      next: (Response) => {
+        console.log('Response:', Response);
+      },
+    });
   }
+
 }
