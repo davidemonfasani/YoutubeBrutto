@@ -119,6 +119,14 @@ export class UserAuthService {
       return of(true);
     }
   }
+
+
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login')
+  }
+
 }
 
 
