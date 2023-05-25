@@ -72,8 +72,9 @@ export class VideoComponent {
       video_titolo: this.body.titolo,
       testo: this.CommentForm.value.testo,
     };
-    this.comService.registerComment(bodyComment)
-    this.fetchComments()
+    this.comService.registerComment(bodyComment).subscribe(() => {
+      this.fetchComments();
+    });
   }
 
 
