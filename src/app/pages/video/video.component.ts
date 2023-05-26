@@ -16,7 +16,18 @@ export class VideoComponent {
   CommentForm:FormGroup;
   utente : any;
   comments: Commento[] = [];
+  likes = 0;
+  views = 0;
   condition =false;
+
+  body: Video = {
+    id: 0,
+    titolo : '',
+    descrizione : '',
+    linkvideo : '',
+    linkimage : '',
+    utente_username : '',
+  };
   constructor(private vidService : VideoService,
     private comService : CommentService,
     private route: ActivatedRoute,
@@ -26,14 +37,7 @@ export class VideoComponent {
         Text: ['', Validators.required],
       });
     }
-  body: Video = {
-    id: 0,
-    titolo : '',
-    descrizione : '',
-    linkvideo : '',
-    linkimage : '',
-    utente_username : '',
-  };
+
 
   showDescription = false;
 
@@ -50,18 +54,45 @@ export class VideoComponent {
       this.body = video;
     });
     this.fetchComments();
+
       console.log('prendo i commenti di:', this.body.id);
   }
+
+
+
   likeChange(){
+    this.utente = this.getUtente()
+    const idUtente = this.utente.id
+    const idVideo = this.body.id
     if(this.condition)
     {
       this.condition=false
+      this.vidService.removeLike(idUtente, idVideo)
     }
     else
     {
       this.condition=true
+      this.vidService.addLike(idUtente, idVideo)
     }
 
+  }
+
+
+  fetchLikes() {
+    this.vidService.fetchLikes(this.body.id)
+    .subscribe((result: number) => {
+      this.likes = result;
+      console.log('i comment', this.comments)
+    });
+  }
+
+
+  fetchViews() {
+    this.vidService.fetchViews(this.body.id)
+    .subscribe((result: number) => {
+      this.views = result;
+      console.log('i comment', this.comments)
+    });
   }
 
 
@@ -73,12 +104,11 @@ export class VideoComponent {
       });
   }
 
+
+
   registerComment() {
 
-    const utenteString = localStorage.getItem('utente')
-    if(utenteString) {
-      this.utente = JSON.parse(utenteString)
-    }
+    this.utente = this.getUtente()
     const bodyComment = {
       video_id:this.body.id,
       utente_id:this.utente.id,
@@ -88,6 +118,14 @@ export class VideoComponent {
     this.comService.registerComment(bodyComment).subscribe(() => {
       this.fetchComments();
     });
+  }
+
+
+  getUtente() {
+    const utenteString = localStorage.getItem('utente')
+    if(utenteString) {
+      return JSON.parse(utenteString)
+    }
   }
 
 

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Video } from '../interfaces/video';
 import { Observable, catchError, of, switchMap, tap, throwError } from 'rxjs';
@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 export class VideoService {
+
   video = {
     id:0,
     titolo: '',
@@ -19,6 +20,13 @@ export class VideoService {
     utente_username: '',
     linkvideo: ''
   }
+
+  likeBody = {
+
+  }
+
+
+
   constructor(private http : HttpClient,
     private router: Router,
     private sanitizer : DomSanitizer,
@@ -68,6 +76,75 @@ export class VideoService {
         })
       );
   }
+
+  makeLikeBody(idUtente : number, idVideo : number) {
+    return this.likeBody = {
+      utente_id : idUtente,
+      video_id : idVideo,
+    }
+  }
+
+
+  async addLike(idUtente : number, idVideo : number) {
+    const body = this.makeLikeBody(idUtente, idVideo)
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers: headers };
+    console.log('questo è il body di addLike', body)
+    return this.http.post<any>('http://127.0.0.1:8000/api/videos/addLike', body, options)
+    .pipe(
+      catchError(error => {
+        const errorMessage = error.error.error;
+        console.log(errorMessage);
+        return throwError(errorMessage);
+      })
+    );
+  }
+
+
+  async removeLike(idUtente : number, idVideo : number) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers: headers };
+
+    const body = this.makeLikeBody(idUtente, idVideo)
+    return this.http.post<any>('http://127.0.0.1:8000/api/videos/removeLike', body, options)
+      .pipe(
+        catchError(error => {
+          const errorMessage = error.error.error;
+          console.log(errorMessage);
+          return throwError(errorMessage);
+        })
+      );
+  }
+
+
+
+  fetchLikes(id: number): Observable<number> {
+    return this.route.queryParams.pipe(
+      switchMap(params => {
+      const id= params['videoid'];
+      if (id) {
+       return this.http.get<number>(`http://127.0.0.1:8000/api/commentis/${id}`);
+      } else {
+      throw new Error('videoidparameter is missing from the URL');
+      }
+      })
+      );
+    }
+
+
+
+      fetchViews(id: number): Observable<number> {
+        return this.route.queryParams.pipe(
+          switchMap(params => {
+          const id= params['videoid'];
+          if (id) {
+           return this.http.get<number>(`http://127.0.0.1:8000/api/commentis/${id}/`);
+          } else {
+          throw new Error('videoidparameter is missing from the URL');
+          }
+          })
+          );
+        }
 
 
 
