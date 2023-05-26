@@ -21,11 +21,12 @@
                   <button>Iscriviti</button>
                 </div>
                 <div class="like-button">
-                  <!-- Display the like button here -->
-                  <button (click)="likeChange()">Likes:
-                    <img *ngIf="condition; else otherImg" src="../../../assets/images/Like_empty.png">
+
+                  <button (click)="likeChange()">
+                    Likes:
+                    <img class="img" *ngIf="condition; else otherImg" src="../../../assets/images/Like_Full.png" >
                     <ng-template #otherImg>
-                      <img src="../../../assets/images/Like_Full.png">
+                      <img  class="img" src="../../../assets/images/Like_empty.png">
                     </ng-template>
                   </button>
                 </div>

@@ -37,8 +37,8 @@ export class UserAuthService {
 
 
     return this.http
-    .post<{ token: string }>(
-      'http://127.0.0.1:8000/api/signIn',
+    .post<any>(
+      'http://127.0.0.1:8000/api/utentes/signIn',
       body,
       option
     )
@@ -59,6 +59,8 @@ export class UserAuthService {
         console.log('Token:', this.getToken());
         console.log('Is token valid:', this.isValidToken(this.getToken()));
         this.router.navigateByUrl('/homepage');
+        this.isLogged = true;
+          localStorage.setItem('utente', JSON.stringify(Response.dati))
       },
     });
   }
@@ -66,7 +68,7 @@ export class UserAuthService {
   async login(body: any) {
     return this.http
       .post<any>( // Change the response type to 'any' to capture the entire response
-        'http://127.0.0.1:8000/api/login',
+        'http://127.0.0.1:8000/api/utentes/login',
         body,
       )
       .pipe(

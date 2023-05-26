@@ -111,7 +111,7 @@ export class VideoComponent {
     this.utente = this.getUtente()
     const bodyComment = {
       videoid:this.body.id,
-      utente_username:this.utente.username,
+      utente_id:this.utente.id,
       video_titolo: this.body.titolo,
       testo: this.CommentForm.value.Text,
     };
