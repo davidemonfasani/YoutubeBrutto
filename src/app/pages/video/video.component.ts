@@ -16,6 +16,7 @@ export class VideoComponent {
   CommentForm:FormGroup;
   utente : any;
   comments: Commento[] = [];
+  condition =false;
   constructor(private vidService : VideoService,
     private comService : CommentService,
     private route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class VideoComponent {
       });
     }
   body: Video = {
+    id: 0,
     titolo : '',
     descrizione : '',
     linkvideo : '',
@@ -48,13 +50,23 @@ export class VideoComponent {
       this.body = video;
     });
     this.fetchComments();
-      console.log('prendo i commenti di:', this.body.titolo);
+      console.log('prendo i commenti di:', this.body.id);
+  }
+  likeChange(){
+    if(this.condition)
+    {
+      this.condition=false
+    }
+    else
+    {
+      this.condition=true
+    }
+
   }
 
 
-
   fetchComments() {
-    this.comService.fetchComments(this.body.titolo)
+    this.comService.fetchComments(this.body.id)
       .subscribe((result: Commento[]) => {
         this.comments = result;
         console.log('i comment', this.comments)
@@ -68,6 +80,7 @@ export class VideoComponent {
       this.utente = JSON.parse(utenteString)
     }
     const bodyComment = {
+      videoid:this.body.id,
       utente_username:this.utente.username,
       video_titolo: this.body.titolo,
       testo: this.CommentForm.value.Text,

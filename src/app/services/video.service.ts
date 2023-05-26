@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class VideoService {
   video = {
+    id:0,
     titolo: '',
     descrizione: '',
     utente_username: '',
@@ -34,18 +35,18 @@ export class VideoService {
 
   goVideo(body : any) {
     this.video = body;
-    console.log('sei nel video ', this.video.titolo);
-      this.router.navigateByUrl(`/video?videotitolo=${this.video.titolo}`);
+    console.log('sei nel video ', this.video.id);
+      this.router.navigateByUrl(`/video?videoid=${this.video.id}`);
    }
 
    getVideo(): Observable<Video> {
     return this.route.queryParams.pipe(
     switchMap(params => {
-    const videoTitolo = params['videotitolo'];
-    if (videoTitolo) {
-    return this.http.get<Video>(`http://127.0.0.1:8000/api/videos/${videoTitolo}`);
+    const videoid = params['videoid'];
+    if (videoid) {
+    return this.http.get<Video>(`http://127.0.0.1:8000/api/videos/${videoid}`);
     } else {
-    throw new Error('videotitolo parameter is missing from the URL');
+    throw new Error('videoid parameter is missing from the URL');
     }
     })
     );

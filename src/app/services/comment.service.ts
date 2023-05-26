@@ -12,7 +12,7 @@ export class CommentService {
   errorMessage$ = new Subject<string>();
   commento = {
     utente_username: '',
-    video_titolo: '',
+    video_id: 0,
     testo: '',
   }
 
@@ -22,14 +22,14 @@ export class CommentService {
     ) { }
 
 
-  fetchComments(titolo : string): Observable<Commento[]> {
+  fetchComments(id: number): Observable<Commento[]> {
     return this.route.queryParams.pipe(
       switchMap(params => {
-      const titolo = params['videotitolo'];
-      if (titolo) {
-       return this.http.get<Commento[]>(`http://127.0.0.1:8000/api/commentis/${titolo}`);
+      const id= params['videoid'];
+      if (id) {
+       return this.http.get<Commento[]>(`http://127.0.0.1:8000/api/commentis/${id}`);
       } else {
-      throw new Error('videotitolo parameter is missing from the URL');
+      throw new Error('videoidparameter is missing from the URL');
       }
       })
       );

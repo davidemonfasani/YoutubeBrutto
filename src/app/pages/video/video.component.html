@@ -15,7 +15,6 @@
               <!-- Display the views count here -->
               <span> Views: </span>
             </div>
-            <span> Likes: </span>
             <div class="button-container">
               <div class="subscribe-like-container">
                 <div class="subscribe-button">
@@ -23,7 +22,12 @@
                 </div>
                 <div class="like-button">
                   <!-- Display the like button here -->
-                  <button>Like</button>
+                  <button (click)="likeChange()">Likes:
+                    <img *ngIf="condition; else otherImg" src="../../../assets/images/Like_empty.png">
+                    <ng-template #otherImg>
+                      <img src="../../../assets/images/Like_Full.png">
+                    </ng-template>
+                  </button>
                 </div>
               </div>
             </div>
