@@ -167,4 +167,28 @@ export class VideoService {
   sanitizeVideoUrl(videoUrl: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
+
+
+async addView(body : any) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers: headers };
+    console.log('questo è il body view:', body)
+    return this.http.post<any>('http://127.0.0.1:8000/api/videos/addView', body, options)
+    .pipe(
+      tap({
+        error: (error) => {
+          var check = error.status;
+          let errorMessage = error.error.error;
+          console.log(errorMessage);
+        },
+      })
+    )
+    .subscribe({
+      next: (Response) => {
+        console.log('Response:', Response);
+      },
+    });
+}
+
+
 }

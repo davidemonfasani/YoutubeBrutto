@@ -13,13 +13,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent {
+  elapsedTime! : number; minuti = 0;
   CommentForm:FormGroup;
-  utente : any;
+  utente : any; timer : any;
+  startTime!: number;
   comments: Commento[] = [];
   likes = 0;
   views = 0;
   condition =false;
-
+  verificato = false;
   body: Video = {
     id: 0,
     titolo : '',
@@ -56,7 +58,31 @@ export class VideoComponent {
     this.fetchComments();
 
       console.log('prendo i commenti di:', this.body.id);
+
+      this.startTime = Date.now();
+      this.timer = setTimeout(() => {
+
+        console.log('60 seconds have passed. Performing action...');
+        // Perform your desired action here
+        this.verificato = true
+      }, 60000);
+
+
   }
+
+
+  ngOnDestroy() {
+    // Perform your action before the component is closed
+    if(this.verificato)
+    {
+      clearTimeout(this.timer);
+      this.elapsedTime = Date.now() - this.startTime;
+      this.addView()
+    }
+
+    // Execute your desired action here
+  }
+
 
 
 
@@ -125,6 +151,40 @@ export class VideoComponent {
     const utenteString = localStorage.getItem('utente')
     if(utenteString) {
       return JSON.parse(utenteString)
+    }
+  }
+
+
+
+
+
+  addView() {
+    this.utente = this.getUtente()
+    const idUtente = this.utente.id
+    const idVideo = this.body.id
+    const time = this.calcolaTempo((this.elapsedTime / 1000))
+    const body = {
+      video_id : idVideo,
+      utente_id : idUtente,
+      watch_time : time,
+    }
+    this.elapsedTime = 0;
+    this.vidService.addView(body)
+  }
+
+
+
+  calcolaTempo(n : number) {
+    const variabilina = n / 60
+    this.minuti += Math.floor(variabilina)
+    const variabilinaVirgola = variabilina % 1 * 60;
+    if(variabilinaVirgola >= 30)
+    {
+     return this.minuti += 1;
+    }
+    else
+    {
+      return this.minuti
     }
   }
 
