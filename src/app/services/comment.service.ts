@@ -25,11 +25,11 @@ export class CommentService {
   fetchComments(id: number): Observable<Commento[]> {
     return this.route.queryParams.pipe(
       switchMap(params => {
-      const id= params['videoid'];
+      const id= params['video_id'];
       if (id) {
        return this.http.get<Commento[]>(`http://127.0.0.1:8000/api/commentis/${id}`);
       } else {
-      throw new Error('videoidparameter is missing from the URL');
+      throw new Error('video_idparameter is missing from the URL');
       }
       })
       );

@@ -36,17 +36,17 @@ export class VideoService {
   goVideo(body : any) {
     this.video = body;
     console.log('sei nel video ', this.video.id);
-      this.router.navigateByUrl(`/video?videoid=${this.video.id}`);
+      this.router.navigateByUrl(`/video?video_id=${this.video.id}`);
    }
 
    getVideo(): Observable<Video> {
     return this.route.queryParams.pipe(
     switchMap(params => {
-    const videoid = params['videoid'];
-    if (videoid) {
-    return this.http.get<Video>(`http://127.0.0.1:8000/api/videos/${videoid}`);
+    const video_id = params['video_id'];
+    if (video_id) {
+    return this.http.get<Video>(`http://127.0.0.1:8000/api/videos/${video_id}`);
     } else {
-    throw new Error('videoid parameter is missing from the URL');
+    throw new Error('video_id parameter is missing from the URL');
     }
     })
     );

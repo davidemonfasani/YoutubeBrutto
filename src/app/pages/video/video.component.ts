@@ -80,7 +80,7 @@ export class VideoComponent {
       this.utente = JSON.parse(utenteString)
     }
     const bodyComment = {
-      videoid:this.body.id,
+      video_id:this.body.id,
       utente_id:this.utente.id,
       video_titolo: this.body.titolo,
       testo: this.CommentForm.value.Text,
