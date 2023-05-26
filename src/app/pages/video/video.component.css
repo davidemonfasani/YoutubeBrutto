@@ -7,7 +7,7 @@
 }
 .video-page-container {
   margin-left: 120px; /* Set this value equal to the width of the sidebar */
-  width: auto;
+  width: 60rem;
   margin-top: 1.5%;
   display:flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
   height: auto; /*120vh; Adjust the height as needed */
  }
 .video-wrapper {
-  width:  60rem ;/* Adjust the width as needed */
+  width:  100% ;/* Adjust the width as needed */
   display: flex;
   justify-content: start;
   align-items: left;
@@ -54,6 +54,7 @@
 }
 .comment-section{
   align-items: center;
+  width: 100%;
 }
 
 #buttonComment {
@@ -64,6 +65,7 @@
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   border: 1px solid #ccc;
+  width: 20%;
 }
 
 #buttonComment:hover {
@@ -82,5 +84,11 @@
   background-color: #f4f4f4;
   border: 1px solid #ccc;
   padding: 8px;
-  width: 358px;
+  width: 78%;
+}
+.CommentForm{
+  width: 100%;
+}
+.urcomment{
+  width: 100%;
 }

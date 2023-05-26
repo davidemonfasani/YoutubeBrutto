@@ -1,34 +1,33 @@
 <div class="app-container">
   <div class="video-page-container shadow">
-  <div>
-    <div class="video-wrapper">
-      <iframe [src]="sanitize(body.linkvideo)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-    </div>
-  </div>
-  <div class="video-info">
-    <div class="video-title">{{ body.titolo }}</div>
-    <div class="video-details">
-      <div class="video-details-row">
-        <span class="video-username">{{ body.utente_username }}</span>
-        <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
+    <div>
+      <div class="video-wrapper">
+        <iframe [src]="sanitize(body.linkvideo)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
       </div>
-      <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>
     </div>
-  </div>
-  <div class="comment-section">
-      <h3>Sezione commenti:</h3>
-      <div class="comment-list">
-        <div class="urcomment">
-          <form [formGroup]="CommentForm" (submit)="registerComment()">
-            <input id="inputComment" formControlName="Text" placeholder="Commenta..">
-            <button type="Submit" id="buttonComment" [disabled]="!CommentForm.valid">Invia</button>
-          </form>
-
+    <div class="video-info">
+      <div class="video-title">{{ body.titolo }}</div>
+      <div class="video-details">
+        <div class="video-details-row">
+          <span class="video-username">{{ body.utente_username }}</span>
+          <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
         </div>
-        <app-commento *ngFor="let commento of comments" [commento]="commento"></app-commento>
+        <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>
       </div>
+    </div>
+    <div class="comment-section">
+        <h3>Sezione commenti:</h3>
+        <div class="comment-list">
+          <div class="urcomment">
+            <form class="CommentForm" [formGroup]="CommentForm" (submit)="registerComment()">
+              <input id="inputComment" formControlName="Text" placeholder="Commenta..">
+              <button type="Submit" id="buttonComment" [disabled]="!CommentForm.valid">Invia</button>
+            </form>
+          </div>
+          <app-commento class="commento" *ngFor="let commento of comments" [commento]="commento"></app-commento>
+        </div>
+    </div>
   </div>
-</div>
   <app-side-video-bar></app-side-video-bar>
 </div>
 
