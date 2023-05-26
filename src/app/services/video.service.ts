@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Video } from '../interfaces/video';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, catchError, of, switchMap, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -29,7 +29,7 @@ export class VideoService {
 
 
   fetchVideos(): Observable<Video[]> {
-    return this.http.get<Video[]>('http://192.168.28.100:8000/api/videos');
+    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos');
   }
 
   goVideo(body : any) {
@@ -43,13 +43,32 @@ export class VideoService {
     switchMap(params => {
     const videoTitolo = params['videotitolo'];
     if (videoTitolo) {
-    return this.http.get<Video>(`http://192.168.28.100:8000/api/videos/${videoTitolo}`);
+    return this.http.get<Video>(`http://127.0.0.1:8000/api/videos/${videoTitolo}`);
     } else {
     throw new Error('videotitolo parameter is missing from the URL');
     }
     })
     );
    }
+
+
+   filterVideo(ricerca: string): Observable<Video[]> {
+    const params = new HttpParams().set('titleOrTag', ricerca);
+    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos/filterVideo', { params })
+      .pipe(
+        catchError((error: any) => {
+          if (error.status === 401) {
+            return throwError('Unauthorized');
+          } else if (error.status === 403) {
+            return throwError('Video non trovato');
+          } else {
+            return throwError('An error occurred');
+          }
+        })
+      );
+  }
+
+
 
 
 
