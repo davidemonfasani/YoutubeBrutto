@@ -2,7 +2,7 @@
   margin-top: 3%;
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content:center;
   width: auto/*calc(100% -15vh);*/
 }
 .video-page-container {
@@ -16,11 +16,11 @@
   height: auto; /*120vh; Adjust the height as needed */
  }
 .video-wrapper {
-  width:  150vh ;/* Adjust the width as needed */
+  width:  60rem ;/* Adjust the width as needed */
   display: flex;
   justify-content: start;
   align-items: left;
-  height: 86vh
+  height: 30rem
 
 }
 .video-wrapper iframe {
@@ -53,7 +53,6 @@
   cursor: pointer;
 }
 .comment-section{
-
   align-items: center;
 }
 

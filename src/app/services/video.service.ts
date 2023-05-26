@@ -29,7 +29,7 @@ export class VideoService {
 
 
   fetchVideos(): Observable<Video[]> {
-    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos');
+    return this.http.get<Video[]>('http://192.168.28.100:8000/api/videos');
   }
 
   goVideo(body : any) {
@@ -43,7 +43,7 @@ export class VideoService {
     switchMap(params => {
     const videoTitolo = params['videotitolo'];
     if (videoTitolo) {
-    return this.http.get<Video>(`http://127.0.0.1:8000/api/videos/${videoTitolo}`);
+    return this.http.get<Video>(`http://192.168.28.100:8000/api/videos/${videoTitolo}`);
     } else {
     throw new Error('videotitolo parameter is missing from the URL');
     }
