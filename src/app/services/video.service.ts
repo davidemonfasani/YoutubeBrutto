@@ -117,7 +117,6 @@ export class VideoService {
     .pipe(
       tap({
         error: (error) => {
-          var check = error.status;
           let errorMessage = error.error.error;
           console.log(errorMessage);
         },
@@ -132,25 +131,25 @@ export class VideoService {
 
 
 
-  fetchLikes(id: number): Observable<number> {
+  fetchLikes(utente_id: number): Observable<number> {
+    console.log('id utente',utente_id);
     return this.route.queryParams.pipe(
       switchMap(params => {
-      const id= params['videoid'];
+      const id= params['video_id'];
       if (id) {
-       return this.http.get<number>(`http://127.0.0.1:8000/api/commentis/${id}`);
+       return this.http.get<number>(`http://127.0.0.1:8000/api/videos/fetchlikes/${id}?utente_id=${utente_id}`)
       } else {
       throw new Error('videoidparameter is missing from the URL');
       }
       })
       );
-    }
+  }
 
 
-
-      fetchViews(id: number): Observable<number> {
+  fetchViews(id: number): Observable<number> {
         return this.route.queryParams.pipe(
           switchMap(params => {
-          const id= params['videoid'];
+          const id= params['video_id'];
           if (id) {
            return this.http.get<number>(`http://127.0.0.1:8000/api/commentis/${id}/`);
           } else {

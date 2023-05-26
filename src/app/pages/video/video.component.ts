@@ -52,7 +52,6 @@ export class VideoComponent {
   }
   ngOnInit() {
     this.vidService.getVideo().subscribe((video) => {
-      console.log(video);
       this.body = video;
     });
     this.fetchComments();
@@ -105,10 +104,15 @@ export class VideoComponent {
 
 
   fetchLikes() {
-    this.vidService.fetchLikes(this.body.id)
+    let utenteid=this.getUtente().id;
+    if(utenteid===null)
+    {
+      utenteid=0;
+    }
+    this.vidService.fetchLikes(utenteid)
     .subscribe((result: number) => {
-      this.likes = result;
-      console.log('i comment', this.comments)
+      this.likes=result.valueOf();
+      console.log('i like',  this.likes)
     });
   }
 
@@ -117,7 +121,7 @@ export class VideoComponent {
     this.vidService.fetchViews(this.body.id)
     .subscribe((result: number) => {
       this.views = result;
-      console.log('i comment', this.comments)
+      console.log('le views', this.views)
     });
   }
 
@@ -126,7 +130,7 @@ export class VideoComponent {
     this.comService.fetchComments(this.body.id)
       .subscribe((result: Commento[]) => {
         this.comments = result;
-        console.log('i comment', this.comments)
+        console.log('i commenti', this.comments)
       });
   }
 
