@@ -10,24 +10,43 @@
       <div class="video-details">
         <div class="video-details-row">
           <span class="video-username">{{ body.utente_username }}</span>
-          <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
-        </div>
-        <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>
-      </div>
-    </div>
-    <div class="comment-section">
-        <h3>Sezione commenti:</h3>
-        <div class="comment-list">
-          <div class="urcomment">
-            <form class="CommentForm" [formGroup]="CommentForm" (submit)="registerComment()">
-              <input id="inputComment" formControlName="Text" placeholder="Commenta..">
-              <button type="Submit" id="buttonComment" [disabled]="!CommentForm.valid">Invia</button>
-            </form>
+          <div class="video-section">
+            <div class="views">
+              <!-- Display the views count here -->
+              <span> Views: </span>
+            </div>
+            <span> Likes: </span>
+            <div class="button-container">
+              <div class="subscribe-like-container">
+                <div class="subscribe-button">
+                  <button>Iscriviti</button>
+                </div>
+                <div class="like-button">
+                  <!-- Display the like button here -->
+                  <button>Like</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <app-commento class="commento" *ngFor="let commento of comments" [commento]="commento"></app-commento>
         </div>
+
+      </div>
+      <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
+      <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>
+    </div>
+
+    <div class="comment-section">
+      <h3>Sezione commenti:</h3>
+      <div class="comment-list">
+        <div class="urcomment">
+          <form class="CommentForm" [formGroup]="CommentForm" (submit)="registerComment()">
+            <input id="inputComment" formControlName="Text" placeholder="Commenta..">
+            <button type="Submit" id="buttonComment" [disabled]="!CommentForm.valid">Invia</button>
+          </form>
+        </div>
+        <app-commento class="commento" *ngFor="let commento of comments" [commento]="commento"></app-commento>
+      </div>
     </div>
   </div>
   <app-side-video-bar></app-side-video-bar>
 </div>
-

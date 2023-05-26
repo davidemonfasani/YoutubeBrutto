@@ -51,6 +51,7 @@
   border: none;
   color: blue;
   cursor: pointer;
+  margin-top: 2%;
 }
 .comment-section{
   align-items: center;
@@ -92,3 +93,41 @@
 .urcomment{
   width: 100%;
 }
+
+
+.video-section {
+  display: flex;
+  align-items: center;
+  margin-top: 15%;
+}
+
+.video-details-row {
+  display: flex;
+  align-items: center;
+}
+
+.views {
+  margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.subscribe-like-container {
+  display: flex;
+  align-items: center;
+}
+
+.subscribe-button{
+  margin-left: 10px;
+}
+
+.subscribe-button,
+.like-button {
+  background-color: #ccc;
+}
+
+
