@@ -45,6 +45,11 @@
 .video-username {
   margin-right: 10px;
 }
+.img{
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
 
 .show-description-button {
   background-color: transparent;
@@ -126,8 +131,10 @@
 }
 
 .subscribe-button,
+
 .like-button {
-  background-color: #ccc;
+  background-color: transparent;
+height: 20px;
 }
 
 

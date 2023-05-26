@@ -39,7 +39,7 @@ export class CommentService {
   registerComment(body: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
-
+    console.log(body);
     return this.http.post<any>('http://127.0.0.1:8000/api/commentis/store', body, options)
       .pipe(
         catchError(error => {
