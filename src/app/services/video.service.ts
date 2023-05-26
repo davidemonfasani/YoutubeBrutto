@@ -92,12 +92,19 @@ export class VideoService {
     console.log('questo è il body di addLike', body)
     return this.http.post<any>('http://127.0.0.1:8000/api/videos/addLike', body, options)
     .pipe(
-      catchError(error => {
-        const errorMessage = error.error.error;
-        console.log(errorMessage);
-        return throwError(errorMessage);
+      tap({
+        error: (error) => {
+          var check = error.status;
+          let errorMessage = error.error.error;
+          console.log(errorMessage);
+        },
       })
-    );
+    )
+    .subscribe({
+      next: (Response) => {
+        console.log('Response:', Response);
+      },
+    });
   }
 
 
@@ -107,13 +114,20 @@ export class VideoService {
 
     const body = this.makeLikeBody(idUtente, idVideo)
     return this.http.post<any>('http://127.0.0.1:8000/api/videos/removeLike', body, options)
-      .pipe(
-        catchError(error => {
-          const errorMessage = error.error.error;
+    .pipe(
+      tap({
+        error: (error) => {
+          var check = error.status;
+          let errorMessage = error.error.error;
           console.log(errorMessage);
-          return throwError(errorMessage);
-        })
-      );
+        },
+      })
+    )
+    .subscribe({
+      next: (Response) => {
+        console.log('Response:', Response);
+      },
+    });
   }
 
 
