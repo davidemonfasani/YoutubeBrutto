@@ -19,6 +19,7 @@
   border-color: #bc2c2c;
   color: white;
   font-weight: bold;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .btn:disabled {
   background-color: grey;

@@ -43,11 +43,9 @@
   height: 50px;
   width: auto;
   margin-bottom: 150px; /* Adjust the vertical spacing between buttons as needed */
-  border-right: 0px;
-  border-bottom: 1px;
-  border-top: 1px;
-  border-left: 1px;
+  border: 1px;
   border-style: solid;
+  border-radius: 20%;
 }
 
 
