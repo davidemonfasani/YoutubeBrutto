@@ -52,6 +52,8 @@ export class VideoComponent {
     return this.vidService.sanitizeVideoUrl(a)
   }
   ngOnInit() {
+    this.fetchViews()
+
     this.vidService.getVideo().subscribe((video) => {
       this.body = video;
     });
@@ -69,6 +71,8 @@ export class VideoComponent {
         // Perform your desired action here
         this.verificato = true
       }, 60000);
+
+
 
 
   }
@@ -129,14 +133,16 @@ export class VideoComponent {
   }
 
 
-
-  fetchViews() {
+  async fetchViews() {
     this.vidService.fetchViews(this.body.id)
-    .subscribe((result: number) => {
-      this.views = result;
-      //console.log('le views', this.views)
-    });
+      .subscribe((response: { views: number }) => {
+        this.views = response.views;
+        console.log('le views', this.views);
+      });
   }
+
+
+
 
 
   fetchComments() {
