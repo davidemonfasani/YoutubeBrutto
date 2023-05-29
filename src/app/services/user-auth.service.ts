@@ -174,6 +174,11 @@ export class UserAuthService {
   }
 
 
+  getHistory() {
+
+  }
+
+
 
 
 }
