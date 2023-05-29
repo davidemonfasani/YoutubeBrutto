@@ -146,12 +146,12 @@ export class VideoService {
   }
 
 
-  fetchViews(id: number): Observable<number> {
+  fetchViews(id1: number): Observable<number> {
         return this.route.queryParams.pipe(
           switchMap(params => {
           const id= params['video_id'];
           if (id) {
-           return this.http.get<number>(`http://127.0.0.1:8000/api/commentis/${id}/`);
+           return this.http.get<number>(`http://127.0.0.1:8000/api/videos/fetchViews/${id}/`);
           } else {
           throw new Error('videoidparameter is missing from the URL');
           }
