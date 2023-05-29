@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Video } from '../interfaces/video';
-import { Observable, catchError, of, switchMap, tap, throwError } from 'rxjs';
+import { Observable, Subject, catchError, of, switchMap, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +20,7 @@ export class VideoService {
     utente_username: '',
     linkvideo: ''
   }
-
+  errorMessage$ = new Subject<string>();
   likeBody = {
 
   }
@@ -96,7 +96,7 @@ export class VideoService {
         error: (error) => {
           var check = error.status;
           let errorMessage = error.error.error;
-          console.log(errorMessage);
+          this.errorMessage$.next(errorMessage);
         },
       })
     )
@@ -114,6 +114,7 @@ export class VideoService {
         error: (error) => {
           let errorMessage = error.error.error;
           console.log(errorMessage);
+          this.errorMessage$.next(errorMessage);
         },
       })
     )
@@ -169,6 +170,7 @@ async addView(body : any) {
           var check = error.status;
           let errorMessage = error.error.error;
           console.log(errorMessage);
+          this.errorMessage$.next(errorMessage);
         },
       })
     )
@@ -178,6 +180,25 @@ async addView(body : any) {
       },
     });
 }
-
+async Upload(body : any) {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const options = { headers: headers };
+  console.log('questo è il body view:', body)
+  return this.http.post<any>('http://127.0.0.1:8000/api/videos/store', body, options)
+  .pipe(
+    tap({
+      error: (error) => {
+        let errorMessage = error.error.error;
+        console.log(errorMessage);
+        this.errorMessage$.next(errorMessage);
+      },
+    })
+  )
+  .subscribe({
+    next: (Response) => {
+      console.log('Response:', Response);
+    },
+  });
+}
 
 }

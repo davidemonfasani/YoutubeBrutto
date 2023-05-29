@@ -1,7 +1,7 @@
 <form [formGroup]="UploadForm">
-  <div id="credenziali">
-    <p id="titoletto"><b>Inserisci le tue credenziali:</b></p>
-    <div *ngIf="auth.errorMessage$ | async as errorMessage">
+  <div id="VideoD">
+    <p id="titoletto"><b>Inserisci le caratteristiche del video:</b></p>
+    <div *ngIf="Service.errorMessage$ | async as errorMessage">
       <div class="alert alert-danger">
         {{ errorMessage }}
       </div>
@@ -9,55 +9,42 @@
     <div>
       <input
         type="text"
-        formControlName="username"
+        formControlName="titolo"
         class="input-field"
-        placeholder="Username"
-        required
-        name="username"
+        placeholder="titolo"
+        name="titolo"
       />
     </div>
     <div>
       <input
         type="text"
-        formControlName="email"
+        formControlName="descrizione"
         class="input-field"
-        placeholder="Email"
-        required
-        name="email"
+        placeholder="descrizione"
+        name="descrizione"
       />
     </div>
     <div>
       <input
         type="text"
-        formControlName="nome"
+        formControlName="linkvideo"
         class="input-field"
-        placeholder="Nome"
-        required
-        name="nome"
+        placeholder="linkvideo"
+        name="linkvideo"
       />
     </div>
     <div>
       <input
         type="text"
-        formControlName="cognome"
+        formControlName="linkimage"
         class="input-field"
-        placeholder="Cognome"
+        placeholder="linkimage"
         required
-        name="cognome"
+        name="linkimage"
       />
     </div>
     <div>
-      <input
-        type="password"
-        formControlName="password"
-        class="input-field"
-        placeholder="Password"
-        required
-        name="password"
-      />
-    </div>
-    <div>
-      <button type="submit" class="btn" (click)="Upload()" [disabled]="!UploadForm.valid">Register</button>
+      <button type="submit" class="btn" (click)="Upload()" [disabled]="!UploadForm.valid">UpLoad</button>
     </div>
   </div>
 </form>
