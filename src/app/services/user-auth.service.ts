@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Observable, Subject, catchError, map, of, tap, throwError } from 'rxjs';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Observable, Subject, catchError, map, of, switchMap, tap, throwError } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import { Utente } from '../interfaces/utente';
 
@@ -16,6 +16,7 @@ export class UserAuthService {
   isLogged = false;
 
   utente : Utente = {
+    id : 0,
     nome : '',
     cognome : '',
     username : '',
@@ -24,7 +25,7 @@ export class UserAuthService {
     password: '',
   }
 
-  constructor(private http : HttpClient, private router: Router) {
+  constructor(private http : HttpClient, private router: Router, private route: ActivatedRoute) {
     }
 
 
@@ -155,6 +156,21 @@ export class UserAuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('utente')
     this.router.navigateByUrl('/login')
+  }
+
+
+
+
+  fetchSubs() {
+    const utenteString = localStorage.getItem('utente');
+    if (utenteString) {
+      this.utente = JSON.parse(utenteString);
+      const id_iscritto = this.utente.id;
+
+      return this.http.get<number>(`http://127.0.0.1:8000/api/utentes/fetchSubs/${id_iscritto}`);
+    } else {
+      throw new Error('utente is missing from local storage');
+    }
   }
 
 }

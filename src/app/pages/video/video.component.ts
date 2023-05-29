@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, HostListener, OnInit  } from '@angular/core';
 import { CommentService } from 'src/app/services/comment.service';
 import { VideoService } from 'src/app/services/video.service';
 import { Commento } from 'src/app/interfaces/commento';
@@ -74,6 +74,17 @@ export class VideoComponent {
 
 
 
+
+  }
+  @HostListener('window:beforeunload', ['$event'])
+  onBeforeUnload(event: Event) {
+    // Perform your action before the page is refreshed
+    if (this.verificato) {
+      clearTimeout(this.timer);
+      this.elapsedTime = Date.now() - this.startTime;
+      this.addView();
+    }
+    // You can customize the confirmation message if needed
 
   }
 
