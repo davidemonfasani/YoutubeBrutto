@@ -4,6 +4,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, Subject, catchError, map, of, switchMap, tap, throwError } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import { Utente } from '../interfaces/utente';
+import { Video } from '../interfaces/video';
 
 @Injectable({
   providedIn: 'root'
@@ -174,7 +175,15 @@ export class UserAuthService {
   }
 
 
-  getHistory() {
+  getHistory(): Observable<Video[]> {
+    const utenteString = localStorage.getItem('utente');
+    if (utenteString) {
+      const utente = JSON.parse(utenteString);
+      const id = utente.id;
+      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/cronologia/${id}`);
+    } else {
+      throw new Error('Utente is missing from local storage');
+    }
 
   }
 

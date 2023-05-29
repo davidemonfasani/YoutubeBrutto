@@ -79,12 +79,13 @@ export class VideoComponent {
         console.log('60 seconds have passed. Performing action...');
         // Perform your desired action here
         this.verificato = true
-      }, 60000);
+      }, 10000);
 
 
 
 
   }
+
 
 
 
@@ -143,7 +144,7 @@ export class VideoComponent {
   }
 
 
-  async fetchViews() {
+  fetchViews() {
     this.vidService.fetchViews(this.body.id)
       .subscribe((response: { views: number }) => {
         this.views = response.views;
