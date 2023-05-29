@@ -20,7 +20,7 @@ export class VideoComponent {
   comments: Commento[] = [];
   likes = 0;
   views = 0;
-  condition =false;
+  utenteLiked: boolean;
   verificato = false;
   body: Video = {
     id: 0,
@@ -35,6 +35,7 @@ export class VideoComponent {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     ) {
+      this.utenteLiked = false;
       this.CommentForm = this.formBuilder.group({
         Text: ['', Validators.required],
       });
@@ -56,9 +57,12 @@ export class VideoComponent {
     this.vidService.getVideo().subscribe((video) => {
       this.body = video;
     });
+    this.utente = this.getUtente();
+    this.fetchLikes();
+    this.fetchViews();
     this.fetchComments();
 
-      console.log('prendo i commenti di:', this.body.id);
+      //console.log('prendo i commenti di:', this.body.id);
 
       this.startTime = Date.now();
       this.timer = setTimeout(() => {
@@ -100,34 +104,42 @@ export class VideoComponent {
 
 
 
-  likeChange(){
-    this.utente = this.getUtente()
-    const idUtente = this.utente.id
-    const idVideo = this.body.id
-    if(this.condition)
-    {
-      this.condition=false
-      this.vidService.removeLike(idUtente, idVideo)
+  likeChange() {
+    const idUtente = this.utente.id;
+    const idVideo = this.body.id;
+    if (this.utenteLiked) {
+      this.utenteLiked = false;
+      this.vidService.removeLike(idUtente, idVideo).then((observable) => {
+        observable.subscribe(() => {
+          this.fetchLikes();
+        });
+      });
+    } else {
+      this.utenteLiked = true;
+      this.vidService.addLike(idUtente, idVideo).then((observable) => {
+        observable.subscribe(() => {
+          this.fetchLikes();
+        });
+      });
     }
-    else
-    {
-      this.condition=true
-      this.vidService.addLike(idUtente, idVideo)
-    }
-
   }
 
 
+
+
+
   fetchLikes() {
-    let utenteid=this.getUtente().id;
-    if(utenteid===null)
-    {
-      utenteid=0;
+    let utenteid = this.utente.id;
+    if (utenteid === null) {
+      utenteid = 0;
     }
-    this.vidService.fetchLikes(utenteid)
-    .subscribe((result: number) => {
-      this.likes=result.valueOf();
-      console.log('i like',  this.likes)
+    this.vidService.fetchLikes(utenteid).subscribe((result: { UtenteLiked: boolean; likes: number }) => {
+      this.utenteLiked = result.UtenteLiked;
+      console.log('risposta', result);
+      console.log('UtenteLiked?', result.UtenteLiked);
+      console.log('this.UtenteLiked?', this.utenteLiked);
+      this.likes = result.likes;
+      //console.log('i like', this.likes);
     });
   }
 
@@ -148,7 +160,7 @@ export class VideoComponent {
     this.comService.fetchComments(this.body.id)
       .subscribe((result: Commento[]) => {
         this.comments = result;
-        console.log('i commenti', this.comments)
+        //console.log('i commenti', this.comments)
       });
   }
 

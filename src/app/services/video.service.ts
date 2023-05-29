@@ -100,11 +100,6 @@ export class VideoService {
         },
       })
     )
-    .subscribe({
-      next: (Response) => {
-        console.log('Response:', Response);
-      },
-    });
   }
 
 
@@ -122,27 +117,22 @@ export class VideoService {
         },
       })
     )
-    .subscribe({
-      next: (Response) => {
-        console.log('Response:', Response);
-      },
-    });
   }
 
 
 
-  fetchLikes(utente_id: number): Observable<number> {
-    console.log('id utente',utente_id);
+  fetchLikes(utente_id: number): Observable<{ UtenteLiked: boolean; likes: number }> {
+    console.log('id utente', utente_id);
     return this.route.queryParams.pipe(
       switchMap(params => {
-      const id= params['video_id'];
-      if (id) {
-       return this.http.get<number>(`http://127.0.0.1:8000/api/videos/fetchlikes/${id}?utente_id=${utente_id}`)
-      } else {
-      throw new Error('videoidparameter is missing from the URL');
-      }
+        const id = params['video_id'];
+        if (id) {
+          return this.http.get<{ UtenteLiked: boolean; likes: number }>(`http://127.0.0.1:8000/api/videos/fetchlikes/${id}?utente_id=${utente_id}`);
+        } else {
+          throw new Error('videoidparameter is missing from the URL');
+        }
       })
-      );
+    );
   }
 
 
