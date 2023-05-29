@@ -85,7 +85,7 @@ export class VideoService {
   }
 
 
-  async addLike(idUtente : number, idVideo : number) {
+async addLike(idUtente : number, idVideo : number) {
     const body = this.makeLikeBody(idUtente, idVideo)
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
@@ -130,7 +130,7 @@ export class VideoService {
         if (id) {
           return this.http.get<{ UtenteLiked: boolean; likes: number }>(`http://127.0.0.1:8000/api/videos/fetchlikes/${id}?utente_id=${utente_id}`);
         } else {
-          throw new Error('videoidparameter is missing from the URL');
+          throw new Error('video_idparameter is missing from the URL');
         }
       })
     );
@@ -142,9 +142,9 @@ export class VideoService {
           switchMap(params => {
           const id= params['video_id'];
           if (id) {
-           return this.http.get<number>(`http://127.0.0.1:8000/api/videos/fetchViews/${id}/`);
+           return this.http.get<number>(`http://127.0.0.1:8000/api/videos/fetchViews/${id}`);
           } else {
-          throw new Error('videoidparameter is missing from the URL');
+          throw new Error('video_idparameter is missing from the URL');
           }
           })
           );
