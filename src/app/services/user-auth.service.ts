@@ -156,7 +156,7 @@ export class UserAuthService {
   logOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('utente')
-    this.router.navigateByUrl('/login')
+    this.router.navigate(['/login'])
   }
 
 

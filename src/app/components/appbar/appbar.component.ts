@@ -12,12 +12,19 @@ import { Video } from 'src/app/interfaces/video';
   styleUrls: ['./appbar.component.css']
 })
 export class AppbarComponent {
-  constructor(private router: Router, public routesService: RoutesService, private videoService : VideoService ) {
+  constructor(private router: Router,
+     public routesService: RoutesService,
+     private videoService : VideoService,
+     private UtenteAuth:UserAuthService,
+     ) {
   }
   firstClick = true
   ricercaValue = ''
 
 
+Userlogged(){
+  return  this.UtenteAuth.verifyToken(localStorage.getItem('token'));
+}
   goHomepage(){
     this.router.navigateByUrl('/homepage')
 
@@ -26,6 +33,9 @@ export class AppbarComponent {
     this.router.navigateByUrl('/profile')
 }
 
+  GoUploadPage(){
+  this.router.navigateByUrl('/upload')
+  }
 
   search() {
     this.videoService.filterVideo(this.ricercaValue)
