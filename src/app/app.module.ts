@@ -17,6 +17,7 @@ import { HistoryComponent } from './pages/history/history.component';
 import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SideVideoBarComponent } from './components/side-video-bar/side-video-bar.component';
+import { ChannelCardComponent } from './components/channel-card/channel-card.component';
 import { UploadVideoComponent } from './pages/upload-video/upload-video.component';
 
 @NgModule({
@@ -34,6 +35,7 @@ import { UploadVideoComponent } from './pages/upload-video/upload-video.componen
     LoginComponent,
     SubscriptionsComponent,
     SideVideoBarComponent,
+    ChannelCardComponent,
     UploadVideoComponent,
   ],
   imports: [

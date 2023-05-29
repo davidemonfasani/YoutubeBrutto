@@ -8,7 +8,7 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   styleUrls: ['./subscriptions.component.css']
 })
 export class SubscriptionsComponent {
-
+  subs : Utente[] = []
 
   constructor(private auth: UserAuthService) {}
   ngOnInit() {
@@ -19,9 +19,10 @@ export class SubscriptionsComponent {
 
 
   async fetchSubs() {
-    this.auth.fetchSubs().subscribe((response : any) => {
-      console.log(response)
-    })
+    this.auth.fetchSubs().subscribe((result: Utente[]) => {
+      this.subs = result;
+      //console.log('i commenti', this.comments)
+    });
   }
 
 }
