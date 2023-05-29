@@ -151,17 +151,20 @@ export class UserAuthService {
 
 
 
-  fetchSubs() {
+
+  fetchSubs(): Observable<Utente[]> {
     const utenteString = localStorage.getItem('utente');
     if (utenteString) {
-      this.utente = JSON.parse(utenteString);
-      const id_iscritto = this.utente.id;
-
-      return this.http.get<number>(`http://127.0.0.1:8000/api/utentes/fetchSubs/${id_iscritto}`);
+      const utente = JSON.parse(utenteString);
+      const id = utente.id;
+      return this.http.get<Utente[]>(`http://127.0.0.1:8000/api/utentes/fetchSubs/${id}`);
     } else {
-      throw new Error('utente is missing from local storage');
+      throw new Error('Utente is missing from local storage');
     }
   }
+
+
+
 
 }
 

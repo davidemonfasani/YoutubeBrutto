@@ -1,1 +1,4 @@
-<p>subscriptions works!</p>
+<h3>ISCRIZIONI:</h3>
+<ng-container *ngFor="let utente of subs">
+  <app-channel-card [utente]="utente"></app-channel-card>
+</ng-container>
