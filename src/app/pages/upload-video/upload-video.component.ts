@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { VideoService } from 'src/app/services/video.service';
 
 @Component({
   selector: 'app-upload-video',
@@ -15,24 +15,36 @@ export class UploadVideoComponent {
   constructor(
     private router: Router,
     private http: HttpClient,
-    public auth: UserAuthService,
+    public Service: VideoService,
     private formBuilder: FormBuilder
   ) {
     this.UploadForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      nome: ['', Validators.required],
-      cognome: ['', Validators.required],
-      password: ['', Validators.required],
+      titolo: ['', Validators.required],
+      descrizione: ['', [Validators.required]],
+      linkvideo: ['', Validators.required],
+      linkimage: ['', Validators.required],
     });
   }
-  username = ''
-  cognome = ''
-  email = ''
-  password = ''
-  nome = ''
-  image : any
+  titolo = ''
+  descrizione= ''
+  linkimage = ''
+  linkvideo = ''
+  utente:any
+  getUtente() {
+    const utenteString = localStorage.getItem('utente')
+    if(utenteString) {
+      return JSON.parse(utenteString)
+    }
+  }
   Upload(){
-    
+    this.utente = this.getUtente()
+    const body = {
+      titolo: this.UploadForm.value.titolo,
+      descrizione: this.UploadForm.value.descrizione,
+      linkvideo: this.UploadForm.value. linkvideo,
+      linkimage: this.UploadForm.value.linkimage,
+      utente_id: this.utente.id,
+    };
+    this.Service.Upload(body);
   }
 }

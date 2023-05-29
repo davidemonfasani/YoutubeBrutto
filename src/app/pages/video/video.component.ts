@@ -221,15 +221,4 @@ export class VideoComponent {
       return this.minuti
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 }
