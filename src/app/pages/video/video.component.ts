@@ -121,13 +121,16 @@ export class VideoComponent {
   }
 
 
-  fetchViews() {
+  async fetchViews() {
     this.vidService.fetchViews(this.body.id)
-    .subscribe((result: number) => {
-      this.views = result.valueOf();
-      console.log('le views', this.views)
-    });
+      .subscribe((response: { views: number }) => {
+        this.views = response.views;
+        console.log('le views', this.views);
+      });
   }
+
+
+
 
 
   fetchComments() {
