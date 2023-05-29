@@ -70,14 +70,22 @@ export class VideoComponent {
         console.log('60 seconds have passed. Performing action...');
         // Perform your desired action here
         this.verificato = true
-      }, 60000);
+      }, 10000);
+
+      window.onbeforeunload = () => {
+        if (this.verificato) {
+          clearTimeout(this.timer);
+          this.elapsedTime = Date.now() - this.startTime;
+          this.addView();
+        }
+    };
 
 
 
 
   }
-  @HostListener('window:beforeunload', ['$event'])
-  onBeforeUnload(event: Event) {
+  @HostListener('window:beforeunload')
+  onBeforeUnload() {
     // Perform your action before the page is refreshed
     if (this.verificato) {
       clearTimeout(this.timer);
@@ -144,7 +152,7 @@ export class VideoComponent {
   }
 
 
-  async fetchViews() {
+  fetchViews() {
     this.vidService.fetchViews(this.body.id)
       .subscribe((response: { views: number }) => {
         this.views = response.views;

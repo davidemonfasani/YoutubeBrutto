@@ -9,7 +9,7 @@ import { VideoService } from 'src/app/services/video.service';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent {
-  videos : any
+  videos : Video[] = []
   constructor(private auth : UserAuthService) {}
 
   ngOnInit() {
@@ -17,6 +17,9 @@ export class HistoryComponent {
   }
 
   async getHistory() {
-
+    this.auth.getHistory().subscribe((result: Video[]) => {
+      this.videos = result;
+      //console.log('i commenti', this.comments)
+    });
   }
 }
