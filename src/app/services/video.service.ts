@@ -38,7 +38,7 @@ export class VideoService {
 
 
   fetchVideos(): Observable<Video[]> {
-    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos');
+    return this.http.get<Video[]>('http://192.168.28.100:5000/api/videos');
   }
 
   goVideo(body : any) {
@@ -52,7 +52,7 @@ export class VideoService {
     switchMap(params => {
     const video_id = params['video_id'];
     if (video_id) {
-    return this.http.get<Video>(`http://127.0.0.1:8000/api/videos/${video_id}`);
+    return this.http.get<Video>(`http://192.168.28.100:5000/api/videos/${video_id}`);
     } else {
     throw new Error('video_id parameter is missing from the URL');
     }
@@ -63,7 +63,7 @@ export class VideoService {
 
    filterVideo(ricerca: string): Observable<Video[]> {
     const params = new HttpParams().set('titleOrTag', ricerca);
-    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos/filterVideo', { params })
+    return this.http.get<Video[]>('http://192.168.28.100:5000/api/videos/filterVideo', { params })
       .pipe(
         catchError((error: any) => {
           if (error.status === 401) {
@@ -90,7 +90,7 @@ async addLike(idUtente : number, idVideo : number) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
     console.log('questo è il body di addLike', body)
-    return this.http.post<any>('http://127.0.0.1:8000/api/videos/addLike', body, options)
+    return this.http.post<any>('http://192.168.28.100:5000/api/videos/addLike', body, options)
     .pipe(
       tap({
         error: (error) => {
@@ -108,7 +108,7 @@ async addLike(idUtente : number, idVideo : number) {
     const options = { headers: headers };
 
     const body = this.makeLikeBody(idUtente, idVideo)
-    return this.http.post<any>('http://127.0.0.1:8000/api/videos/removeLike', body, options)
+    return this.http.post<any>('http://192.168.28.100:5000/api/videos/removeLike', body, options)
     .pipe(
       tap({
         error: (error) => {
@@ -128,7 +128,7 @@ async addLike(idUtente : number, idVideo : number) {
       switchMap(params => {
         const id = params['video_id'];
         if (id) {
-          return this.http.get<{ UtenteLiked: boolean; likes: number }>(`http://127.0.0.1:8000/api/videos/fetchlikes/${id}?utente_id=${utente_id}`);
+          return this.http.get<{ UtenteLiked: boolean; likes: number }>(`http://192.168.28.100:5000/api/videos/fetchlikes/${id}?utente_id=${utente_id}`);
         } else {
           throw new Error('video_idparameter is missing from the URL');
         }
@@ -142,7 +142,7 @@ async addLike(idUtente : number, idVideo : number) {
           switchMap(params => {
           const id= params['video_id'];
           if (id) {
-           return this.http.get<number>(`http://127.0.0.1:8000/api/videos/fetchViews/${id}`);
+           return this.http.get<number>(`http://192.168.28.100:5000/api/videos/fetchViews/${id}`);
           } else {
           throw new Error('video_idparameter is missing from the URL');
           }
@@ -163,7 +163,7 @@ async addView(body : any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
     console.log('questo è il body view:', body)
-    return this.http.post<any>('http://127.0.0.1:8000/api/videos/addView', body, options)
+    return this.http.post<any>('http://192.168.28.100:5000/api/videos/addView', body, options)
     .pipe(
       tap({
         error: (error) => {
@@ -184,7 +184,7 @@ async Upload(body : any) {
   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   const options = { headers: headers };
   console.log('questo è il body view:', body)
-  return this.http.post<any>('http://127.0.0.1:8000/api/videos/store', body, options)
+  return this.http.post<any>('http://192.168.28.100:5000/api/videos/store', body, options)
   .pipe(
     tap({
       error: (error) => {
