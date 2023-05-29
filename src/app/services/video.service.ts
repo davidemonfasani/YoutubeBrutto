@@ -146,7 +146,7 @@ export class VideoService {
   }
 
 
-  fetchViews(id1: number): Observable<number> {
+  fetchViews(id1: number): Observable<any> {
         return this.route.queryParams.pipe(
           switchMap(params => {
           const id= params['video_id'];
