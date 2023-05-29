@@ -3,22 +3,25 @@ import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot, Router } fr
 import { Observable, of } from 'rxjs';
 import { catchError, map, take } from 'rxjs/operators';
 import { UserAuthService } from '../services/user-auth.service';
+import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 
 @Injectable({
  providedIn: 'root'
 })
-export class homeGuard {
-
+export class logGuard {
  constructor(private auth: UserAuthService, private router: Router) {}
  canActivate: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
  const isvalidtoken = this.auth.verifyToken(localStorage.getItem('token'));
  console.log(isvalidtoken);
- if (isvalidtoken) {
- // validate token here
- return true;
- } else {
- this.router.navigate(['/login']);
- return false;
- }
- }
+ if (isvalidtoken===false) {
+  console.log("dovresti essere nella login page")
+  return true;
+} else {
+  this.router.navigate(['/profile']);
+  console.log("dovresti essere nella home page")
+  return false;
 }
+}
+}
+
+

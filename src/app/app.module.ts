@@ -18,6 +18,7 @@ import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.comp
 import { LoginComponent } from './pages/login/login.component';
 import { SideVideoBarComponent } from './components/side-video-bar/side-video-bar.component';
 import { ChannelCardComponent } from './components/channel-card/channel-card.component';
+import { UploadVideoComponent } from './pages/upload-video/upload-video.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ChannelCardComponent } from './components/channel-card/channel-card.com
     SubscriptionsComponent,
     SideVideoBarComponent,
     ChannelCardComponent,
+    UploadVideoComponent,
   ],
   imports: [
     BrowserModule,
