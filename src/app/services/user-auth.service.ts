@@ -130,12 +130,22 @@ export class UserAuthService {
     localStorage.removeItem(this.TOKEN_KEY);
   }
 
-  verifyToken(token: any): Observable<boolean> {
-    if (!token) {
-      this.router.navigateByUrl('/login');
-      return of(false);
-    } else {
-      return of(true);
+  verifyToken(token: string | null): boolean {
+    try {
+      if (token === null) {
+        return false;
+      }
+      const decoded: any = jwt_decode(token);
+      const currentTime = Math.floor(Date.now() / 1000);
+      if (decoded.exp < currentTime) {
+        console.log('Token is expired');
+        return false;
+      }
+      // Add any additional validation checks here
+      return true;
+    } catch (err) {
+      console.log('Token is invalid:', (err as Error).message);
+      return false;
     }
   }
 

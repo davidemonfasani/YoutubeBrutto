@@ -18,7 +18,7 @@
 .video-wrapper {
   width:  100% ;/* Adjust the width as needed */
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: left;
   height: 30rem
 

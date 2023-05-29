@@ -17,6 +17,7 @@ import { HistoryComponent } from './pages/history/history.component';
 import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SideVideoBarComponent } from './components/side-video-bar/side-video-bar.component';
+import { UploadVideoComponent } from './pages/upload-video/upload-video.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SideVideoBarComponent } from './components/side-video-bar/side-video-ba
     LoginComponent,
     SubscriptionsComponent,
     SideVideoBarComponent,
+    UploadVideoComponent,
   ],
   imports: [
     BrowserModule,
