@@ -52,6 +52,15 @@ export class VideoComponent {
     return this.vidService.sanitizeVideoUrl(a)
   }
   ngOnInit() {
+    window.onbeforeunload = () => {
+      if(this.verificato)
+    {
+      clearTimeout(this.timer);
+      this.elapsedTime = Date.now() - this.startTime;
+      this.addView()
+    }
+    }
+
     this.fetchViews()
 
     this.vidService.getVideo().subscribe((video) => {
@@ -76,21 +85,11 @@ export class VideoComponent {
 
 
   }
-  @HostListener('window:beforeunload', ['$event'])
-  onBeforeUnload(event: Event) {
-    // Perform your action before the page is refreshed
-    if (this.verificato) {
-      clearTimeout(this.timer);
-      this.elapsedTime = Date.now() - this.startTime;
-      this.addView();
-    }
-    // You can customize the confirmation message if needed
 
-  }
 
 
   ngOnDestroy() {
-    // Perform your action before the component is closed
+  window.onbeforeunload = null;
     if(this.verificato)
     {
       clearTimeout(this.timer);

@@ -115,20 +115,5 @@ a:hover{
 
 
 
-#right-corner {
-  margin-right: 16px;
-  width: 80px;
-  margin-left: 25px;
-}
 
-#right-corner img {
-  width: 40px; /* Adjust the size of the profile picture as needed */
-  height: 40px;
-  border-radius: 50%; /* Make the image circular */
-  margin-left: 20px;
-}
-
-#right-corner img:hover {
-  cursor: pointer;
-}
 
