@@ -63,7 +63,7 @@ export class VideoService {
 
    filterVideo(ricerca: string): Observable<Video[]> {
     const params = new HttpParams().set('titleOrTag', ricerca);
-    return this.http.get<Video[]>('http://192.168.28.100:5000/api/videos/filterVideo', { params })
+    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos/filterVideo', { params })
       .pipe(
         catchError((error: any) => {
           if (error.status === 401) {

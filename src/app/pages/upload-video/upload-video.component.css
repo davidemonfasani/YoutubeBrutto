@@ -6,4 +6,49 @@
   text-align: center; /* Align the content to the center */
   margin-top: 20px;
 }
+.buttontag {
+  height: 100%;
+  width: 5%;
+  background-color: tomato;
+  color: white;
+  padding: 2px 4px !important;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: 1px solid #ccc;
+  width: auto !important;
+  flex-shrink: 0;
+}
+.buttontag:hover {
+  cursor:pointer;
+  background-color: rgb(193, 67, 45);
+
+}
+.inputtag {
+  width: 50%;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 8px;
+  flex-grow: 1;
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: lightgray;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+button {
+  margin-left: 5px;
+}
 

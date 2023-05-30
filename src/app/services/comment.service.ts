@@ -56,7 +56,7 @@ export class CommentService {
     console.log('utente che mette like ', utente_Id)
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
-    return this.http.post<any>(`http://192.168.28.100:5000/api/commentis/${commenti_Id}/addLike`, { utente_id: utente_Id }, options)
+    return this.http.post<any>(`http://127.0.0.1:8000/api/commentis/${commenti_Id}/addLike`, { utente_id: utente_Id }, options)
     .pipe(
       tap({
         error: (error) => {
@@ -72,7 +72,7 @@ export class CommentService {
   async removeLike(utente_Id : number, commenti_Id : number) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
-    return this.http.post<any>(`http://192.168.28.100:5000/api/commentis/${commenti_Id}/removeLike`, { utente_id: utente_Id }, options)
+    return this.http.post<any>(`http://127.0.0.1:8000/api/commentis/${commenti_Id}/removeLike`, { utente_id: utente_Id }, options)
     .pipe(
       tap({
         error: (error) => {
@@ -86,7 +86,7 @@ export class CommentService {
   fetchLikes(utente_id: number, commento_id: number): Observable<{ UtenteLiked: boolean; likes: number }> {
     console.log('id utente', utente_id);
     if (commento_id) {
-    return this.http.get<{ UtenteLiked: boolean; likes: number }>(`http://192.168.28.100:5000/api/commentis/fetchlikes/${commento_id}?utente_id=${utente_id}`);
+    return this.http.get<{ UtenteLiked: boolean; likes: number }>(`http://127.0.0.1:8000/api/commentis/fetchlikes/${commento_id}?utente_id=${utente_id}`);
     } else {
     throw new Error('Commento_id parameter is missing from the URL');
     }
