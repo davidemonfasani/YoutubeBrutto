@@ -27,7 +27,7 @@ export class CommentService {
       switchMap(params => {
       const id= params['video_id'];
       if (id) {
-       return this.http.get<Commento[]>(`http://192.168.28.100:5000/api/commentis/${id}`);
+       return this.http.get<Commento[]>(`http://127.0.0.1:8000/api/commentis/${id}`);
       } else {
       throw new Error('video_idparameter is missing from the URL');
       }
@@ -40,7 +40,7 @@ export class CommentService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
     console.log(body);
-    return this.http.post<any>('http://192.168.28.100:5000/api/commentis/store', body, options)
+    return this.http.post<any>('http://127.0.0.1:8000/api/commentis/store', body, options)
       .pipe(
         catchError(error => {
           const errorMessage = error.error.error;
