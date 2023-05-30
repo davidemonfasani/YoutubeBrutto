@@ -1,5 +1,8 @@
 export interface Commento {
-  utente_username : string
-  video_titolo : string
+  id: number
+  utente_username: string
+  utente_id : number
+  video_id : string
   testo : string
+  like: number
 }

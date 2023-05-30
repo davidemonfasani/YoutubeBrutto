@@ -188,11 +188,8 @@ export class VideoComponent {
     }
     this.vidService.fetchLikes(utenteid).subscribe((result: { UtenteLiked: boolean; likes: number }) => {
       this.utenteLiked = result.UtenteLiked;
-      console.log('risposta', result);
-      console.log('UtenteLiked?', result.UtenteLiked);
-      console.log('this.UtenteLiked?', this.utenteLiked);
+
       this.likes = result.likes;
-      //console.log('i like', this.likes);
     });
   }
 
