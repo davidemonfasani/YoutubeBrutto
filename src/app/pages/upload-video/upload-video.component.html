@@ -1,6 +1,7 @@
 <form [formGroup]="UploadForm">
   <div id="VideoD">
-    <p id="titoletto"><b>Inserisci le caratteristiche del video:</b></p>
+    <p class="titoletto"><b>Inserisci le caratteristiche del video:</b></p>
+
     <div *ngIf="Service.errorMessage$ | async as errorMessage">
       <div class="alert alert-danger">
         {{ errorMessage }}
@@ -39,9 +40,39 @@
         formControlName="linkimage"
         class="input-field"
         placeholder="linkimage"
-        required
         name="linkimage"
       />
+    </div>
+    <div>
+
+      <div>
+        <input
+          type="text"
+          formControlName="newTag"
+          class="input-field inputtag"
+          placeholder="Add a tag"
+          name="newTag"
+        />
+        <button class='buttontag' (click)="addTag()">Add</button>
+
+
+      </div>
+      <div class="titoletto">
+        tags
+      </div>
+      <div *ngIf="inValidTag">
+        <div class="alert alert-danger">
+          {{ taginvalidmessage }}
+        </div>
+       </div>
+
+
+      <ul>
+        <li *ngFor="let tag of tags; let i = index">
+          {{ tag }}
+          <button (click)="deleteTag(i)">x</button>
+        </li>
+      </ul>
     </div>
     <div>
       <button type="submit" class="btn" (click)="Upload()" [disabled]="!UploadForm.valid">UpLoad</button>
