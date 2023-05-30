@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Video } from 'src/app/interfaces/video';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAuthService } from 'src/app/services/user-auth.service';
+import { catchError, finalize, from } from 'rxjs';
 
 @Component({
   selector: 'app-video',
@@ -42,6 +43,7 @@ export class VideoComponent {
       this.CommentForm = this.formBuilder.group({
         Text: ['', Validators.required],
       });
+
     }
 
 
@@ -51,33 +53,43 @@ export class VideoComponent {
     this.showDescription = !this.showDescription;
   }
 
-  trySubscribe() {
+  async trySubscribe() {
     const body = {
       idiscritto: this.getUtenteId(),
       idvideo: this.body.id
     };
 
     if (this.iscritto) {
-      this.auth.unsubscribe(body).subscribe();
-      this.checksub(body)
+      try {
+        await this.auth.unsubscribe(body);
+        this.iscritto = false;
+      } catch (error) {
+        console.error(error);
+      }
     } else {
-      this.auth.subscribe(body).subscribe();
-      this.checksub(body)
-
+      try {
+        await this.auth.subscribe(body);
+        this.iscritto = true;
+      } catch (error) {
+        console.error(error);
+      }
     }
 
+    console.log('iscritto:', this.iscritto);
   }
 
-checksub(body : any) {
-  this.auth.checksub(body).subscribe((response: boolean) => {
-    this.iscritto = response;
-    if (this.iscritto) {
-      this.iscritto = false
-    } else {
-      this.iscritto = true
-    }
-  });
-}
+
+
+  checksub(body: any) {
+    this.auth.checksub(body).subscribe((response: boolean) => {
+      this.iscritto = response;
+      console.log('iscritto:', this.iscritto);
+    }, error => {
+      console.error(error);
+    });
+  }
+
+
 
 
   sanitize(a : string) {
@@ -93,17 +105,18 @@ checksub(body : any) {
     }
     }
 
-        const body = {
-      idiscritto: this.getUtenteId(),
-      idvideo: this.body.id
-    };
 
-    this.checksub(body)
+
 
     this.fetchViews()
 
     this.vidService.getVideo().subscribe((video) => {
       this.body = video;
+      const bodyA = {
+        idiscritto: this.getUtenteId(),
+        idvideo: video.id,
+      };
+      this.checksub(bodyA)
     });
     this.utente = this.getUtente();
     this.fetchLikes();
@@ -119,6 +132,7 @@ checksub(body : any) {
         // Perform your desired action here
         this.verificato = true
       }, 10000);
+
 
 
 
