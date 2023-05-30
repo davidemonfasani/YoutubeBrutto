@@ -4,10 +4,11 @@
     <input type="text" [(ngModel)]="ricercaValue" value="ricercaValue" placeholder="Inserisci il titolo del video..">
     <button id="cerca-button" (click)="search()">Cerca</button>
   </div>
-  <div class="right-corner">
-    <button src="../../../assets/images/add.png" alt="UploadVideo" ></button>
+  <div style="flex-grow: 1;"></div>
+  <div *ngIf="Userlogged()" class="right-corner add">
+    <img src="../../../assets/images/add.png" alt="UploadVideo" (click)="GoUploadPage()">
   </div>
-  <div class="right-corner">
+  <div class="right-corner ">
     <img src="../../../assets/images/guest.png" alt="Profile Picture" (click)="clickProfile()">
   </div>
 </div>

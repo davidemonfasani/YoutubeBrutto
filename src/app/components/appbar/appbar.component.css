@@ -34,8 +34,8 @@
 .right-corner img:hover {
   cursor: pointer;
 }
-.right-corner button:hover{
-  background-color: tomato;
+.add img:hover{
+  background-color: rgba(255, 99, 71, 0.547);
   color: white;
   cursor: pointer;
 }
