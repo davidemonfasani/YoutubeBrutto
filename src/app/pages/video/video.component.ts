@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Video } from 'src/app/interfaces/video';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 
 @Component({
   selector: 'app-video',
@@ -21,7 +22,7 @@ export class VideoComponent {
   likes = 0;
   views = 0;
   utenteLiked: boolean;
-  verificato = false;
+  verificato = false; iscritto: boolean;
   body: Video = {
     id: 0,
     titolo : '',
@@ -34,8 +35,10 @@ export class VideoComponent {
     private comService : CommentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private auth : UserAuthService
     ) {
       this.utenteLiked = false;
+      this.iscritto = false;
       this.CommentForm = this.formBuilder.group({
         Text: ['', Validators.required],
       });
@@ -47,6 +50,35 @@ export class VideoComponent {
   toggleDescription() {
     this.showDescription = !this.showDescription;
   }
+
+  trySubscribe() {
+    const body = {
+      idiscritto: this.getUtenteId(),
+      idvideo: this.body.id
+    };
+
+    if (this.iscritto) {
+      this.auth.unsubscribe(body).subscribe();
+      this.checksub(body)
+    } else {
+      this.auth.subscribe(body).subscribe();
+      this.checksub(body)
+
+    }
+
+  }
+
+checksub(body : any) {
+  this.auth.checksub(body).subscribe((response: boolean) => {
+    this.iscritto = response;
+    if (this.iscritto) {
+      this.iscritto = false
+    } else {
+      this.iscritto = true
+    }
+  });
+}
+
 
   sanitize(a : string) {
     return this.vidService.sanitizeVideoUrl(a)
@@ -60,6 +92,13 @@ export class VideoComponent {
       this.addView()
     }
     }
+
+        const body = {
+      idiscritto: this.getUtenteId(),
+      idvideo: this.body.id
+    };
+
+    this.checksub(body)
 
     this.fetchViews()
 
@@ -168,10 +207,9 @@ export class VideoComponent {
 
   registerComment() {
 
-    this.utente = this.getUtente()
     const bodyComment = {
       video_id:this.body.id,
-      utente_id:this.utente.id,
+      utente_id:this.getUtenteId(),
       video_titolo: this.body.titolo,
       testo: this.CommentForm.value.Text,
     };
@@ -181,10 +219,18 @@ export class VideoComponent {
   }
 
 
+  getUtenteId() {
+    const utenteString = localStorage.getItem('utente')
+    if(utenteString) {
+      const user = JSON.parse(utenteString)
+      return user.id
+    }
+  }
+
   getUtente() {
     const utenteString = localStorage.getItem('utente')
     if(utenteString) {
-      return JSON.parse(utenteString)
+      return  JSON.parse(utenteString)
     }
   }
 
@@ -193,13 +239,11 @@ export class VideoComponent {
 
 
   addView() {
-    this.utente = this.getUtente()
-    const idUtente = this.utente.id
     const idVideo = this.body.id
     const time = this.calcolaTempo((this.elapsedTime / 1000))
     const body = {
       video_id : idVideo,
-      utente_id : idUtente,
+      utente_id : this.getUtenteId(),
       watch_time : time,
     }
     this.elapsedTime = 0;

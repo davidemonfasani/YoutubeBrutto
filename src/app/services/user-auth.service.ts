@@ -189,6 +189,49 @@ export class UserAuthService {
 
 
 
+  subscribe(body: any) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers: headers };
+    console.log(body);
+    return this.http
+      .post<any>('http://127.0.0.1:8000/api/utentes/subscribe', body, options)
+      .pipe(
+        catchError(error => {
+          const errorMessage = error.error.error;
+          console.log(errorMessage);
+          this.errorMessage$.next(errorMessage);
+          return throwError(errorMessage);
+        })
+      );
+  }
+
+  unsubscribe(body: any) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const options = { headers: headers };
+    console.log(body);
+    return this.http
+      .post<any>('http://127.0.0.1:8000/api/utentes/unsubscribe', body, options)
+      .pipe(
+        catchError(error => {
+          const errorMessage = error.error.error;
+          console.log(errorMessage);
+          this.errorMessage$.next(errorMessage);
+          return throwError(errorMessage);
+        })
+      );
+  }
+
+
+  checksub(body: any): Observable<boolean> {
+    return this.http.get<boolean>(`http://127.0.0.1:8000/api/utentes/checksub`, { params: body });
+  }
+
+
+
+
+
+
+
 
 }
 
