@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'subscriptions', component: SubscriptionsComponent, canActivate: [homeGuard]},
   {path: 'login', component: LoginComponent, canActivate: [logGuard] },
   {path: 'upload', component: UploadVideoComponent, canActivate: [homeGuard]},
-  {path: 'channel', component: ChannelComponent},
+  {path: 'channel', component: ChannelComponent, canActivate: [homeGuard]},
   {path: '**', redirectTo: '/homepage', pathMatch: 'full'},
 
 ];

@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="button-container">
       <button id="firstBut" (click)="goHomepage()">Homepage</button>
-      <button> Il mio canale  </button>
+      <button *ngIf="routesService.getcurrentUrl()" (click)="goMyChannel()"> Il mio canale  </button>
       <button *ngIf="routesService.getcurrentUrl()" (click)="goSubscriptions()">Inscrizioni</button>
       <button *ngIf="routesService.getcurrentUrl()" (click)="goHistory()">Cronologia</button>
     </div>

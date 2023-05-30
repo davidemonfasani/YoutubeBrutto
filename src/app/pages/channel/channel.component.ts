@@ -24,6 +24,11 @@ export class ChannelComponent {
 
   }
 
+
+  ngOnDestroy() {
+    localStorage.removeItem('utenteId');
+  }
+
   fetchChannelData(utenteId: string) {
 
     this.channelSer.fetchChannel(utenteId)
