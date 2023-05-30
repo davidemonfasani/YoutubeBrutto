@@ -9,10 +9,11 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   styleUrls: ['./channel.component.css']
 })
 export class ChannelComponent {
-  user : any
+  user : any; personale : boolean;
   videos : Video[] = []; iscritto: boolean;
   constructor(private channelSer: ChannelService, private auth: UserAuthService) {
     this.iscritto = false;
+    this.personale = false;
   }
 
   ngOnInit() {
@@ -20,6 +21,11 @@ export class ChannelComponent {
     if (storedUtenteId) {
       this.fetchChannelData(storedUtenteId);
 
+    }
+
+    if(localStorage.getItem('utenteId') == this.auth.getUtenteId())
+    {
+      this.personale = true
     }
 
   }

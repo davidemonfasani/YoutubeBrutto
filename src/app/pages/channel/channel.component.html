@@ -10,7 +10,8 @@
       <div class="username">
         <div class="title-container">
           <h1>{{ user?.username }}</h1>
-          <button (click)="trySubscribe()" class="subscribe-button">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
+          <button *ngIf="!personale" (click)="trySubscribe()" class="subscribe-button">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
+
         </div>
       </div>
       <h2 class="name">{{ user?.nome }}</h2>
