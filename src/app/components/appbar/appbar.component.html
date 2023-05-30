@@ -1,9 +1,25 @@
 <div id="appbar">
   <h2 id="titolo" (click)="goHomepage()"><b>Iutubo</b></h2>
   <div *ngIf="routesService.getcurrentUrl()" id="searchbar">
-    <input type="text" [(ngModel)]="ricercaValue" value="ricercaValue" placeholder="Inserisci il titolo del video..">
-    <button id="cerca-button" (click)="search()">Cerca</button>
+    <form [formGroup]="SearchForm" class="search-form">
+      <input
+        type="text"
+        class="search"
+        formControlName="Search"
+        placeholder="Inserisci il titolo del video.."
+        name="Search"
+      />
+      <button
+        type="submit"
+        id="cerca-button"
+        (click)="search()"
+        [disabled]="!SearchForm.valid"
+      >
+        Cerca
+      </button>
+    </form>
   </div>
+
   <div style="flex-grow: 1;"></div>
   <div *ngIf="Userlogged()" class="right-corner add">
     <img src="../../../assets/images/add.png" alt="UploadVideo" (click)="GoUploadPage()">
