@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { homeGuard } from './guards/home.guard';
 import { UploadVideoComponent } from './pages/upload-video/upload-video.component';
 import { logGuard} from './guards/log.guard';
+import { ChannelComponent } from './pages/channel/channel.component';
 
 const routes: Routes = [
   {path: 'homepage', component: HomepageComponent },
@@ -20,7 +21,9 @@ const routes: Routes = [
   {path: 'subscriptions', component: SubscriptionsComponent, canActivate: [homeGuard]},
   {path: 'login', component: LoginComponent, canActivate: [logGuard] },
   {path: 'upload', component: UploadVideoComponent, canActivate: [homeGuard]},
+  {path: 'channel', component: ChannelComponent},
   {path: '**', redirectTo: '/homepage', pathMatch: 'full'},
+
 ];
 
 @NgModule({

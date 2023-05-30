@@ -1,0 +1,28 @@
+<div class="channel-page">
+  <div class="center-container">
+    <div class="channel-info">
+      <div class="banner">
+        <div class="profile-picture">
+          <img src="../../../assets/images/guest.png" alt="Profile Picture" class="profile-picture">
+        </div>
+      </div>
+
+      <div class="username">
+        <div class="title-container">
+          <h1>{{ user?.username }}</h1>
+          <button (click)="trySubscribe()" class="subscribe-button">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
+        </div>
+      </div>
+      <h2 class="name">{{ user?.nome }}</h2>
+      <h2 class="name">{{ user?.cognome }}</h2>
+    </div>
+    <div class="divisione-schermo">
+      <h1>Video caricati...</h1>
+    </div>
+    <div class="video-container">
+      <div class="video-row">
+        <app-videocontainer class="video" *ngFor="let video of videos" [video]="video"></app-videocontainer>
+      </div>
+    </div>
+  </div>
+</div>
