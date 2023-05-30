@@ -91,14 +91,14 @@
 #buttonComment {
   background-color: tomato;
   color: white;
-  padding: 8px;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  padding: 2px 4px !important;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   border: 1px solid #ccc;
-  width: 20%;
+  width: auto !important;
+  flex-shrink: 0;
 }
-
 #buttonComment:hover {
   cursor:pointer;
   background-color: rgb(193, 67, 45);
@@ -109,17 +109,25 @@
 
 
 #inputComment {
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   background-color: #f4f4f4;
   border: 1px solid #ccc;
   padding: 8px;
-  width: 78%;
+  flex-grow: 1;
 }
 .CommentForm{
   width: 100%;
+  display: flex; /* Add this to create a flex container */
+  align-items: stretch;
 }
+
+#inputComment,
+#buttonComment {
+
+}
+
 .urcomment{
   width: 100%;
 }

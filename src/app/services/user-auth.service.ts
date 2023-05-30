@@ -40,7 +40,7 @@ export class UserAuthService {
 
     return this.http
     .post<any>(
-      'http://192.168.28.100:5000/api/utentes/signIn',
+      'http://127.0.0.1:8000/api/utentes/signIn',
       body,
       option
     )
@@ -70,7 +70,7 @@ export class UserAuthService {
   async login(body: any) {
     return this.http
       .post<any>( // Change the response type to 'any' to capture the entire response
-        'http://192.168.28.100:5000/api/utentes/login',
+        'http://127.0.0.1:8000/api/utentes/login',
         body,
       )
       .pipe(
@@ -168,7 +168,7 @@ export class UserAuthService {
     if (utenteString) {
       const utente = JSON.parse(utenteString);
       const id = utente.id;
-      return this.http.get<Utente[]>(`http://192.168.28.100:5000/api/utentes/fetchSubs/${id}`);
+      return this.http.get<Utente[]>(`http://127.0.0.1:8000/api/utentes/fetchSubs/${id}`);
     } else {
       throw new Error('Utente is missing from local storage');
     }
@@ -180,7 +180,7 @@ export class UserAuthService {
     if (utenteString) {
       const utente = JSON.parse(utenteString);
       const id = utente.id;
-      return this.http.get<Video[]>(`http://192.168.28.100:5000/api/videos/cronologia/${id}`);
+      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/cronologia/${id}`);
     } else {
       throw new Error('Utente is missing from local storage');
     }
@@ -189,7 +189,7 @@ export class UserAuthService {
 
 
 
-  subscribe(body: any) {
+  subscribe(body: any): Promise<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
     console.log(body);
@@ -202,10 +202,11 @@ export class UserAuthService {
           this.errorMessage$.next(errorMessage);
           return throwError(errorMessage);
         })
-      );
+      )
+      .toPromise();
   }
 
-  unsubscribe(body: any) {
+  unsubscribe(body: any): Promise<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: headers };
     console.log(body);
@@ -218,12 +219,12 @@ export class UserAuthService {
           this.errorMessage$.next(errorMessage);
           return throwError(errorMessage);
         })
-      );
+      )
+      .toPromise();
   }
 
-
   checksub(body: any): Observable<boolean> {
-    return this.http.get<boolean>(`http://127.0.0.1:8000/api/utentes/checksub`, { params: body });
+    return this.http.get<boolean>('http://127.0.0.1:8000/api/utentes/checksub', { params: body });
   }
 
 
