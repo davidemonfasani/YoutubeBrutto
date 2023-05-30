@@ -2,6 +2,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
   grid-gap: 5px; /* Adjust the spacing between videos as needed */
-  margin-top: 20px;
-  margin-left: 140px;
+  margin-top: 4%;
+  margin-left: 17%;
 }

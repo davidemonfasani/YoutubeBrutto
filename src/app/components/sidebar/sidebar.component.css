@@ -8,7 +8,9 @@
   border-style: solid;
   position: fixed;
   height: 100%;
-  top: 7.45%;
+  top: 0;
+  height: 100%;
+  z-index: 900;
 }
 .app-container{
   display: flex;
@@ -56,8 +58,9 @@
 }
 
 #firstBut {
-  border-top: 0px;
+  border-top: 1px;
   border-bottom: 1px;
   border-left: 1px;
   border-style: solid;
+  margin-top: 48%;
 }

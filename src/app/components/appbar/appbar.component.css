@@ -15,6 +15,7 @@
   top: 0; /* Stay on top */
   width: 100%;
   z-index: 1000;
+  left: 0;
 }
 
 
@@ -76,4 +77,8 @@
   color: rgb(182, 182, 182);
   height: 100%; /* Set button height to 100% */
 
+}
+
+#titolo {
+  margin: 0; /* Remove the default margin */
 }

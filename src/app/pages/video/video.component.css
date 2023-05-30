@@ -20,9 +20,34 @@
   display: flex;
   justify-content: flex-start;
   align-items: left;
-  height: 30rem
+  height: 30rem;
+  border-bottom: 1px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-style: solid;
 
 }
+
+.subscribe-button,
+.like-button {
+  background-color: transparent;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+
+}
+
+.subscribe-button button,
+.like-button button {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+
 .video-wrapper iframe {
   width: 100%;
 }
@@ -127,14 +152,12 @@
 }
 
 .subscribe-button{
-  margin-left: 10px;
+  margin-left: 200px;
 }
 
-.subscribe-button,
 
 .like-button {
   background-color: transparent;
-height: 20px;
 }
 
 
