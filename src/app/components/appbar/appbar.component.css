@@ -51,7 +51,8 @@
   border-color: rgb(182, 182, 182);
 }
 
-#searchbar input[type="text"] {
+.search{
+  width: 80%;
   flex-grow: 1;
   width: auto;
   padding: 8px;
@@ -60,6 +61,10 @@
   border-radius: 4px 0 0 4px; /* Rounded corners on the left side */
   outline: none;
   color: rgb(182, 182, 182);
+}
+.search-form {
+  display: flex;
+  width: 100%;
 }
 
 #cerca-button {
@@ -70,7 +75,7 @@
   border-right: 0;
   border-top: 0;
   border-bottom: 0;
-
+  width:12%;
   padding: 8px 12px;
   border-radius: 0 4px 4px 0; /* Rounded corners on the right side */
   cursor: pointer;
