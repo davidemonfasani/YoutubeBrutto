@@ -61,20 +61,22 @@ export class VideoService {
    }
 
 
-   filterVideo(ricerca: string): Observable<Video[]> {
-    const params = new HttpParams().set('titleOrTag', ricerca);
-    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos/filterVideo', { params })
-      .pipe(
-        catchError((error: any) => {
-          if (error.status === 401) {
-            return throwError('Unauthorized');
-          } else if (error.status === 403) {
-            return throwError('Video non trovato');
-          } else {
-            return throwError('An error occurred');
-          }
-        })
-      );
+   filterVideo(): Observable<Video[]> {
+
+    return this.route.queryParams.pipe(
+    switchMap(params => {
+    const Search = params['cerca'];
+    console.log(Search)
+    if (Search) {
+      console.log('chiamata partita')
+      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/search?searchTerm=${Search}`);
+    } else {
+      console.log('chiamata non partita')
+      throw new Error('Search parameter is missing from the URL');
+    }
+  })
+);
+
   }
 
   makeLikeBody(idUtente : number, idVideo : number) {

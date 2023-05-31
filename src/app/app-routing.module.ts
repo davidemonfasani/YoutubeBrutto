@@ -11,9 +11,11 @@ import { homeGuard } from './guards/home.guard';
 import { UploadVideoComponent } from './pages/upload-video/upload-video.component';
 import { logGuard} from './guards/log.guard';
 import { ChannelComponent } from './pages/channel/channel.component';
+import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 
 const routes: Routes = [
   {path: 'homepage', component: HomepageComponent },
+  {path: 'search', component: SearchpageComponent },
   {path: 'video', component: VideoComponent },
   {path: 'profile', component: ProfileComponent,  canActivate: [homeGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [logGuard]},
