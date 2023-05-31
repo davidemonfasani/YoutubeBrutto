@@ -7,8 +7,9 @@
   border-style: solid;
   right: 0;
   padding-left: 10px;
-  position: sticky;
+  margin-top: 1.5%;
   display:flex;
+
 
  }
 .videos-container {

@@ -43,9 +43,6 @@ Userlogged(){
   }
 
   search() {
-    this.videoService.filterVideo(this.SearchForm.value.Search)
-    .subscribe((result: Video[]) => {
-      console.log('ciaoo')
-    });
+    this.router.navigateByUrl(`/search?cerca=${this.SearchForm.value.Search}`);
   }
 }

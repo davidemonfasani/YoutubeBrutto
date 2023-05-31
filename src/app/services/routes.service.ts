@@ -18,12 +18,12 @@ export class RoutesService {
   getcurrentUrl()
   {
     let currentUrl =  this.router.url;
-    if (currentUrl === '/homepage') {
-        return true;
+    if (currentUrl === '/profile' || currentUrl === '/register' || currentUrl === '/login' ) {
+        return false;
     }
     else
     {
-    return false;
+    return true;
     }
   }
 }

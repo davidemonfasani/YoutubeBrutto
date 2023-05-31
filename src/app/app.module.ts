@@ -20,6 +20,7 @@ import { SideVideoBarComponent } from './components/side-video-bar/side-video-ba
 import { ChannelCardComponent } from './components/channel-card/channel-card.component';
 import { UploadVideoComponent } from './pages/upload-video/upload-video.component';
 import { ChannelComponent } from './pages/channel/channel.component';
+import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ChannelComponent } from './pages/channel/channel.component';
     ChannelCardComponent,
     UploadVideoComponent,
     ChannelComponent,
+    SearchpageComponent,
   ],
   imports: [
     BrowserModule,
