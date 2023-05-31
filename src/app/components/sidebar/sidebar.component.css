@@ -45,7 +45,7 @@
 .button-container button {
   height: 50px;
   width: auto;
-  margin-bottom: 150px; /* Adjust the vertical spacing between buttons as needed */
+  margin-bottom: 100px; /* Adjust the vertical spacing between buttons as needed */
   border: 1px;
   border-style: solid;
   border-radius: 20%;

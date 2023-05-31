@@ -45,23 +45,25 @@
   display: flex;
   align-items: center;
   flex-grow: 1;
-  margin: 0 16px;
-  border-radius: 8px;
+  margin: 0 14%;
+  border-radius: 5px;
   border-style: solid;
   border-color: rgb(182, 182, 182);
+  position: relative; /* Add relative positioning */
 }
 
-.search{
+.search {
   width: 80%;
   flex-grow: 1;
   width: auto;
   padding: 8px;
   font-size: 16px;
   border: none;
-  border-radius: 4px 0 0 4px; /* Rounded corners on the left side */
+
   outline: none;
   color: rgb(182, 182, 182);
 }
+
 .search-form {
   display: flex;
   width: 100%;
@@ -75,13 +77,15 @@
   border-right: 0;
   border-top: 0;
   border-bottom: 0;
-  width:12%;
+  width: 14%;
   padding: 8px 12px;
-  border-radius: 0 4px 4px 0; /* Rounded corners on the right side */
+
   cursor: pointer;
   color: rgb(182, 182, 182);
   height: 100%; /* Set button height to 100% */
-
+  position: absolute; /* Add absolute positioning */
+  right: 0; /* Position the button to the right */
+  top: 0; /* Position the button at the top */
 }
 
 #titolo {
