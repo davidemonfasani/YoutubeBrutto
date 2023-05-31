@@ -15,7 +15,9 @@ export class SidebarComponent {
   goHomepage() {
     this.router.navigateByUrl('/homepage')
   }
-
+  isActive(url: string) {
+    return this.router.url === url;
+  }
   goHistory() {
     this.router.navigateByUrl('/history')
   }

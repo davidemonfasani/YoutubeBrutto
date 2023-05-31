@@ -1,16 +1,32 @@
 <div class="app-container">
   <div class="sidebar">
     <div class="button-container">
-      <button id="firstBut" (click)="goHomepage()">Homepage</button>
-      <button *ngIf="routesService.getcurrentUrl()" (click)="goMyChannel()"> Il mio canale  </button>
-      <button *ngIf="routesService.getcurrentUrl()" (click)="goSubscriptions()">Inscrizioni</button>
-      <button *ngIf="routesService.getcurrentUrl()" (click)="goHistory()">Cronologia</button>
+      <button
+  id="firstBut"
+  (click)="goHomepage()"
+  [ngClass]="{'active-page': isActive('/homepage')}">
+    <img class="icon icon-home">
+</button>
+<button
+  *ngIf="routesService.getcurrentUrl()"
+  (click)="goMyChannel()"
+  [ngClass]="{'active-page': isActive('/channel')}">
+  <img class=" icon icon-channel">
+</button>
+<button
+  *ngIf="routesService.getcurrentUrl()"
+  (click)="goSubscriptions()"
+  [ngClass]="{'active-page': isActive('/subscriptions')}">
+  <img class=" icon icon-subs">
+</button>
+<button
+  *ngIf="routesService.getcurrentUrl()"
+  (click)="goHistory()"
+  [ngClass]="{'active-page': isActive('/history')}">
+  <img class=" icon icon-history">
+</button>
+
     </div>
-  </div>
-  <div class="content">
-    <header class="appbar">
-      <!-- Appbar content goes here -->
-    </header>
-    <!-- Main content goes here -->
+
   </div>
 </div>
