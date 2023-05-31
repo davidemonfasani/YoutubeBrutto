@@ -18,7 +18,7 @@ export class VideoComponent {
   elapsedTime! : number; minuti = 0;
   CommentForm:FormGroup;
   utente : any; timer : any;
-  startTime!: number;
+  startTime!: number; personale : boolean;
   comments: Commento[] = [];
   likes = 0;
   views = 0;
@@ -31,15 +31,19 @@ export class VideoComponent {
     linkvideo : '',
     linkimage : '',
     utente_username : '',
+    utente_id : 0,
   };
+  idUt : number
   constructor(private vidService : VideoService,
     private comService : CommentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private auth : UserAuthService
     ) {
+      this.idUt = 0
       this.utenteLiked = false;
       this.iscritto = false;
+      this.personale = false;
       this.CommentForm = this.formBuilder.group({
         Text: ['', Validators.required],
       });
@@ -96,6 +100,10 @@ export class VideoComponent {
     return this.vidService.sanitizeVideoUrl(a)
   }
   ngOnInit() {
+
+
+
+
     window.onbeforeunload = () => {
       if(this.verificato)
     {
@@ -112,11 +120,20 @@ export class VideoComponent {
 
     this.vidService.getVideo().subscribe((video) => {
       this.body = video;
+      this.idUt = video.utente_id
+      if(this.idUt == this.auth.getUtenteId())
+      {
+
+        this.personale = true
+      }
+      console.log('questo è id utente', this.body.utente_id, 'mentre questo local', this.auth.getUtenteId())
+
       const bodyA = {
         idiscritto: this.getUtenteId(),
         idvideo: video.id,
       };
       this.checksub(bodyA)
+
     });
     this.utente = this.getUtente();
     this.fetchLikes();
@@ -132,6 +149,10 @@ export class VideoComponent {
         // Perform your desired action here
         this.verificato = true
       }, 10000);
+
+
+
+
 
 
 
