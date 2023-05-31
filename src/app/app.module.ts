@@ -21,6 +21,9 @@ import { ChannelCardComponent } from './components/channel-card/channel-card.com
 import { UploadVideoComponent } from './pages/upload-video/upload-video.component';
 import { ChannelComponent } from './pages/channel/channel.component';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
+import { PlaylistPopupComponent } from './components/playlist-popup/playlist-popup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,7 @@ import { SearchpageComponent } from './pages/searchpage/searchpage.component';
     UploadVideoComponent,
     ChannelComponent,
     SearchpageComponent,
+    PlaylistPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,8 @@ import { SearchpageComponent } from './pages/searchpage/searchpage.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

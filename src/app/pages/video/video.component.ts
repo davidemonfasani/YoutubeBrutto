@@ -8,6 +8,8 @@ import { Video } from 'src/app/interfaces/video';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 import { catchError, finalize, from } from 'rxjs';
+import { PlaylistPopupComponent } from 'src/app/components/playlist-popup/playlist-popup.component';
+import { PlaylistService } from 'src/app/services/playlist.service';
 
 @Component({
   selector: 'app-video',
@@ -38,7 +40,8 @@ export class VideoComponent {
     private comService : CommentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private auth : UserAuthService
+    private auth : UserAuthService,
+    private playService : PlaylistService
     ) {
       this.idUt = 0
       this.utenteLiked = false;
@@ -296,5 +299,10 @@ export class VideoComponent {
     {
       return this.minuti
     }
+  }
+
+
+  managePlaylist() {
+    this.playService.managePlaylist()
   }
 }

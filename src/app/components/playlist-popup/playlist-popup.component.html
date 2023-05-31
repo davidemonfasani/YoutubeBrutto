@@ -1,0 +1,32 @@
+<div>
+  <p>Playlists:</p>
+  <div *ngIf="verifica">
+    <div class="playlists" *ngFor="let playlist of playlists; let first = first; let last = last" [ngClass]="{'no-top-border': !first && !last}">
+      <p>{{ playlist.name }}</p>
+      <button class="check-button"  [ngClass]="{'aggiunto-true': playlist.aggiunto}" (click)="playlist.aggiunto ? removeToPlaylist(playlist) : addToPlaylist(playlist)">
+        {{ playlist.aggiunto ? 'Rimuovi' : 'Aggiungi' }}
+      </button>
+    </div>
+  </div>
+  <div *ngIf="!verifica"></div>
+  <div class="creaplaylist" [formGroup]="formGroup">
+    <label for="playlistName">Crea playlist:</label>
+    <div class="input-row">
+      <div class="input-container">
+        <input type="text" id="playlistName" formControlName="playlistName" placeholder="Inserisci nome..." />
+      </div>
+      <div class="input-container">
+        <form [formGroup]="formGroup">
+          <select id="selectedItem" formControlName="selectedItem">
+            <option value="">Scegli..</option>
+            <option *ngFor="let item of items" [value]="item">{{ item }}</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <button class="aggiungi-button" (click)="newPlaylist()">Aggiungi</button>
+    <ng-container *ngIf="errorMessage">
+      <p class="error-message">{{ errorMessage }}</p>
+    </ng-container>
+  </div>
+</div>

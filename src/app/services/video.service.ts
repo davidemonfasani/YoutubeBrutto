@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 export class VideoService {
-
+  idA : number
   video = {
     id:0,
     titolo: '',
@@ -32,7 +32,9 @@ export class VideoService {
     private sanitizer : DomSanitizer,
     private route: ActivatedRoute
   )
-  { }
+  {
+    this.idA = 0
+  }
 
 
 
@@ -51,6 +53,8 @@ export class VideoService {
     return this.route.queryParams.pipe(
     switchMap(params => {
     const video_id = params['video_id'];
+    this.idA = video_id
+
     if (video_id) {
     return this.http.get<Video>(`http://127.0.0.1:8000/api/videos/${video_id}`);
     } else {
