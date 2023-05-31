@@ -137,14 +137,18 @@ export class UserAuthService {
       if (token === null) {
         return false;
       }
-      const decoded: any = jwt_decode(token);
-      const currentTime = Math.floor(Date.now() / 1000);
-      if (decoded.exp < currentTime) {
-        console.log('Token is expired');
-        return false;
+      else
+      {
+        const decoded: any = jwt_decode(token);
+        const currentTime = Math.floor(Date.now() / 1000);
+        if (decoded.exp < currentTime) {
+          console.log('Token is expired');
+          return false;
+        }
+        else{
+          return true;
+        }
       }
-      // Add any additional validation checks here
-      return true;
     } catch (err) {
       console.log('Token is invalid:', (err as Error).message);
       return false;
@@ -156,7 +160,7 @@ export class UserAuthService {
   logOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('utente')
-    this.router.navigate(['/login'])
+    this.router.navigate(['/homepage'])
   }
 
 
