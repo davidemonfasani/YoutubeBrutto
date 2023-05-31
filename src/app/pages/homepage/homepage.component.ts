@@ -18,12 +18,32 @@ ngOnInit() {
 }
 
 fetchVideos() {
-  this.videoService.fetchVideos()
+  const utenteid = this.getUtenteId();
+  if(utenteid) {
+    this.videoService.sortVideos(utenteid)
     .subscribe((result: Video[]) => {
       this.videos = result;
     });
+  }
+  else
+  {
+    this.videoService.fetchVideos()
+    .subscribe((result: Video[]) => {
+      this.videos = result;
+    });
+  }
+
 }
 
-
+getUtenteId() {
+  const utenteString = localStorage.getItem('utente')
+  if(utenteString) {
+    const user = JSON.parse(utenteString)
+    return user.id
+  }
+  else{
+    return null;
+  }
+}
 
 }

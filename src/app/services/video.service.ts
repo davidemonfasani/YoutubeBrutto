@@ -64,6 +64,13 @@ export class VideoService {
     );
    }
 
+    sortVideos(utente_id: number) {
+
+    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos/sorted/sort', {
+      params: { utente_id: utente_id }
+    })
+  }
+
 
    filterVideo(): Observable<Video[]> {
 
@@ -73,7 +80,7 @@ export class VideoService {
     console.log(Search)
     if (Search) {
       console.log('chiamata partita')
-      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/search?searchTerm=${Search}`);
+      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/sorted/search?searchTerm=${Search}`);
     } else {
       console.log('chiamata non partita')
       throw new Error('Search parameter is missing from the URL');

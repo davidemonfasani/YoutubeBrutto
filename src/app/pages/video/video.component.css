@@ -73,11 +73,23 @@
 .video-username {
   margin-right: 10px;
 }
-.img{
+.img {
   width: 20px;
   height: 20px;
-  padding: 0;
 }
+
+.img:hover {
+  cursor: pointer;
+}
+
+:host-context([utenteLiked="true"]) .img {
+  filter: invert(38%) sepia(92%) saturate(7487%) hue-rotate(356deg) brightness(102%) contrast(104%);
+}
+
+:host-context([utenteLiked="false"]) .img {
+  filter: grayscale(100%);
+}
+
 
 .show-description-button {
   background-color: transparent;

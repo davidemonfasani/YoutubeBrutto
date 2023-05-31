@@ -14,11 +14,9 @@ export class logGuard {
  const isvalidtoken = this.auth.verifyToken(localStorage.getItem('token'));
  console.log(isvalidtoken);
  if (isvalidtoken===false) {
-  console.log("dovresti essere nella login page")
   return true;
 } else {
   this.router.navigate(['/profile']);
-  console.log("dovresti essere nella home page")
   return false;
 }
 }

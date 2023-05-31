@@ -49,11 +49,12 @@
   border: 1px;
   border-style: solid;
   border-radius: 20%;
+  background-color: tomato;
 }
 
 
 .button-container button:hover{
-  background-color: tomato;
+  background-color: peachpuff;
   color: white;
   cursor: pointer;
 }
@@ -65,3 +66,30 @@
   border-style: solid;
   margin-top: 48%;
 }
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  background-color: white; /* normal color */
+}
+.icon-home{
+  -webkit-mask-image: url(../../../assets/images/house-Empty.svg);
+  mask-image: url(../../../assets/images/house-Empty.svg);
+}
+.icon-history{
+  -webkit-mask-image: url(../../../assets/images/History.svg);
+  mask-image: url(../../../assets/images/History.svg);
+}
+.icon-subs{
+  -webkit-mask-image: url(../../../assets/images/Iscrizioni.svg);
+  mask-image: url(../../../assets/images/house-Empty.svg);
+}
+.icon-channel{
+  -webkit-mask-image: url(../../../assets/images/user-solid.svg);
+  mask-image: url(../../../assets/images/user-solid.svg);
+}
+
+.active-page .icon {
+  background-color: black; /* active color */
+}
+

@@ -137,14 +137,18 @@ export class UserAuthService {
       if (token === null) {
         return false;
       }
-      const decoded: any = jwt_decode(token);
-      const currentTime = Math.floor(Date.now() / 1000);
-      if (decoded.exp < currentTime) {
-        console.log('Token is expired');
-        return false;
+      else
+      {
+        const decoded: any = jwt_decode(token);
+        const currentTime = Math.floor(Date.now() / 1000);
+        if (decoded.exp < currentTime) {
+          console.log('Token is expired');
+          return false;
+        }
+        else{
+          return true;
+        }
       }
-      // Add any additional validation checks here
-      return true;
     } catch (err) {
       console.log('Token is invalid:', (err as Error).message);
       return false;
@@ -156,7 +160,7 @@ export class UserAuthService {
   logOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('utente')
-    this.router.navigate(['/login'])
+    this.router.navigate(['/homepage'])
   }
 
 
@@ -180,7 +184,7 @@ export class UserAuthService {
     if (utenteString) {
       const utente = JSON.parse(utenteString);
       const id = utente.id;
-      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/cronologia/${id}`);
+      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/sorted/cronologia/${id}`);
     } else {
       throw new Error('Utente is missing from local storage');
     }
