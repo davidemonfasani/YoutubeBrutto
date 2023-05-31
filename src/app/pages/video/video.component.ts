@@ -35,7 +35,7 @@ export class VideoComponent {
     utente_id : 0,
   };
   idUt : number
-  constructor(private vidService : VideoService,
+  constructor(public vidService : VideoService,
     private comService : CommentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,

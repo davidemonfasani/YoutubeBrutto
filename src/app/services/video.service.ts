@@ -60,6 +60,13 @@ export class VideoService {
     );
    }
 
+    sortVideos(utente_id: number) {
+
+    return this.http.get<Video[]>('http://127.0.0.1:8000/api/videos/sort', {
+      params: { utente_id: utente_id }
+    })
+  }
+
 
    filterVideo(): Observable<Video[]> {
 
