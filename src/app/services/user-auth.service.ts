@@ -180,7 +180,7 @@ export class UserAuthService {
     if (utenteString) {
       const utente = JSON.parse(utenteString);
       const id = utente.id;
-      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/cronologia/${id}`);
+      return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/sorted/cronologia/${id}`);
     } else {
       throw new Error('Utente is missing from local storage');
     }
