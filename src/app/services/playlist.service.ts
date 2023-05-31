@@ -14,7 +14,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class PlaylistService {
 
-  constructor(private dialog : MatDialog, private auth : UserAuthService, private http: HttpClient) { }
+  constructor(private dialog : MatDialog, private auth : UserAuthService, private http: HttpClient) {
+    const a = 0
+  }
 
   managePlaylist() {
         const dialogRef = this.dialog.open(PlaylistPopupComponent, {
