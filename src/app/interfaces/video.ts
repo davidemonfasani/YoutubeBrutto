@@ -6,4 +6,5 @@ export interface Video {
   linkimage : string,
   utente_username : string,
   utente_id: number,
+  utente_iscrizioni_count: number,
 }

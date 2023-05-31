@@ -31,6 +31,7 @@ export class VideoComponent {
     linkvideo : '',
     linkimage : '',
     utente_username : '',
+    utente_iscrizioni_count: 0,
     utente_id : 0,
   };
   idUt : number
@@ -67,6 +68,7 @@ export class VideoComponent {
       try {
         await this.auth.unsubscribe(body);
         this.iscritto = false;
+        this.onVideoLoad()
       } catch (error) {
         console.error(error);
       }
@@ -74,6 +76,7 @@ export class VideoComponent {
       try {
         await this.auth.subscribe(body);
         this.iscritto = true;
+        this.onVideoLoad()
       } catch (error) {
         console.error(error);
       }
@@ -82,7 +85,27 @@ export class VideoComponent {
     console.log('iscritto:', this.iscritto);
   }
 
+  onVideoLoad(){
 
+    this.vidService.getVideo().subscribe((video) => {
+      this.body = video;
+      console.log(this.body);
+      this.idUt = video.utente_id
+      if(this.idUt == this.auth.getUtenteId())
+      {
+
+        this.personale = true
+      }
+      console.log('questo è id utente', this.body.utente_id, 'mentre questo local', this.auth.getUtenteId())
+
+      const bodyA = {
+        idiscritto: this.getUtenteId(),
+        idvideo: video.id,
+      };
+      this.checksub(bodyA)
+
+    });
+  }
 
   checksub(body: any) {
     this.auth.checksub(body).subscribe((response: boolean) => {
@@ -112,29 +135,8 @@ export class VideoComponent {
       this.addView()
     }
     }
-
-
-
-
+    this.onVideoLoad()
     this.fetchViews()
-
-    this.vidService.getVideo().subscribe((video) => {
-      this.body = video;
-      this.idUt = video.utente_id
-      if(this.idUt == this.auth.getUtenteId())
-      {
-
-        this.personale = true
-      }
-      console.log('questo è id utente', this.body.utente_id, 'mentre questo local', this.auth.getUtenteId())
-
-      const bodyA = {
-        idiscritto: this.getUtenteId(),
-        idvideo: video.id,
-      };
-      this.checksub(bodyA)
-
-    });
     this.utente = this.getUtente();
     this.fetchLikes();
     this.fetchViews();

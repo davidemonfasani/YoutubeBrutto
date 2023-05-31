@@ -9,7 +9,6 @@
       <div class="video-title">{{ body.titolo }}</div>
       <div class="video-details">
         <div class="video-details-row">
-          <span class="video-username">{{ body.utente_username }}</span>
           <div class="video-section">
             <div class="views">
               <!-- Display the views count here -->
@@ -28,6 +27,12 @@
                   </button>
                 </div>
                 <div class="subscribe-button">
+                  <div class="channel-info">
+                    {{ body.utente_username }}
+                    {{ body. utente_iscrizioni_count }}
+
+                  </div>
+
                   <button *ngIf="!personale" (click)="trySubscribe()">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
                 </div>
 
