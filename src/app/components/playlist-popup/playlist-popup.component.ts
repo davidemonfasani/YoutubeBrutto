@@ -72,6 +72,21 @@ export class PlaylistPopupComponent {
     });
   }
 
+  deletePlaylist(playlist: Playlist) {
+
+    this.playService.deletePlaylist(playlist.id).subscribe(
+      (response) => {
+        // Handle the success response
+        console.log('Playlist removed:', response);
+        this.fetchPlaylist()
+      },
+      (error) => {
+        // Handle the error response
+        console.error('Error removing playlist:', error);
+      }
+    );
+  }
+
 
 
   addToPlaylist(playlist : Playlist) {

@@ -1,0 +1,24 @@
+<div class="playlist-container">
+  <div class="playlist-info">
+    <div class="playlist-row">
+      <i class="fa-regular fa-rectangle-list fa-3x" style="color: #000000;"></i>
+    </div>
+    <div class="playlist-details">
+      <div class="playlist-row">
+        <p class="playlist-title">Titolo:</p>
+        <p class="playlist-title-value">{{ playlist.name }}</p>
+      </div>
+      <div class="playlist-row">
+        <p class="playlist-visibility">Visibilità:</p>
+        <p class="playlist-visibility-value">{{ playlist.visibility }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="playlist-videos">
+    <div class="videos-row">
+      <ng-container *ngFor="let video of videos">
+        <app-videocontainer class="video" [video]="video"></app-videocontainer>
+      </ng-container>
+    </div>
+  </div>
+</div>

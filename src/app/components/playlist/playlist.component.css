@@ -1,0 +1,26 @@
+
+
+.playlist {
+  height: 100px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.playlist p {
+  color: black;
+  margin-top: 25px;
+}
+
+.playlist:hover {
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.playlist i {
+  margin-bottom: 10px; /* Adjust the margin as needed */
+  margin-top: 40px;
+  font-size: 3rem;
+}

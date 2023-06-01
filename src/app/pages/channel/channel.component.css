@@ -121,39 +121,26 @@ img {
   margin-bottom: 5px; /* Adjust the margin as needed */
 }
 
-.playlist-container {
+
+.playlist-row {
   display: flex;
+  margin-top: 15px;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 30px; /* Adjust the gap as needed */
-  margin-left: 8%; /* Set margin-left to the same value as video-container */
+  width: 100%; /* Set width to 100% to occupy the full width */
+  box-sizing: border-box; /* Include padding and border within the width */
+}
+
+.playlist-container {
+  margin-left: 8%; /* Set the left margin as needed */
   margin-top: 20px; /* Adjust the top margin as needed */
-  width: 86%; /* Add this property to occupy the remaining width */
-
+  width: 86%; /* Set the width of the container */
 }
 
 
 
-.playlist {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 200px; /* Adjust the width as needed */
-  height: 100px;
-}
 
-.playlist:hover {
-  cursor:pointer;
-  box-shadow:0 0 8px rgba(0,0,0,0.1);
- }
-
-
-.playlist i {
-  margin-bottom: 10px; /* Adjust the margin as needed */
-  margin-top: 40px;
-}
 
 

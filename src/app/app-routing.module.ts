@@ -12,6 +12,7 @@ import { UploadVideoComponent } from './pages/upload-video/upload-video.componen
 import { logGuard} from './guards/log.guard';
 import { ChannelComponent } from './pages/channel/channel.component';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
+import { PlaylistpageComponent } from './pages/playlistpage/playlistpage.component';
 
 const routes: Routes = [
   {path: 'homepage', component: HomepageComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [logGuard] },
   {path: 'upload', component: UploadVideoComponent, canActivate: [homeGuard]},
   {path: 'channel', component: ChannelComponent, canActivate: [homeGuard]},
+  {path: 'playlist', component: PlaylistpageComponent},
   {path: '**', redirectTo: '/homepage', pathMatch: 'full'},
 
 ];
