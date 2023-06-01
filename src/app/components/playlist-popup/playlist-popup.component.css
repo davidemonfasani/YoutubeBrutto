@@ -86,3 +86,8 @@
   background-color: tomato; /* Red background on hover */
   color: white; /* White text on hover */
 }
+
+.fa-regular {
+  cursor: pointer;
+}
+

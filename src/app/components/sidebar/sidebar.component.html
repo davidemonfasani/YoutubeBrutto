@@ -5,27 +5,25 @@
   id="firstBut"
   (click)="goHomepage()"
   [ngClass]="{'active-page': isActive('/homepage')}">
-    <img class="icon icon-home">
+  <i class="fas fa-home fa-2x" style="color: #ffffff;"></i>
 </button>
 <button
   *ngIf="routesService.getcurrentUrl()"
   (click)="goMyChannel()"
   [ngClass]="{'active-page': isActive('/channel')}">
-  <img class=" icon icon-channel">
+  <i class="fa-solid fa-user fa-2x" style="color: #ffffff;"></i>
 </button>
 <button
   *ngIf="routesService.getcurrentUrl()"
   (click)="goSubscriptions()"
   [ngClass]="{'active-page': isActive('/subscriptions')}">
-  <img class=" icon icon-subs">
+  <i class="fa-solid fa-users-rectangle fa-2x" style="color: #ffffff;"></i>
 </button>
 <button
   *ngIf="routesService.getcurrentUrl()"
   (click)="goHistory()"
   [ngClass]="{'active-page': isActive('/history')}">
-  <img class=" icon icon-history">
-</button>
-
+  <i class="fa-solid fa-clock-rotate-left fa-2x" style="color: #ffffff;"></i></button>
     </div>
 
   </div>

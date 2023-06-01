@@ -20,9 +20,9 @@
                 <div class="like-button">
                   <button (click)="likeChange()">
                     Likes: {{ likes }}
-                    <img class="img" *ngIf="utenteLiked; else otherImg" src="../../../assets/images/Like_Full.png" >
+                    <i class="fa-solid fa-thumbs-up" *ngIf="utenteLiked; else otherImg"  style="color: #0a64ff;"></i>
                     <ng-template #otherImg>
-                      <img  class="img" src="../../../assets/images/Like_empty.png">
+                      <i class="fa-regular fa-thumbs-up"></i>
                     </ng-template>
                   </button>
                 </div>

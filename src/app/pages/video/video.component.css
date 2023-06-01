@@ -60,7 +60,7 @@
 
 .video-title {
   color: black;
-  margin-bottom: 20px;
+  margin-bottom: 1px;
   font-size: 80px;
 }
 
@@ -120,6 +120,10 @@
 
 }
 
+fa-solid fa-regular {
+  margin-left: 20px;
+}
+
 
 
 
@@ -177,6 +181,21 @@
 
 .like-button {
   background-color: transparent;
+  width: 80px; /* Adjust the width as needed */
+  display: flex;
+  align-items: center;
+}
+
+.like-button button {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  width: 100%; /* Occupy the full width of the parent container */
+}
+
+.like-button i {
+  margin-left: 10px;
 }
 
 

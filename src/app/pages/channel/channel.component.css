@@ -8,6 +8,12 @@
   z-index: 1;
 }
 
+
+.fas {
+  size: 50px;
+}
+
+
 .center-container {
   display: flex;
   flex-direction: column;
@@ -51,6 +57,7 @@
 
 .video-row {
   margin-right:2%;
+  margin-left: 4%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -113,3 +120,40 @@ img {
   margin-left: 8%;
   margin-bottom: 5px; /* Adjust the margin as needed */
 }
+
+.playlist-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px; /* Adjust the gap as needed */
+  margin-left: 8%; /* Set margin-left to the same value as video-container */
+  margin-top: 20px; /* Adjust the top margin as needed */
+  width: 86%; /* Add this property to occupy the remaining width */
+
+}
+
+
+
+.playlist {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 200px; /* Adjust the width as needed */
+  height: 100px;
+}
+
+.playlist:hover {
+  cursor:pointer;
+  box-shadow:0 0 8px rgba(0,0,0,0.1);
+ }
+
+
+.playlist i {
+  margin-bottom: 10px; /* Adjust the margin as needed */
+  margin-top: 40px;
+}
+
+

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Playlist } from 'src/app/interfaces/playlist';
 import { Video } from 'src/app/interfaces/video';
 import { ChannelService } from 'src/app/services/channel.service';
 import { UserAuthService } from 'src/app/services/user-auth.service';
@@ -10,45 +11,82 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 })
 export class ChannelComponent {
   user : any; personale : boolean;
-  videos : Video[] = []; iscritto: boolean;
+  videos : Video[] = []; iscritto: boolean; playlists : Playlist[] = [];
   constructor(private channelSer: ChannelService, private auth: UserAuthService) {
     this.iscritto = false;
     this.personale = false;
   }
 
   ngOnInit() {
-    const storedUtenteId = localStorage.getItem('utenteId');
-    if (storedUtenteId) {
-      this.fetchChannelData(storedUtenteId);
-
-    }
-
     if(localStorage.getItem('utenteId') == this.auth.getUtenteId())
     {
       this.personale = true
     }
+    console.log('credenziali',localStorage.getItem('utenteId'), 'e', this.auth.getUtenteId());
+
+    const storedUtenteId = localStorage.getItem('utenteId');
+    if (storedUtenteId) {
+      if(this.personale)
+      {
+        this.fetchMyChannelData(storedUtenteId);
+      }
+      else
+      {
+        this.fetchOtherChannelData(storedUtenteId);
+      }
+
+
+    }
+
 
   }
+
+
 
 
   ngOnDestroy() {
-    localStorage.removeItem('utenteId');
+
   }
 
-  fetchChannelData(utenteId: string) {
+  fetchOtherChannelData(utenteId: string) {
+    this.channelSer.fetchOtherChannel(utenteId)
+    .subscribe(
+      (response: any) => {
+        this.videos = response.videos;
+        this.user = response.user
+        this.playlists = response.playlists
 
-    this.channelSer.fetchChannel(utenteId)
+
+        const body1 = {
+          idiscritto: this.auth.getUtenteId(),
+          idvideo: this.videos[0].id
+        };
+        console.log('questo è il body', body1);
+        this.checksub(body1);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+
+
+
+  fetchMyChannelData(utenteId: string) {
+
+    this.channelSer.fetchMyChannel(utenteId)
       .subscribe(
         (response: any) => {
           this.videos = response.videos;
           this.user = response.user
-
+          this.playlists = response.playlists
 
           const body1 = {
             idiscritto: this.auth.getUtenteId(),
             idvideo: this.videos[0].id
           };
-          console.log('questo è il body', body1);
+          console.log('questo è il body', response);
           this.checksub(body1);
         },
         (error) => {
