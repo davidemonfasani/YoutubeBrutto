@@ -52,6 +52,14 @@
   position: relative; /* Add relative positioning */
 }
 
+.fa-solid:hover {
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out; /* Add a transition property */
+  background-color: rgba(255, 0, 0, 0.266);
+  border-radius: 50%;
+}
+
+
 .search {
   width: 80%;
   flex-grow: 1;

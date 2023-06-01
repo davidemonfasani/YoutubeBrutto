@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+  import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Utente } from '../interfaces/utente';
 import { HttpClient } from '@angular/common/http';
@@ -18,10 +18,14 @@ export class ChannelService {
     this.router.navigateByUrl('/channel')
   }
 
-  fetchChannel(utenteId: string): Observable<any>  {
-    return this.http.get<any>(`http://127.0.0.1:8000/api/utentes/channel?userId=${utenteId}`)
+  fetchMyChannel(utenteId: string): Observable<any>  {
+    return this.http.get<any>(`http://127.0.0.1:8000/api/utentes/mychannel?userId=${utenteId}`)
 
 
 }
+
+  fetchOtherChannel(utenteId: string): Observable<any> {
+    return this.http.get<any>(`http://127.0.0.1:8000/api/utentes/channel?userId=${utenteId}`)
+  }
 
 }

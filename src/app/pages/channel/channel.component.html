@@ -27,5 +27,11 @@
     <div class="divisione-schermo">
       <h1>Playlist</h1>
     </div>
+    <div class="playlist-container">
+      <div class="playlist" *ngFor="let playlist of playlists">
+        <i class="fa-regular fa-rectangle-list fa-2xl"></i>
+        <p class="playlist-title">{{playlist.name}}</p>
+      </div>
+    </div>
   </div>
 </div>
