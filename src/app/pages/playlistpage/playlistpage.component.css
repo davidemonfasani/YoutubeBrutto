@@ -1,0 +1,51 @@
+.playlist-container {
+  display: flex;
+  height: 100%;
+}
+
+.playlist-info {
+  flex: 0 0 350px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-left: 45px;
+}
+
+
+.playlist-row i {
+  font-size: 3rem;
+  margin-top: 100px;
+
+}
+
+.playlist-details {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.playlist-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist-row p {
+  margin: 0 5px;
+}
+
+.playlist-videos {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  overflow: auto;
+  margin-top: 20px;
+}
+
+.videos-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.video {
+  width: calc(33.33% - 18px);
+}

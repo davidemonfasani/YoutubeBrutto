@@ -17,6 +17,15 @@
 
     </div>
     <div class="divisione-schermo">
+      <h1>Playlist</h1>
+    </div>
+      <div class="playlist-container">
+        <div class="playlist-row">
+          <app-playlist *ngFor="let playlist of playlists" [playlist]="playlist"></app-playlist>
+        </div>
+      </div>
+    <div class="divisione-schermo">
+
       <h1>Video caricati...</h1>
     </div>
     <div class="video-container">
@@ -24,14 +33,4 @@
         <app-videocontainer class="video" *ngFor="let video of videos" [video]="video"></app-videocontainer>
       </div>
     </div>
-    <div class="divisione-schermo">
-      <h1>Playlist</h1>
-    </div>
-    <div class="playlist-container">
-      <div class="playlist" *ngFor="let playlist of playlists">
-        <i class="fa-regular fa-rectangle-list fa-2xl"></i>
-        <p class="playlist-title">{{playlist.name}}</p>
-      </div>
-    </div>
-  </div>
 </div>

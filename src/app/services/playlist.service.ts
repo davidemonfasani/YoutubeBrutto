@@ -7,14 +7,26 @@ import { Playlist } from '../interfaces/playlist';
 import { Observable, Subject, catchError, pipe, switchMap, tap, throwError } from 'rxjs';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
-
-  constructor(private dialog : MatDialog, private auth : UserAuthService, private http: HttpClient) {
+  playlist : Playlist = {
+    id: 0,
+    name: '',
+    visibility: '',
+    utente_id : 0,
+    aggiunto : false
+  }
+  constructor(private dialog : MatDialog, private auth : UserAuthService, private http: HttpClient
+    , private router : Router
+    , private route: ActivatedRoute
+    ) {
     const a = 0
   }
 
@@ -34,7 +46,7 @@ export class PlaylistService {
   fetchPlaylists(): Observable<Playlist[]> {
     const id = this.auth.getUtenteId();
 
-    return this.http.get<Playlist[]>(`http://127.0.0.1:8000/api/playlist/${id}`);
+    return this.http.get<Playlist[]>(`http://127.0.0.1:8000/api/playlist/fetch/${id}`);
   }
 
   newPlaylist(body : any): Observable<any> {
@@ -70,6 +82,42 @@ export class PlaylistService {
     return this.http.post(`http://127.0.0.1:8000/api/playlist/removevideo`, body, { headers });
 
   }
+
+
+  deletePlaylist(id:number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      // Add any additional headers as needed
+    });
+    const body = { id };
+
+    return this.http.post(`http://127.0.0.1:8000/api/playlist/delete`, body, { headers });
+  }
+
+
+  goPlaylist(body : any) {
+    this.playlist = body;
+    this.router.navigateByUrl(`/playlist?playlist_id=${this.playlist.id}`)
+  }
+
+  getPlaylist(): Observable<any> {
+    return this.route.queryParams.pipe(
+      switchMap(params => {
+        const playlist_id = params['playlist_id'];
+        console.log('questo è il playlist_id', playlist_id)
+        if (!playlist_id) {
+          throw new Error('playlist_id parameter is missing from the URL');
+        }
+
+        return this.http.get<any>(`http://127.0.0.1:8000/api/playlist/${playlist_id}`);
+      }),
+      map(response => {
+        return response.playlist;
+      })
+    );
+  }
+
+
 
 
 }

@@ -3,9 +3,8 @@
   <div *ngIf="verifica">
     <div class="playlists" *ngFor="let playlist of playlists; let first = first; let last = last" [ngClass]="{'no-top-border': !first && !last}">
       <p>{{ playlist.name }}</p>
+      <i class="fa-solid fa-trash fa-2x" style="color: #d93f56;" (click)="deletePlaylist(playlist)"></i>
       <i class="fa-regular fa-square-check fa-2x" style="color: #d93f56;" [ngClass]="{'aggiunto-true': playlist.aggiunto, 'fa-check-square': playlist.aggiunto, 'fa-square': !playlist.aggiunto}" (click)="playlist.aggiunto ? removeToPlaylist(playlist) : addToPlaylist(playlist)"></i>
-
-
     </div>
   </div>
   <div *ngIf="!verifica"></div>
