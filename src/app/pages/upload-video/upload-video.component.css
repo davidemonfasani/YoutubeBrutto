@@ -6,6 +6,11 @@
   text-align: center; /* Align the content to the center */
   margin-top: 20px;
 }
+
+form {
+  margin-top: 5%;
+}
+
 .buttontag {
   height: 100%;
   width: 5%;
