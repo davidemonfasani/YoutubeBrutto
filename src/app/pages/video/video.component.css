@@ -2,20 +2,22 @@
   margin-top: 3%;
   display: flex;
   flex-direction: row;
-  justify-content:center;
-  width: auto/*calc(100% -15vh);*/
+  justify-content: center;
+  width: auto;
 }
+
 .video-page-container {
   margin-left: 120px; /* Set this value equal to the width of the sidebar */
   width: 60rem;
   margin-top: 1.5%;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: left;
-  height: auto; /*120vh; Adjust the height as needed */
- }
+  height: auto; /* Adjust the height as needed */
+}
+
 .video-wrapper {
-  width:  100% ;/* Adjust the width as needed */
+  width: 100%; /* Adjust the width as needed */
   display: flex;
   justify-content: flex-start;
   align-items: left;
@@ -25,7 +27,6 @@
   border-left: 0;
   border-right: 0;
   border-style: solid;
-
 }
 
 .playlist-button {
@@ -39,7 +40,6 @@
   display: flex;
   align-items: center;
   margin-left: 10px;
-
 }
 
 .subscribe-button button,
@@ -50,10 +50,10 @@
   font-size: 14px;
 }
 
-
 .video-wrapper iframe {
   width: 100%;
 }
+
 .video-info {
   text-align: left;
 }
@@ -70,93 +70,10 @@
   justify-content: left;
 }
 
-.video-username {
-  margin-right: 10px;
-}
-.img {
-  width: 20px;
-  height: 20px;
-}
-
-.img:hover {
-  cursor: pointer;
-}
-
-:host-context([utenteLiked="true"]) .img {
-  filter: invert(38%) sepia(92%) saturate(7487%) hue-rotate(356deg) brightness(102%) contrast(104%);
-}
-
-:host-context([utenteLiked="false"]) .img {
-  filter: grayscale(100%);
-}
-
-
-.show-description-button {
-  background-color: transparent;
-  border: none;
-  color: blue;
-  cursor: pointer;
-  margin-top: 2%;
-}
-.comment-section{
-  align-items: center;
-  width: 100%;
-}
-
-#buttonComment {
-  background-color: tomato;
-  color: white;
-  padding: 2px 4px !important;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  border: 1px solid #ccc;
-  width: auto !important;
-  flex-shrink: 0;
-}
-#buttonComment:hover {
-  cursor:pointer;
-  background-color: rgb(193, 67, 45);
-
-}
-
-fa-solid fa-regular {
-  margin-left: 20px;
-}
-
-
-
-
-#inputComment {
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  padding: 8px;
-  flex-grow: 1;
-}
-.CommentForm{
-  width: 100%;
-  display: flex; /* Add this to create a flex container */
-  align-items: stretch;
-}
-
-
-.urcomment{
-  width: 100%;
-}
-
-
 .video-section {
   display: flex;
   align-items: center;
   margin-top: 15%;
-}
-
-.video-details-row {
-  display: flex;
-  align-items: center;
 }
 
 .views {
@@ -174,10 +91,9 @@ fa-solid fa-regular {
   align-items: flex-start;
 }
 
-.subscribe-button{
+.subscribe-button {
   margin-left: 200px;
 }
-
 
 .like-button {
   background-color: transparent;
@@ -198,4 +114,97 @@ fa-solid fa-regular {
   margin-left: 10px;
 }
 
+img {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
 
+.show-description-button {
+  background-color: transparent;
+  border: none;
+  color: blue;
+  cursor: pointer;
+  margin-top: 2%;
+}
+
+.comment-section {
+  align-items: center;
+  width: 100%;
+}
+
+#buttonComment {
+  background-color: tomato;
+  color: white;
+  padding: 2px 4px !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: 1px solid #ccc;
+  width: auto !important;
+  flex-shrink: 0;
+}
+
+#buttonComment:hover {
+  cursor: pointer;
+  background-color: rgb(193, 67, 45);
+}
+
+fa-solid fa-regular {
+  margin-left: 20px;
+}
+
+#inputComment {
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 8px;
+  flex-grow: 1;
+}
+
+.CommentForm {
+  width: 100%;
+  display: flex; /* Add this to create a flex container */
+  align-items: stretch;
+}
+
+.urcomment {
+  width: 100%;
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  margin-left: -85%;
+}
+
+.profile-picture {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.channel-info-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.subscriber-count {
+  font-size: 14px;
+}
+
+.commento {
+  margin-bottom: 10px;
+}
+
+.commento:last-child {
+  margin-bottom: 0;
+}
