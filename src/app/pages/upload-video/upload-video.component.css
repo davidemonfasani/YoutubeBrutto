@@ -1,9 +1,8 @@
-#VideoD{
+#VideoD {
   margin: 0 auto;
   max-width: 600px;
   padding: 16px;
-
-  text-align: center; /* Align the content to the center */
+  text-align: center;
   margin-top: 20px;
 }
 
@@ -11,33 +10,50 @@ form {
   margin-top: 5%;
 }
 
-.buttontag {
-  height: 100%;
-  width: 5%;
-  background-color: tomato;
-  color: white;
-  padding: 2px 4px !important;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  border: 1px solid #ccc;
-  width: auto !important;
-  flex-shrink: 0;
+div {
+  margin-top: 1%;
 }
-.buttontag:hover {
-  cursor:pointer;
-  background-color: rgb(193, 67, 45);
 
+.input-container {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 10px;
 }
+
 .inputtag {
-  width: 50%;
+  flex: 1;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
   background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  padding: 8px;
-  flex-grow: 1;
+  border: 1px solid;
+  padding: 6px 8px;
+  height: 28px;
+  width: 95%;
 }
+
+.buttontag {
+  flex-shrink: 0;
+  background-color: tomato;
+  color: white;
+  padding: 4px 8px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: 1px solid #000000;
+  border-left: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  height: 41.5px;
+  margin-left: -2px;
+}
+
+.inputtag:focus + .buttontag {
+  border-color: black;
+  border-width: 2px;
+  border-left: 0;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -47,13 +63,44 @@ ul {
 }
 
 li {
-  background-color: lightgray;
+  background-color: #f4f4f4;
+  color: #848484;
   padding: 5px 10px;
   margin: 5px;
   border-radius: 5px;
+  font-size: smaller;
 }
 
 button {
   margin-left: 5px;
+  height: 100%;
 }
 
+.input-container {
+  margin-top: 5px;
+}
+
+.inputtag:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.button-container {
+  margin-top: 5px;
+  height: 100%;
+}
+
+.btn {
+  background-color: tomato;
+  border-radius: 18px;
+}
+
+.btn:hover {
+  background-color: rgb(253, 78, 47);
+}
+
+.inputtag:focus + .buttontag {
+  border-color: black;
+  border-width: 2px;
+  border-left: 0;
+}

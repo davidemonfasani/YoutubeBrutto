@@ -1,6 +1,6 @@
 <form [formGroup]="UploadForm">
   <div id="VideoD">
-    <p class="titoletto"><b>Inserisci le caratteristiche del video:</b></p>
+    <p class="titoletto"><b>Carica video</b></p>
 
     <div *ngIf="Service.errorMessage$ | async as errorMessage">
       <div class="alert alert-danger">
@@ -11,8 +11,8 @@
       <input
         type="text"
         formControlName="titolo"
-        class="input-field"
-        placeholder="titolo"
+        class="inputtag"
+        placeholder="Titolo"
         name="titolo"
       />
     </div>
@@ -20,8 +20,8 @@
       <input
         type="text"
         formControlName="descrizione"
-        class="input-field"
-        placeholder="descrizione"
+        class="inputtag"
+        placeholder="Descrizione"
         name="descrizione"
       />
     </div>
@@ -29,8 +29,8 @@
       <input
         type="text"
         formControlName="linkvideo"
-        class="input-field"
-        placeholder="linkvideo"
+        class="inputtag"
+        placeholder="Linkvideo"
         name="linkvideo"
       />
     </div>
@@ -38,34 +38,37 @@
       <input
         type="text"
         formControlName="linkimage"
-        class="input-field"
-        placeholder="linkimage"
+        class="inputtag"
+        placeholder="Linkimage"
         name="linkimage"
       />
     </div>
     <div>
 
-      <div>
+      <div class="input-container">
         <input
           type="text"
           formControlName="newTag"
-          class="input-field inputtag"
-          placeholder="Add a tag"
+          class="inputtag"
+          placeholder="Aggiungi tag"
           name="newTag"
         />
-        <button class='buttontag' (click)="addTag()">Add</button>
+        <button class="buttontag" (click)="addTag()">
 
 
+          <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+
+        </button>
       </div>
+
       <div class="titoletto">
-        tags
+        Tag:
       </div>
       <div *ngIf="inValidTag">
         <div class="alert alert-danger">
           {{ taginvalidmessage }}
         </div>
-       </div>
-
+      </div>
 
       <ul>
         <li *ngFor="let tag of tags; let i = index">
@@ -75,7 +78,10 @@
       </ul>
     </div>
     <div>
-      <button type="submit" class="btn" (click)="Upload()" [disabled]="!UploadForm.valid">UpLoad</button>
+      <button type="submit" class="btn" (click)="Upload()" [disabled]="!UploadForm.valid">
+
+        <i class="fa-solid fa-upload fa-2x" style="color: #ffffff;"></i>
+      </button>
     </div>
   </div>
 </form>
