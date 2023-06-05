@@ -3,7 +3,7 @@
   <p>Ciao {{ utente.username }} questo è il tuo profilo:</p>
 
   <div class="profile-card">
-    <img src="../../../assets/images/guest.png" alt="Profile Picture" class="profile-picture">
+    <img  class="profile-picture" [src]="utente.linkppic || '../../../assets/images/guest.png'">
     <h2>{{ utente.nome }} {{ utente.cognome }}</h2>
     <p>Username: {{ utente.username }}</p>
     <p>Email: {{ utente.email }}</p>
