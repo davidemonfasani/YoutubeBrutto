@@ -21,10 +21,6 @@
 
               <button *ngIf="!personale" (click)="trySubscribe()">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
             </div>
-            <div class="views">
-              <!-- Display the views count here -->
-              <span>Views: {{ views}}</span>
-            </div>
             <div class="button-container">
               <div class="subscribe-like-container">
                 <div class="like-button">
@@ -43,6 +39,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="views">
+        <!-- Display the views count here -->
+        <span>Views: {{ views}}</span>
       </div>
       <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
       <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>

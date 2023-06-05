@@ -36,15 +36,16 @@
 .subscribe-button,
 .like-button {
   background-color: transparent;
-  height: 10%;
   display: flex;
   align-items: center;
-  margin-left: 10px;
+
 }
+
+
 
 .subscribe-button button,
 .like-button button {
-  padding: 0;
+  height: 50px;
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -73,7 +74,7 @@
 .video-section {
   display: flex;
   align-items: center;
-  margin-top: 15%;
+  margin-top: 7.5%;
 }
 
 .views {
@@ -93,13 +94,32 @@
 
 .subscribe-button {
   margin-left: 200px;
+
 }
+
+.subscribe-button button:hover {
+  background-color: rgb(252, 63, 29);
+  cursor: pointer;
+}
+
+.subscribe-button button{
+
+  background-color: tomato;
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+  border-radius: 15%;
+}
+
+
 
 .like-button {
   background-color: transparent;
   width: 80px; /* Adjust the width as needed */
   display: flex;
   align-items: center;
+    height: 10%;
 }
 
 .like-button button {
@@ -177,7 +197,8 @@ fa-solid fa-regular {
 .channel-info {
   display: flex;
   align-items: center;
-  margin-left: -85%;
+  margin-left: -80%;
+  padding-right: 5%;
 }
 
 .profile-picture {
@@ -190,6 +211,7 @@ fa-solid fa-regular {
 .channel-info-details {
   display: flex;
   flex-direction: column;
+  padding-right: 10px;
 }
 
 .username {
