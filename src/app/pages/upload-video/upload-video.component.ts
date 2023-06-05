@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VideoService } from 'src/app/services/video.service';
@@ -10,6 +10,9 @@ import { VideoService } from 'src/app/services/video.service';
   styleUrls: ['./upload-video.component.css']
 })
 export class UploadVideoComponent {
+  @Input() response: any;
+  errorMessage='';
+  message='';
   UploadForm: FormGroup;
   tags: string[] = [];
   inValidTag: boolean;
@@ -21,7 +24,7 @@ export class UploadVideoComponent {
   utente:any
   constructor(
     private router: Router,
-    private http: HttpClient,
+    private http : HttpClient,
     public Service: VideoService,
     private formBuilder: FormBuilder
   ) {
@@ -32,6 +35,11 @@ export class UploadVideoComponent {
       linkvideo: ['', Validators.required],
       linkimage: ['', Validators.required],
       newTag:[null],
+    });
+  }
+  ngOnInit() {
+    this.Service.errorMessage$.subscribe(errorMessage => {
+      this.errorMessage = errorMessage;
     });
   }
 
@@ -76,6 +84,8 @@ export class UploadVideoComponent {
     }
   }
   Upload() {
+    this.errorMessage = '';
+    this.response = null;
     this.utente = this.getUtente();
     const body = {
       titolo: this.UploadForm.value.titolo,
@@ -85,7 +95,18 @@ export class UploadVideoComponent {
       utente_id: this.utente.id,
       tags: this.tags,
     };
-    this.Service.Upload(body);
-  }
+    this.Service.Upload(body).subscribe({
+      next: (Response: any) => {
+        this.response = Response;
+        console.log('Response:', Response);
+      },
+      error: (error: any) => {
+        // Handle error here
+        this.errorMessage = error.error.error;
+      }
+    });
+    }
+
+
 
 }

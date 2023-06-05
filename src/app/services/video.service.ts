@@ -193,25 +193,21 @@ async addView(body : any) {
       },
     });
 }
-async Upload(body : any) {
+Upload(body: any): Observable<any> {
   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   const options = { headers: headers };
   console.log('questo è il body view:', body)
   return this.http.post<any>('http://127.0.0.1:8000/api/videos/store', body, options)
-  .pipe(
-    tap({
-      error: (error) => {
-        let errorMessage = error.error.error;
-        console.log(errorMessage);
-        this.errorMessage$.next(errorMessage);
-      },
-    })
-  )
-  .subscribe({
-    next: (Response) => {
-      console.log('Response:', Response);
-    },
-  });
+    .pipe(
+      tap({
+        error: (error) => {
+          let errorMessage = error.error.error;
+          console.log(errorMessage);
+          this.errorMessage$.next(errorMessage);
+        },
+      })
+    );
 }
+
 
 }
