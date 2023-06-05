@@ -18,7 +18,9 @@ export class VideocontainerComponent {
   @Input() video!: Video
 
   constructor(private sanitizer: DomSanitizer, private router: Router, private auth: VideoService, private route: ActivatedRoute) {}
-
+ngOnInit(){
+console.log(this.video.linkimage)
+}
   sanitize(a : string) {
     return this.auth.sanitizeVideoUrl(a)
   }
