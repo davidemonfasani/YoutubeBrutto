@@ -32,6 +32,7 @@ export class VideoComponent {
     descrizione : '',
     linkvideo : '',
     linkimage : '',
+    utente_pic: null,
     utente_username : '',
     utente_iscrizioni_count: 0,
     utente_id : 0,

@@ -12,6 +12,7 @@
   transition: box-shadow 0.3s ease;
   height: auto;
   margin-bottom: 4%;
+  border-radius: 1rem;
   width: 16rem; /* Set this value equal to the desired width of the video container */
  }
 
@@ -30,10 +31,22 @@
   box-shadow:0 0 8px rgba(0,0,0,0.1);
  }
  .img {
+  border-radius: 0.75rem;
   width: 16rem;
   height: 9rem;
   object-fit: cover;
 }
 
 
+.username-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-pic {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
 

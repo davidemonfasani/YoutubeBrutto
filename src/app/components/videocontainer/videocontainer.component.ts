@@ -17,10 +17,16 @@ import { ActivatedRoute } from '@angular/router';
 export class VideocontainerComponent {
   @Input() video!: Video
 
-  constructor(private sanitizer: DomSanitizer, private router: Router, private auth: VideoService, private route: ActivatedRoute) {}
+  constructor(private sanitizer: DomSanitizer,
+     private router: Router,
+      private auth: VideoService,
+      private route: ActivatedRoute
+      ) {
+
+      }
 ngOnInit(){
-console.log(this.video.linkimage)
-}
+//console.log(this.video)
+ }
   sanitize(a : string) {
     return this.auth.sanitizeVideoUrl(a)
   }
