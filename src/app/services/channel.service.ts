@@ -15,7 +15,7 @@ export class ChannelService {
   constructor(private router: Router,
      private http: HttpClient,
      private auth: UserAuthService,
-     private route: ActivatedRoute,
+     public route: ActivatedRoute,
 
      ) { }
    isMyChannel(): boolean {
@@ -26,9 +26,9 @@ export class ChannelService {
     }
       return channelUtenteId  === this.auth.getUtenteId();
     }
-  goChannel(utente : Utente) {
-    localStorage.setItem('utenteId', utente.id.toLocaleString());
-    this.router.navigateByUrl(`/channel?utente_id=${utente.id}`);
+  goChannel(utente_id : Number) {
+    //localStorage.setItem('utenteId', utente_id.toLocaleString());
+    this.router.navigateByUrl(`/channel?utente_id=${utente_id}`);
   }
 
   fetchMyChannel(utenteId: string): Observable<any>  {

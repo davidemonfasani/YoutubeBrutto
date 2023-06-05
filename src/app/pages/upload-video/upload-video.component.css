@@ -32,7 +32,11 @@ div {
   height: 28px;
   width: 95%;
 }
-
+.blue-section {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+}
 .buttontag {
   flex-shrink: 0;
   background-color: tomato;

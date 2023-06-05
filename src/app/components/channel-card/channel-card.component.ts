@@ -14,9 +14,7 @@ export class ChannelCardComponent {
   constructor(private channelSer : ChannelService) {}
 
   goChannel() {
-
-    this.channelSer.goChannel(this.utente)
-
+    this.channelSer.goChannel(this.utente.id)
   }
 
   ngOnInit() {

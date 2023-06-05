@@ -2,10 +2,11 @@
   <div id="VideoD">
     <p class="titoletto"><b>Carica video</b></p>
 
-    <div *ngIf="Service.errorMessage$ | async as errorMessage">
-      <div class="alert alert-danger">
-        {{ errorMessage }}
-      </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="response" class="blue-section">
+      {{ response.message }}
     </div>
     <div>
       <input
