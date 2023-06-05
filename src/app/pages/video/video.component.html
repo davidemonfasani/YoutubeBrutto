@@ -10,31 +10,32 @@
       <div class="video-details">
         <div class="video-details-row">
           <div class="video-section">
+            <div class="subscribe-button">
+              <div class="channel-info">
+                <img src="../../../assets/images/guest.png" alt="Profile Picture" class="profile-picture">
+                <div class="channel-info-details">
+                  <span class="username">{{ body.utente_username }}</span>
+                  <span class="subscriber-count">{{ body.utente_iscrizioni_count }} subscribers</span>
+                </div>
+              </div>
+
+              <button *ngIf="!personale" (click)="trySubscribe()">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
+            </div>
             <div class="views">
               <!-- Display the views count here -->
-              <span> Views: {{ views}}</span>
+              <span>Views: {{ views}}</span>
             </div>
             <div class="button-container">
-
               <div class="subscribe-like-container">
                 <div class="like-button">
                   <button (click)="likeChange()">
                     Likes: {{ likes }}
-                    <i class="fa-solid fa-thumbs-up" *ngIf="utenteLiked; else otherImg"  style="color: #0a64ff;"></i>
+                    <i class="fa-solid fa-thumbs-up" *ngIf="utenteLiked; else otherImg" style="color: #0a64ff;"></i>
                     <ng-template #otherImg>
                       <i class="fa-regular fa-thumbs-up"></i>
                     </ng-template>
                   </button>
                 </div>
-                <div class="subscribe-button">
-                  <div class="channel-info">
-                    {{ body.utente_username }}
-                    {{ body. utente_iscrizioni_count }}
-                  </div>
-
-                  <button *ngIf="!personale" (click)="trySubscribe()">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
-                </div>
-
                 <div class="playlist-button">
                   <button (click)="managePlaylist()">Aggiungi a playlist</button>
                 </div>
@@ -42,12 +43,10 @@
             </div>
           </div>
         </div>
-
       </div>
       <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
       <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>
     </div>
-
     <div class="comment-section">
       <h3>Sezione commenti:</h3>
       <div class="comment-list">
