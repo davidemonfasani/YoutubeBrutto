@@ -14,6 +14,7 @@
   margin-bottom: 4%;
   border-radius: 1rem;
   width: 16rem; /* Set this value equal to the desired width of the video container */
+  position: relative;
  }
 
  .video-wrapper {

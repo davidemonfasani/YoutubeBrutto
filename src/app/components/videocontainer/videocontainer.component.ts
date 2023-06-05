@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { VideoService } from '../../services/video.service';
 import { ActivatedRoute } from '@angular/router';
+import { ChannelService } from 'src/app/services/channel.service';
 
 
 
@@ -20,7 +21,8 @@ export class VideocontainerComponent {
   constructor(private sanitizer: DomSanitizer,
      private router: Router,
       private auth: VideoService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private channelSer: ChannelService
       ) {
 
       }
@@ -30,7 +32,13 @@ ngOnInit(){
   sanitize(a : string) {
     return this.auth.sanitizeVideoUrl(a)
   }
+  goChannel(event: Event) {
+    event.stopPropagation();
+    console.log('goChannel called');
+    this.channelSer.goChannel(this.video.utente_id);
 
+
+  }
   goVideo(){
     this.auth.goVideo(this.video)
   }

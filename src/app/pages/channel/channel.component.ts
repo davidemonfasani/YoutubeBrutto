@@ -18,28 +18,17 @@ export class ChannelComponent {
   }
 
   ngOnInit() {
-    console.log('sei nel tuo canale?',this.channelSer.isMyChannel())
-    if(localStorage.getItem('utenteId') == this.auth.getUtenteId())
-    {
-      this.personale = true
-    }
-    console.log('credenziali',localStorage.getItem('utenteId'), 'e', this.auth.getUtenteId());
-
-    const storedUtenteId = localStorage.getItem('utenteId');
-
-    if (storedUtenteId) {
-      if(this.personale)
+    const channelUtenteIdStr = this.channelSer.route.snapshot.queryParamMap.get('utente_id');
+    if (channelUtenteIdStr) {
+      if(this.channelSer.isMyChannel())
       {
-        this.fetchMyChannelData(storedUtenteId);
+        this.fetchMyChannelData(channelUtenteIdStr);
       }
       else
       {
-        this.fetchOtherChannelData(storedUtenteId);
+        this.fetchOtherChannelData(channelUtenteIdStr);
       }
     }
-
-
-
   }
 
 
