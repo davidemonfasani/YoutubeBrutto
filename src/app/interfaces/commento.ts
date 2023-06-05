@@ -5,4 +5,5 @@ export interface Commento {
   video_id : string
   testo : string
   like: number
+  utente_pic : string
 }

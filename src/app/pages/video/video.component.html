@@ -25,15 +25,19 @@
               <div class="subscribe-like-container">
                 <div class="like-button">
                   <button (click)="likeChange()">
-                    Likes: {{ likes }}
-                    <i class="fa-solid fa-thumbs-up" *ngIf="utenteLiked; else otherImg" style="color: #0a64ff;"></i>
+                    <i class="fa-solid fa-thumbs-up fa-2x" *ngIf="utenteLiked; else otherImg" style="color: #0a64ff;"></i>
                     <ng-template #otherImg>
-                      <i class="fa-regular fa-thumbs-up"></i>
+                      <i class="fa-regular fa-thumbs-up fa-2x"></i>
                     </ng-template>
+                    <div id="arnoldschwarzenegger">
+                      {{ likes }}
+                    </div>
                   </button>
                 </div>
                 <div class="playlist-button">
-                  <button (click)="managePlaylist()">Aggiungi a playlist</button>
+                  <button (click)="managePlaylist()">
+                    <i class="fa-regular fa-rectangle-list fa-2x" style="color: #000000;"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -56,7 +60,7 @@
             <button type="Submit" id="buttonComment" [disabled]="!CommentForm.valid">Invia</button>
           </form>
         </div>
-        <app-commento class="commento" *ngFor="let commento of comments" [commento]="commento"></app-commento>
+        <app-commento class="commento" *ngFor="let commento of comments" [commento]="commento"  [utente]="utente"></app-commento>
       </div>
     </div>
   </div>

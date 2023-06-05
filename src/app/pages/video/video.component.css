@@ -29,9 +29,7 @@
   border-style: solid;
 }
 
-.playlist-button {
-  margin-left: 30px;
-}
+
 
 .subscribe-button,
 .like-button {
@@ -44,11 +42,24 @@
 
 
 .subscribe-button button,
-.like-button button {
+.like-button button, .playlist-button button{
   height: 50px;
   display: flex;
   align-items: center;
   font-size: 14px;
+  border-radius: 15%;
+
+}
+
+.playlist-button button{
+  width: 50px;
+  border-width: 0;
+  margin-left: 680%;
+
+
+}
+.playlist-button{
+  align-items: center;
 }
 
 .video-wrapper iframe {
@@ -64,6 +75,8 @@
   margin-bottom: 1px;
   font-size: 80px;
 }
+
+
 
 .video-details {
   display: flex;
@@ -103,23 +116,30 @@
 }
 
 .subscribe-button button{
-
   background-color: tomato;
   color: white;
   border-style: solid;
-  border-width: 1px;
-  border-color: #ccc;
-  border-radius: 15%;
+  border-width: 0;
+
 }
 
 
 
 .like-button {
   background-color: transparent;
-  width: 80px; /* Adjust the width as needed */
+  width: 110px; /* Adjust the width as needed */
   display: flex;
   align-items: center;
-    height: 10%;
+  height: 10%;
+
+}
+
+#arnoldschwarzenegger{
+  margin-left: 30px;
+}
+
+.show-description-button{
+
 }
 
 .like-button button {
@@ -128,7 +148,15 @@
   align-items: center;
   font-size: 14px;
   width: 100%; /* Occupy the full width of the parent container */
+  border-width: 0;
+
 }
+
+.like-button button:hover, .playlist-button button:hover{
+  cursor: pointer;
+  background-color: #d5d5d5;
+}
+
 
 .like-button i {
   margin-left: 10px;
@@ -170,8 +198,12 @@ img {
   background-color: rgb(193, 67, 45);
 }
 
-fa-solid fa-regular {
+.fa-solid, .fa-thumbs-up {
   margin-left: 20px;
+}
+
+.fa-rectangle-list {
+  margin-left: 3px;
 }
 
 #inputComment {
