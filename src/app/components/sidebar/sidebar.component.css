@@ -72,30 +72,10 @@
   border-style: solid;
   margin-top: 80%;
 }
-
-.icon {
-  width: 2rem;
-  height: 2rem;
-  background-color: white; /* normal color */
-}
-.icon-home{
-  -webkit-mask-image: url(../../../assets/images/house-Empty.svg);
-  mask-image: url(../../../assets/images/house-Empty.svg);
-}
-.icon-history{
-  -webkit-mask-image: url(../../../assets/images/History.svg);
-  mask-image: url(../../../assets/images/History.svg);
-}
-.icon-subs{
-  -webkit-mask-image: url(../../../assets/images/Iscrizioni.svg);
-  mask-image: url(../../../assets/images/house-Empty.svg);
-}
-.icon-channel{
-  -webkit-mask-image: url(../../../assets/images/user-solid.svg);
-  mask-image: url(../../../assets/images/user-solid.svg);
+i{
+  color: #ffffff;
 }
 
-.active-page .icon {
-  background-color: black; /* active color */
+.active-page i {
+  color: black;
 }
-

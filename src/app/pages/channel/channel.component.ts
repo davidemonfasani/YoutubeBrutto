@@ -18,6 +18,7 @@ export class ChannelComponent {
   }
 
   ngOnInit() {
+    console.log('sei nel tuo canale?',this.channelSer.isMyChannel())
     if(localStorage.getItem('utenteId') == this.auth.getUtenteId())
     {
       this.personale = true
@@ -25,6 +26,7 @@ export class ChannelComponent {
     console.log('credenziali',localStorage.getItem('utenteId'), 'e', this.auth.getUtenteId());
 
     const storedUtenteId = localStorage.getItem('utenteId');
+
     if (storedUtenteId) {
       if(this.personale)
       {
@@ -34,9 +36,8 @@ export class ChannelComponent {
       {
         this.fetchOtherChannelData(storedUtenteId);
       }
-
-
     }
+
 
 
   }

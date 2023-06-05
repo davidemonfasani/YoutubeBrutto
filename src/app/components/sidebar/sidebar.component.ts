@@ -11,7 +11,11 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 })
 export class SidebarComponent {
 
-  constructor(private auth: UserAuthService,private router: Router, public routesService: RoutesService, private channelSer : ChannelService) {}
+  constructor(private auth: UserAuthService,
+    private router: Router,
+     public routesService: RoutesService,
+      public channelSer : ChannelService
+      ) {}
 
   goHomepage() {
     this.router.navigateByUrl('/homepage')
@@ -24,17 +28,13 @@ export class SidebarComponent {
   }
 
   goMyChannel() {
-
-
-
       localStorage.removeItem('utenteId')
       localStorage.setItem('utenteId', this.auth.getUtenteId())
       this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: false }).then(() => {
-      this.router.navigate(['/channel']);
+        this.router.navigateByUrl(`/channel?utente_id=${this.auth.getUtenteId()}`);
   });
 
   }
-
   goSubscriptions() {
     this.router.navigateByUrl('/subscriptions')
   }

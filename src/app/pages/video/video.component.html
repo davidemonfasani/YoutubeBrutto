@@ -30,7 +30,6 @@
                   <div class="channel-info">
                     {{ body.utente_username }}
                     {{ body. utente_iscrizioni_count }}
-
                   </div>
 
                   <button *ngIf="!personale" (click)="trySubscribe()">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
