@@ -20,6 +20,7 @@ export class CommentoComponent {
     video_id : '',
     testo : '',
     like: 0,
+    utente_pic: '',
   }
   constructor(
     private commService: CommentService,
@@ -29,7 +30,7 @@ export class CommentoComponent {
   }
   ngOnInit() {
     this.commento_body.id = this.commento.id;
-    console.log("id commento",this.commento_body.id );
+    console.log('body comment:', this.utente)
     this.fetchLikes();
     }
 
