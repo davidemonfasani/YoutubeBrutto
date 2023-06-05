@@ -28,11 +28,9 @@ export class ChannelComponent {
       {
         this.fetchOtherChannelData(channelUtenteIdStr);
       }
+
     }
   }
-
-
-
 
   ngOnDestroy() {
 
@@ -51,7 +49,7 @@ export class ChannelComponent {
           idiscritto: this.auth.getUtenteId(),
           idvideo: this.videos[0].id
         };
-        console.log('questo è il body', body1);
+        //console.log('questo è il body', body1);
         this.checksub(body1);
       },
       (error) => {
@@ -76,7 +74,7 @@ export class ChannelComponent {
             idiscritto: this.auth.getUtenteId(),
             idvideo: this.videos[0].id
           };
-          console.log('questo è il body', response);
+          //console.log('questo è il body', response);
           this.checksub(body1);
         },
         (error) => {
@@ -108,7 +106,7 @@ export class ChannelComponent {
       }
     }
 
-    console.log('iscritto:', this.iscritto);
+    //console.log('iscritto:', this.iscritto);
   }
 
 
@@ -117,7 +115,7 @@ export class ChannelComponent {
 
     this.auth.checksub(body).subscribe((response: boolean) => {
       this.iscritto = response;
-      console.log('iscritto:', this.iscritto);
+      //console.log('iscritto:', this.iscritto);
     }, error => {
       console.error(error);
     });

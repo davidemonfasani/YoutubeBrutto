@@ -11,6 +11,7 @@ import { catchError, finalize, from } from 'rxjs';
 import { PlaylistPopupComponent } from 'src/app/components/playlist-popup/playlist-popup.component';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { Utente } from 'src/app/interfaces/utente';
+import { ChannelService } from 'src/app/services/channel.service';
 
 @Component({
   selector: 'app-video',
@@ -44,7 +45,8 @@ export class VideoComponent {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private auth : UserAuthService,
-    private playService : PlaylistService
+    private playService : PlaylistService,
+    private channelSer: ChannelService
     ) {
       this.idUt = 0
       this.utenteLiked = false;
@@ -319,5 +321,8 @@ export class VideoComponent {
 
   managePlaylist() {
     this.playService.managePlaylist()
+  }
+  goChannel() {
+    this.channelSer.goChannel(this.body.utente_id);
   }
 }

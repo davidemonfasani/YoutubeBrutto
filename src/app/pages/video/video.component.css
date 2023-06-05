@@ -231,6 +231,10 @@ img {
   align-items: center;
   margin-left: -80%;
   padding-right: 5%;
+
+}
+.channel-info:hover {
+cursor: pointer;
 }
 
 .profile-picture {
