@@ -39,7 +39,7 @@ Userlogged(){
 }
 
   GoUploadPage(){
-  this.router.navigateByUrl('/upload')
+  this.routesService.uploadPopUp()
   }
 
   search() {

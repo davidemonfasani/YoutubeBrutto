@@ -1,10 +1,11 @@
 .channel-page {
+
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 1%;
+  margin-left: 9%;
   z-index: 1;
 }
 
@@ -28,12 +29,12 @@
   width: 100%;
   display: flex;
   justify-content:flex-start;
-  margin-left: 14%;
+  margin-left: 1%;
 }
 
 .username {
   margin-top: 10px; /* Adjust the margin as needed */
-  margin-left: 8%;
+  margin-left: 1.5%;
   font-size: 24px;
   font-weight: bold;
   color: #333333;
@@ -57,7 +58,7 @@
 
 .video-row {
   margin-right:2%;
-  margin-left: 4%;
+  margin-left: 1%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -91,9 +92,9 @@ img {
 
 .profile-picture {
   position: absolute;
-  top: 50%;
-  left: 8%; /* Adjust the value to control the positioning of the profile picture */
-  transform: translate(-10%, -50%);
+  top: 60%;
+  left: 4%; /* Adjust the value to control the positioning of the profile picture */
+  transform: translate(-7%, -59%);
   width: 100px; /* Adjust the size as needed */
   height: 100px; /* Adjust the size as needed */
   border-radius: 50%;
@@ -117,7 +118,7 @@ img {
 }
 
 .divisione-schermo h1 {
-  margin-left: 8%;
+  margin-left: 1%;
   margin-bottom: 5px; /* Adjust the margin as needed */
 }
 
@@ -134,7 +135,7 @@ img {
 }
 
 .playlist-container {
-  margin-left: 8%; /* Set the left margin as needed */
+  margin-left: -10%; /* Set the left margin as needed */
   margin-top: 20px; /* Adjust the top margin as needed */
   width: 86%; /* Set the width of the container */
 }
