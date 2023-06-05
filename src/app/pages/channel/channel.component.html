@@ -3,7 +3,7 @@
     <div class="channel-info">
       <div class="banner">
         <div class="profile-picture">
-          <img src="{{ user?.linkppic }}" alt="Profile Picture" class="profile-picture">
+          <img  class="profile-picture" [src]="user?.linkppic|| '../../../assets/images/guest.png'">
         </div>
       </div>
 

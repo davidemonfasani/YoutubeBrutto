@@ -34,12 +34,11 @@ ngOnInit(){
   }
   goChannel(event: Event) {
     event.stopPropagation();
-    console.log('goChannel called');
+    console.log(this.video.utente_id, 'videoutente id ');
     this.channelSer.goChannel(this.video.utente_id);
-
-
   }
   goVideo(){
+    console.log(this.video.utente_id, 'videoutente id ');
     this.auth.goVideo(this.video)
   }
 
