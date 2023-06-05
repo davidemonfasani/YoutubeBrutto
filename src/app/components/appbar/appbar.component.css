@@ -16,6 +16,7 @@
   width: 100%;
   z-index: 1000;
   left: 0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -46,31 +47,32 @@
   align-items: center;
   flex-grow: 1;
   margin: 0 14%;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: rgb(182, 182, 182);
-  position: relative; /* Add relative positioning */
+  position: relative;
 }
 
 .fa-solid:hover {
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out; /* Add a transition property */
-  background-color: rgba(255, 0, 0, 0.266);
   border-radius: 50%;
+
 }
 
 
 .search {
-  width: 80%;
-  flex-grow: 1;
-  width: auto;
+  width: 89%;
   padding: 8px;
   font-size: 16px;
-  border: none;
-
+  border: 1px;
   outline: none;
+  border-right: 0;
   color: rgb(182, 182, 182);
+  border-radius: 20px 0 0 20px; /* Add rounded corners to the left side */
+  background-color: white;
+
+  border-style: solid;
 }
+
+
+
 
 .search-form {
   display: flex;
@@ -80,22 +82,27 @@
 #cerca-button {
   border: none;
   background-color: white;
-  border-left: 3px;
+  border: 1px;
   border-style: solid;
-  border-right: 0;
-  border-top: 0;
-  border-bottom: 0;
-  width: 14%;
   padding: 8px 12px;
-
   cursor: pointer;
-  color: rgb(182, 182, 182);
-  height: 100%; /* Set button height to 100% */
-  position: absolute; /* Add absolute positioning */
-  right: 0; /* Position the button to the right */
-  top: 0; /* Position the button at the top */
+  background-color: rgb(241, 240, 240);
+  border-color: rgb(182, 182, 182);
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 20px 20px 0; /* Add rounded corners to the right side */
+}
+
+#cerca-button:hover {
+  background-color: rgb(234, 233, 233);
 }
 
 #titolo {
   margin: 0; /* Remove the default margin */
+  margin-left: 20px;
 }
