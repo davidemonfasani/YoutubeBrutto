@@ -21,7 +21,7 @@ export class UserAuthService {
     nome : '',
     cognome : '',
     username : '',
-    linkpic: '',
+    linkppic: '',
     email: '',
     password: '',
   }

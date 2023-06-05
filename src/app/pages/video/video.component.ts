@@ -10,6 +10,7 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 import { catchError, finalize, from } from 'rxjs';
 import { PlaylistPopupComponent } from 'src/app/components/playlist-popup/playlist-popup.component';
 import { PlaylistService } from 'src/app/services/playlist.service';
+import { Utente } from 'src/app/interfaces/utente';
 
 @Component({
   selector: 'app-video',
@@ -19,7 +20,7 @@ import { PlaylistService } from 'src/app/services/playlist.service';
 export class VideoComponent {
   elapsedTime! : number; minuti = 0;
   CommentForm:FormGroup;
-  utente : any; timer : any;
+  utente : Utente; timer : any;
   startTime!: number; personale : boolean;
   comments: Commento[] = [];
   likes = 0;
@@ -32,7 +33,7 @@ export class VideoComponent {
     descrizione : '',
     linkvideo : '',
     linkimage : '',
-    utente_pic: null,
+    utente_pic: '',
     utente_username : '',
     utente_iscrizioni_count: 0,
     utente_id : 0,
@@ -52,6 +53,17 @@ export class VideoComponent {
       this.CommentForm = this.formBuilder.group({
         Text: ['', Validators.required],
       });
+
+
+      this.utente = {
+          id : 0,
+          nome : '',
+          cognome : '',
+          username : '',
+          linkppic: '',
+          email: '',
+          password: ''
+      }
 
     }
 
@@ -93,7 +105,7 @@ export class VideoComponent {
 
     this.vidService.getVideo().subscribe((video) => {
       this.body = video;
-      console.log(this.body);
+      console.log('questo è il body',this.body);
       this.idUt = video.utente_id
       if(this.idUt == this.auth.getUtenteId())
       {

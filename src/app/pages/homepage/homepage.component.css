@@ -10,10 +10,12 @@
   grid-column: 1 / -1; /* Span the full width of the grid */
   height: 1px;
   background-color: #e9e9e9;
+  margin-left: -2%; /* Adjust the margin as needed */
+  margin-right: 3%;
+  margin-top: 1px;
 
 }
 
 .separator:not(.first-row) {
-  margin-left: -2%; /* Adjust the margin as needed */
-  margin-right: 3%;
+
 }

@@ -3,7 +3,7 @@ export interface Utente {
   nome : string
   cognome : string
   username : string
-  linkpic: string
+  linkppic: string
   email: string
   password: string
 }
