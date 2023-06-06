@@ -22,10 +22,12 @@ export class ChannelComponent {
     if (channelUtenteIdStr) {
       if(this.channelSer.isMyChannel())
       {
+        this.personale = true
         this.fetchMyChannelData(channelUtenteIdStr);
       }
       else
       {
+        this.personale = false
         this.fetchOtherChannelData(channelUtenteIdStr);
       }
 
