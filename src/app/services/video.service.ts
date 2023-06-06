@@ -208,6 +208,15 @@ Upload(body: any): Observable<any> {
       })
     );
 }
+fetchVideosByVideoId(page: number): Observable<Video[]> {
+  const video_id = this.route.snapshot.queryParams['video_id'];
+  return this.http.get<Video[]>(`http://127.0.0.1:8000/api/videos/sorted/consigliati`, {
+    params: {
+      video_id: video_id,
+      page: page
+    }
+  });
+}
 
 
 }
