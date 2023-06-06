@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { Playlist } from 'src/app/interfaces/playlist';
 import { Video } from 'src/app/interfaces/video';
 import { ChannelService } from 'src/app/services/channel.service';
@@ -11,8 +12,11 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 })
 export class ChannelComponent {
   user : any; personale : boolean;
-  videos : Video[] = []; iscritto: boolean; playlists : Playlist[] = [];
-  constructor(private channelSer: ChannelService, private auth: UserAuthService) {
+  videos : Video[] = []; iscritto: boolean; playlists : Playlist[] = [];banner='';bannerUrl!: SafeStyle;;
+  constructor(private channelSer: ChannelService,
+     private auth: UserAuthService,
+     private sanitizer: DomSanitizer,
+     ) {
     this.iscritto = false;
     this.personale = false;
   }
@@ -43,7 +47,7 @@ export class ChannelComponent {
         this.videos = response.videos;
         this.user = response.user
         this.playlists = response.playlists
-
+        this.bannerUrl = this.sanitizer.bypassSecurityTrustStyle(`url(${this.banner})`);
 
         const body1 = {
           idiscritto: this.auth.getUtenteId(),
@@ -69,6 +73,8 @@ export class ChannelComponent {
           this.videos = response.videos;
           this.user = response.user
           this.playlists = response.playlists
+          this.banner=response.banner
+          this.bannerUrl = this.sanitizer.bypassSecurityTrustStyle(`url(${this.banner})`);
 
           const body1 = {
             idiscritto: this.auth.getUtenteId(),
