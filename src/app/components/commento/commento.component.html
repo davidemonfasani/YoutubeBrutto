@@ -7,12 +7,12 @@
     <h2>{{ commento.testo }}</h2>
   </div>
   <div class="like-button">
-    <button (click)="likeChange()">
-      Likes: {{ this.commento_body.like }}
-      <img class="img" *ngIf="utenteLiked; else otherImg" src="../../../assets/images/Like_Full.png">
-      <ng-template #otherImg>
-        <img class="img" src="../../../assets/images/Like_empty.png">
+    <button (click)="likeChange()" id="arnoldschwarzenegger">
+      <i class="fa-solid fa-thumbs-up fa-2x" style="color: #0a64ff;" *ngIf="utenteLiked; else otherIcon"></i>
+      <ng-template #otherIcon>
+        <i class="fa-regular fa-thumbs-up fa-2x"></i>
       </ng-template>
+      {{ this.commento_body.like }}
     </button>
   </div>
 </div>

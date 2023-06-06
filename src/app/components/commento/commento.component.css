@@ -49,3 +49,8 @@ h1 {
   height: 20px;
   padding: 0;
 }
+
+#arnoldschwarzenegger {
+  border-color: transparent;
+  background-color: transparent;
+}
