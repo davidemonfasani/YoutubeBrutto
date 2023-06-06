@@ -2,7 +2,9 @@
   display: flex;
 }
 .Scelta{
-  width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 input[type=radio] {
   display: none;
@@ -10,6 +12,7 @@ input[type=radio] {
 
 input[type=radio] + label {
 width: 2rem;
+height: 2rem;
 border-radius: 0.5rem;
   padding: 4px 12px;
   margin-right: 10px;
@@ -21,26 +24,34 @@ input[type=radio]:checked + label {
 }
 
 #color1 + label {
-  background-color: red;
-  border-color: red;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9FE4qfNSgca_fD4rKN1Gp5x0Y8plVNocOMZTbq7X5eklyRNNqJD0erTbbQwcvEGrIvEg);
+  background-size: cover;
+  background-position: center;
 }
 
 #color2 + label {
-  background-color: blue;
-  border-color: blue;
+  background-image: url(https://i.kym-cdn.com/entries/icons/original/000/035/935/cover3.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 #color3 + label {
-  background-color: green;
-  border-color: green;
+  background-image: url(https://i.pinimg.com/originals/11/00/9c/11009c45e47f561cf558ce4b853f7955.jpg);
+  background-position: center;
+  background-size: cover;
+
 }
 
 #color4 + label {
-  background-color: yellow;
-  border-color: yellow;
+  background-image: url(https://thumbs.gfycat.com/AdventurousSimplisticArmedcrab-size_restricted.gif);
+  background-size: cover;
+  background-position: center;
 }
 
+
 #color5 + label {
-  background-color: purple;
-  border-color: purple;
+  background-image: url(https://pbs.twimg.com/media/FgKxcFfXgAAFb9k.jpg);
+  background-size: cover;
+  background-position: center;
 }
+

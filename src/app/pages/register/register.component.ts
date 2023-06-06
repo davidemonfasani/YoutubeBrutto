@@ -17,14 +17,16 @@ export class RegisterComponent {
     public auth: UserAuthService,
     private formBuilder: FormBuilder
   ) {
-    this.registerForm = this.formBuilder.group({
+  this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       nome: ['', Validators.required],
       cognome: ['', Validators.required],
       password: ['', Validators.required],
-      image: [null,],
+      image: [null],
+      banner: ['', Validators.required],
     });
+
   }
   username = ''
   cognome = ''
@@ -50,10 +52,7 @@ onFileSelected(event: any) {
 
 
 tryRegister() {
-  if (this.selectedFile) {
-    const formData = new FormData();
-    this.image = formData;
-  }
+  console.log('banner',this.registerForm.value.banner )
   const body = {
     nome: this.registerForm.value.nome,
     cognome: this.registerForm.value.cognome,
@@ -61,10 +60,12 @@ tryRegister() {
     password: this.registerForm.value.password,
     username: this.registerForm.value.username,
     linkppic: this.registerForm.value.image,
+    banner: this.registerForm.value.banner
   };
 
   this.auth.register(body);
 }
 }
+
 
 
