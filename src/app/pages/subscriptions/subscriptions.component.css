@@ -1,13 +1,15 @@
 .sub-form {
   margin-left: 10%;
   margin-top: 2%;
-    display: grid;
+  display: grid;
   grid-template-columns: repeat(4, 1fr); /* Update to 4 columns */
-  grid-gap: 5px;
-
+  grid-gap: 20px; /* Increase the gap between channel cards */
 }
 
 h3 {
   margin-left: 12.2%;
   margin-top: 5%;
+  font-size: 24px; /* Increase the font size for the heading */
+  font-weight: bold; /* Add bold font weight to the heading */
+  color: #333333; /* Change the color of the heading */
 }

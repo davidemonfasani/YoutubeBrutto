@@ -52,7 +52,17 @@
 }
 
 .subscribe-button {
-  margin-right: 20px;
+  margin-right: 10%;
+  background-color: tomato;
+  color: white;
+  height: 50px;
+  border-color: transparent;
+  border-radius: 12px;
+}
+
+.subscribe-button:hover {
+  cursor: pointer;
+  background-color: rgb(252, 59, 25);
 }
 
 
