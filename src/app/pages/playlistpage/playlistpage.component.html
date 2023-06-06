@@ -16,8 +16,9 @@
   </div>
   <div class="playlist-videos">
     <div class="videos-row">
-      <ng-container *ngFor="let video of videos">
+      <ng-container *ngFor="let video of videos; let i = index">
         <app-videocontainer class="video" [video]="video"></app-videocontainer>
+        <div class="separator" *ngIf="(i + 1) % 3 === 0"></div>
       </ng-container>
     </div>
   </div>
