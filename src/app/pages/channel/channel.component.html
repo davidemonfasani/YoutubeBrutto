@@ -1,7 +1,7 @@
 <div class="channel-page">
   <div class="center-container">
     <div class="channel-info">
-      <div class="banner">
+      <div class="banner" [style.background-image]="bannerUrl">
         <div class="profile-picture">
           <img  class="profile-picture" [src]="user?.linkppic|| '../../../assets/images/guest.png'">
         </div>
@@ -10,9 +10,7 @@
       <div class="username">
         <div class="title-container">
           <h1>{{ user?.username }}</h1>
-          <button *ngIf="!personale" (click)="trySubscribe()" class="subscribe-button">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}
-
-          </button>
+          <button *ngIf="!personale" (click)="trySubscribe()" class="subscribe-button">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
 
         </div>
       </div>
