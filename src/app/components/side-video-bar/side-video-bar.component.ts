@@ -14,18 +14,23 @@ export class SideVideoBarComponent {
 
 videos: Video[] = [];
 
+page = 1;
+
+
 ngOnInit() {
   this.fetchVideos();
 }
 
+loadMoreVideos() {
+  this.page++;
+  this.fetchVideos();
+}
+
 fetchVideos() {
-  this.videoService.fetchVideos()
+  this.videoService.fetchVideosByVideoId(this.page)
     .subscribe((result: Video[]) => {
-      this.videos = result;
+      this.videos.push(...result);
     });
 }
 
-
-
 }
-
