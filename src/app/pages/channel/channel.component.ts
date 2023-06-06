@@ -49,7 +49,7 @@ export class ChannelComponent {
         this.videos = response.videos;
         this.user = response.user
         this.playlists = response.playlists
-        this.bannerUrl = this.sanitizer.bypassSecurityTrustStyle(`url(${this.banner})`);
+        this.bannerUrl = this.sanitizer.bypassSecurityTrustStyle(`url(${response.banner})`);
 
         const body1 = {
           idiscritto: this.auth.getUtenteId(),
@@ -75,8 +75,7 @@ export class ChannelComponent {
           this.videos = response.videos;
           this.user = response.user
           this.playlists = response.playlists
-          this.banner=response.banner
-          this.bannerUrl = this.sanitizer.bypassSecurityTrustStyle(`url(${this.banner})`);
+          this.bannerUrl = this.sanitizer.bypassSecurityTrustStyle(`url(${response.banner})`);
 
           const body1 = {
             idiscritto: this.auth.getUtenteId(),
