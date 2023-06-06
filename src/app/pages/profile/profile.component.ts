@@ -15,6 +15,7 @@ export class ProfileComponent {
   ngOnInit() {
     if(this.utenteString) {
       this.utente = JSON.parse(this.utenteString)
+      console.log(this.utente)
     }
   }
 
