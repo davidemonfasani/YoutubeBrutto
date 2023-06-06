@@ -23,6 +23,7 @@ export class RegisterComponent {
       nome: ['', Validators.required],
       cognome: ['', Validators.required],
       password: ['', Validators.required],
+      image: [null,],
     });
   }
   username = ''
@@ -59,6 +60,7 @@ tryRegister() {
     email: this.registerForm.value.email,
     password: this.registerForm.value.password,
     username: this.registerForm.value.username,
+    linkppic: this.registerForm.value.image,
   };
 
   this.auth.register(body);

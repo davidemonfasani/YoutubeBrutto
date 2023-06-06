@@ -68,15 +68,15 @@
   border-radius: 20px 0 0 20px; /* Add rounded corners to the left side */
   background-color: white;
 
+
   border-style: solid;
 }
-
-
 
 
 .search-form {
   display: flex;
   width: 100%;
+  height: 2rem;
 }
 
 #cerca-button {
@@ -89,13 +89,14 @@
   background-color: rgb(241, 240, 240);
   border-color: rgb(182, 182, 182);
   height: 100%;
-  position: absolute;
+  position: sticky;
   right: 0;
   top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0 20px 20px 0; /* Add rounded corners to the right side */
+  border-radius: 0 20px 20px 0;
+
 }
 
 #cerca-button:hover {

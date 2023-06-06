@@ -1,0 +1,46 @@
+.radiocontainer{
+  display: flex;
+}
+.Scelta{
+  width: 60%;
+}
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio] + label {
+width: 2rem;
+border-radius: 0.5rem;
+  padding: 4px 12px;
+  margin-right: 10px;
+  transition: transform 0.2s;
+}
+
+input[type=radio]:checked + label {
+  transform: scale(1.2);
+}
+
+#color1 + label {
+  background-color: red;
+  border-color: red;
+}
+
+#color2 + label {
+  background-color: blue;
+  border-color: blue;
+}
+
+#color3 + label {
+  background-color: green;
+  border-color: green;
+}
+
+#color4 + label {
+  background-color: yellow;
+  border-color: yellow;
+}
+
+#color5 + label {
+  background-color: purple;
+  border-color: purple;
+}

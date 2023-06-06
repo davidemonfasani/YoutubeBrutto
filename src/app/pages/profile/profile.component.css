@@ -23,4 +23,19 @@
 .profile-card p {
   margin-top: 5px;
 }
+.LogOut:hover {
+  background-color: rgb(252, 63, 29);
+  cursor: pointer;
+}
+
+.LogOut{
+  background-color: tomato;
+  color: white;
+  border-style: solid;
+  border-width: 0;
+  height: 2rem;
+  width: 5rem;
+  border-radius: 1rem;
+  outline: none;
+}
 
