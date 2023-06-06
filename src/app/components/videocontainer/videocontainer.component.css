@@ -18,7 +18,14 @@
 
  .video-wrapper {
   width: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
  }
+
+ .video-wrapper:hover {
+  transform: translateY(-4px);
+}
+
 
  .video-wrapper iframe {
   max-width: 100%;
@@ -36,6 +43,8 @@
   height: 9rem;
   object-fit: cover;
 }
+
+
 
 
 .username-container {
