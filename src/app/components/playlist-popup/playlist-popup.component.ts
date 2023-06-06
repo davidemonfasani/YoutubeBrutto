@@ -52,6 +52,13 @@ export class PlaylistPopupComponent {
     )
   }
 
+  confirmDelete(playlist: any): void {
+  const confirmation = confirm("Sei sicuro di volere eliminare questa playlist?");
+  if (confirmation) {
+    this.deletePlaylist(playlist);
+  }
+}
+
 
   checkVideoInPlaylists() {
     const videoId = this.videoService.idA;
