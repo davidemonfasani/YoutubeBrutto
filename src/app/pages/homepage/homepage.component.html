@@ -3,5 +3,5 @@
     <app-videocontainer [video]="video"></app-videocontainer>
     <div class="separator" *ngIf="(i + 1) % 4 === 0"></div> <!-- Update the condition to display the separator after every 4 videos -->
   </ng-container>
-  <div class="separator"></div> <!-- Add a separator after the last row -->
 </div>
+<div class="morevideos" (click)="loadMoreVideos()" *ngIf="hasMoreVideos">Load more videos</div>

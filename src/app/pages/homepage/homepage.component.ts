@@ -12,24 +12,38 @@ export class HomepageComponent {
 constructor(private router : Router, private videoService: VideoService) {}
 
 videos: Video[] = [];
-
+page=1;
+hasMoreVideos=true;
 ngOnInit() {
   this.fetchVideos();
 }
 
+loadMoreVideos() {
+  this.page++;
+  this.fetchVideos();
+}
+
+
 fetchVideos() {
   const utenteid = this.getUtenteId();
   if(utenteid) {
-    this.videoService.sortVideos(utenteid)
+    this.videoService.sortVideos(utenteid, this.page)
     .subscribe((result: Video[]) => {
-      this.videos = result;
+      this.videos.push(...result);
+      if (result.length < 12) {
+        this.hasMoreVideos = false;
+      }
     });
   }
   else
   {
-    this.videoService.fetchVideos()
+    this.videoService.fetchVideos(this.page)
     .subscribe((result: Video[]) => {
-      this.videos = result;
+      this.videos.push(...result);
+      if (result.length < 12) {
+        this.hasMoreVideos = false;
+      }
+
     });
   }
 

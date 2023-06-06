@@ -15,4 +15,12 @@
   margin-top: 1px;
 
 }
+.morevideos {
+  text-align: center;
+  margin: 0 auto;
+  color: blue;
+}
+.morevideos:hover{
+  cursor: pointer;
+  }
 

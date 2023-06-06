@@ -9,17 +9,25 @@ import { VideoService } from 'src/app/services/video.service';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent {
+  hasMoreVideos=true;
   videos : Video[] = []
   constructor(private auth : UserAuthService) {}
 
-  ngOnInit() {
-    this.getHistory()
-  }
+  page=1;
+ngOnInit() {
+  this.getHistory()
+}
+loadMoreVideos() {
+  this.page++;
+  this.getHistory();
+}
 
   async getHistory() {
     this.auth.getHistory().subscribe((result: Video[]) => {
-      this.videos = result;
-      //console.log('i commenti', this.comments)
+      this.videos.push(...result);
+      if (result.length < 8) {
+        this.hasMoreVideos = false;
+      }
     });
   }
 }

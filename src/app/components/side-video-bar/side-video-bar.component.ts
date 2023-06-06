@@ -13,7 +13,7 @@ export class SideVideoBarComponent {
   constructor(private router : Router, private videoService: VideoService) {}
 
 videos: Video[] = [];
-
+hasMoreVideos=true;
 page = 1;
 
 
@@ -29,7 +29,10 @@ loadMoreVideos() {
 fetchVideos() {
   this.videoService.fetchVideosByVideoId(this.page)
     .subscribe((result: Video[]) => {
-      this.videos.push(...result);
+      this.videos.push(...result)
+      if (result.length < 5) {
+        this.hasMoreVideos = false;
+      }
     });
 }
 

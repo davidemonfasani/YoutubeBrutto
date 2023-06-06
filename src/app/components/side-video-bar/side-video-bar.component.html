@@ -3,6 +3,7 @@
     <div class="videos-container">
     <app-videocontainer *ngFor="let video of videos" [video]="video"></app-videocontainer>
     </div>
+    <div class="morevideos" (click)="loadMoreVideos()" *ngIf="hasMoreVideos && page <= 3">Load more videos</div>
   </div>
-<button (click)="loadMoreVideos()" *ngIf="page <= 3">Load more videos</button>
+
 
