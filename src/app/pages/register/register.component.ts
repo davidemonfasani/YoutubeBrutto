@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,7 +16,8 @@ export class RegisterComponent {
     private router: Router,
     private http: HttpClient,
     public auth: UserAuthService,
-    private formBuilder: FormBuilder
+    private dialogS : DialogService,
+    private formBuilder: FormBuilder,
   ) {
   this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -36,7 +38,7 @@ export class RegisterComponent {
   image : any
 
   goLogin() {
-    this.router.navigateByUrl('/profile')
+    this.dialogS.goLogin()
   }
 
   goHomepage(){
