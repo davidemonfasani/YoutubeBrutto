@@ -70,6 +70,7 @@ export class UserAuthService {
         this.isLogged = true;
         this.dialog.closeAll();
           localStorage.setItem('utente', JSON.stringify(Response.dati))
+          window.location.reload();
       },
     });
   }
@@ -98,7 +99,8 @@ export class UserAuthService {
           console.log('Is token valid:', this.isValidToken(this.getToken()));
           this.isLogged = true;
           this.dialog.closeAll();
-          localStorage.setItem('utente', JSON.stringify(response.dati))
+          localStorage.setItem('utente', JSON.stringify(response.dati));
+          window.location.reload();
           // this.utente = response.dati;
           // console.log("questo è l'utente", this.utente)
         },

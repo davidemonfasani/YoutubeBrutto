@@ -104,6 +104,14 @@
 }
 
 #titolo {
-  margin: 0; /* Remove the default margin */
+
   margin-left: 20px;
+  display: flex;
+}
+#appbar .logo{
+  height: 40px;
+}
+b
+{
+  margin-top: 2px; /* Remove the default margin */
 }

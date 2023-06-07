@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChannelService } from 'src/app/services/channel.service';
+import { DialogService } from 'src/app/services/dialog.service';
 import { RoutesService } from 'src/app/services/routes.service';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 
@@ -14,7 +15,8 @@ export class SidebarComponent {
   constructor(private auth: UserAuthService,
     private router: Router,
      public routesService: RoutesService,
-      public channelSer : ChannelService
+      public channelSer : ChannelService,
+      private dialogS: DialogService
       ) {}
 
   goHomepage() {
@@ -35,12 +37,13 @@ export class SidebarComponent {
         this.router.navigateByUrl(`/channel?utente_id=${this.auth.getUtenteId()}`);
       });
     } else {
-      this.router.navigate(['/login']);
+      this.dialogS.clear()
+      this.dialogS.goLogin()
     }
   }
 
 
-  
+
   goSubscriptions() {
     this.router.navigateByUrl('/subscriptions')
   }
