@@ -41,7 +41,23 @@ export class UploadVideoComponent {
     this.Service.errorMessage$.subscribe(errorMessage => {
       this.errorMessage = errorMessage;
     });
+    // Initialize first two tags
+    this.tags.push(this.UploadForm.value.titolo);
+    this.tags.push(this.getUtente().username);
   }
+
+  // Method to handle changes to title input field
+  onTitleChange() {
+    this.tags[0] = this.UploadForm.value.titolo;
+  }
+
+  deleteTag(index: number) {
+    // Only allow deletion of tags with index greater than 1
+    if (index > 1) {
+      this.tags.splice(index, 1);
+    }
+  }
+
 
   addTag() {
       let newTag = this.UploadForm.value.newTag;
@@ -73,9 +89,6 @@ export class UploadVideoComponent {
         this.inValidTag= true;
         this.taginvalidmessage='non e possibile inserire un tag vuoto';
       }
-  }
-  deleteTag(index: number) {
-    this.tags.splice(index, 1);
   }
   getUtente() {
     const utenteString = localStorage.getItem('utente')

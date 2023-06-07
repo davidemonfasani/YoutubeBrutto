@@ -10,12 +10,13 @@
     </div>
     <div>
       <input
-        type="text"
-        formControlName="titolo"
-        class="inputtag"
-        placeholder="Titolo"
-        name="titolo"
-      />
+      type="text"
+      formControlName="titolo"
+      class="inputtag"
+      placeholder="Titolo"
+      name="titolo"
+      (input)="onTitleChange()"
+    />
     </div>
     <div>
       <input
@@ -74,7 +75,7 @@
       <ul>
         <li *ngFor="let tag of tags; let i = index">
           {{ tag }}
-          <button (click)="deleteTag(i)">x</button>
+          <button *ngIf="i > 1" (click)="deleteTag(i)">x</button>
         </li>
       </ul>
     </div>
