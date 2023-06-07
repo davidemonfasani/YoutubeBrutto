@@ -14,6 +14,7 @@ import { ChannelComponent } from './pages/channel/channel.component';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 import { PlaylistpageComponent } from './pages/playlistpage/playlistpage.component';
 
+
 const routes: Routes = [
   {path: 'homepage', component: HomepageComponent },
   {path: 'search', component: SearchpageComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'history', component: HistoryComponent, canActivate: [homeGuard]},
   {path: 'subscriptions', component: SubscriptionsComponent, canActivate: [homeGuard]},
   {path: 'login', component: LoginComponent, canActivate: [logGuard] },
-  {path: 'channel', component: ChannelComponent, canActivate: [homeGuard]},
+  {path: 'channel', component: ChannelComponent,},
   {path: 'playlist', component: PlaylistpageComponent},
   {path: '**', redirectTo: '/homepage', pathMatch: 'full'},
 

@@ -29,6 +29,7 @@ fetchVideos() {
   if(utenteid) {
     this.videoService.sortVideos(utenteid, this.page)
     .subscribe((result: Video[]) => {
+      console.log(result);
       this.videos.push(...result);
       if (result.length < 12) {
         this.hasMoreVideos = false;
@@ -38,13 +39,13 @@ fetchVideos() {
   else
   {
     this.videoService.fetchVideos(this.page)
-    .subscribe((result: Video[]) => {
-      this.videos.push(...result);
-      if (result.length < 12) {
-        this.hasMoreVideos = false;
-      }
-
-    });
+.subscribe((result: Video[]) => {
+  console.log(result);
+  this.videos.push(...result);
+  if (result.length < 12) {
+    this.hasMoreVideos = false;
+  }
+});
   }
 
 }

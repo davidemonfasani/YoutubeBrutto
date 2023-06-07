@@ -28,13 +28,19 @@ export class SidebarComponent {
   }
 
   goMyChannel() {
+    if (this.auth.verifyToken(localStorage.getItem('token'))) {
       localStorage.removeItem('utenteId')
       localStorage.setItem('utenteId', this.auth.getUtenteId())
       this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: false }).then(() => {
         this.router.navigateByUrl(`/channel?utente_id=${this.auth.getUtenteId()}`);
-  });
-
+      });
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
+
+
+  
   goSubscriptions() {
     this.router.navigateByUrl('/subscriptions')
   }
