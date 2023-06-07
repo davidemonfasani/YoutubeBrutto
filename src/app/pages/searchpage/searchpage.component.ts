@@ -9,29 +9,36 @@ import { VideoService } from 'src/app/services/video.service';
   styleUrls: ['./searchpage.component.css']
 })
 export class SearchpageComponent {
-    constructor(private router : Router, private videoService: VideoService) {}
 
+
+    hasMoreVideos=true;
     page=1
     videos: Video[] = [];
+    constructor(private router : Router, private videoService: VideoService) {}
     ngOnInit() {
-      this.filterVideos();
-      window.addEventListener('scroll', this.onScroll.bind(this));
+      this.videoService.filterVideo(this.page)
+      .subscribe((result: Video[]) => {
+        this.videos=result;
+        if (result.length < 12) {
+          this.hasMoreVideos = false;
+        }
+      });
     }
     ngOnDestroy() {
-      window.removeEventListener('scroll', this.onScroll.bind(this));
+      this.page=1;
     }
-    onScroll() {
-      // Check if the user has scrolled to the bottom of the page
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-          this.page++;
-          this.filterVideos();
-      }
+    loadMoreVideos() {
+      this.page++;
+      this.filterVideos();
     }
 
     filterVideos() {
       this.videoService.filterVideo(this.page)
     .subscribe((result: Video[]) => {
-      this.videos = result;
+      this.videos.push(...result);
+      if (result.length < 12) {
+        this.hasMoreVideos = false;
+      }
     });
   }
 }
