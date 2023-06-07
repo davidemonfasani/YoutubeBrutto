@@ -15,7 +15,6 @@
       class="inputtag"
       placeholder="Titolo"
       name="titolo"
-      (input)="onTitleChange()"
     />
     </div>
     <div>
@@ -72,12 +71,13 @@
         </div>
       </div>
 
-      <ul>
-        <li *ngFor="let tag of tags; let i = index">
-          {{ tag }}
-          <button *ngIf="i > 1" (click)="deleteTag(i)">x</button>
-        </li>
-      </ul>
+<ul>
+  <li *ngFor="let tag of tags; let i = index">
+    {{ tag }}
+    <button *ngIf="i > 1" (click)="deleteTag(i)">x</button>
+  </li>
+</ul>
+
     </div>
     <div>
       <button type="submit" class="btn1" (click)="Upload()" [disabled]="!UploadForm.valid">

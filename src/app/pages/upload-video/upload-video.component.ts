@@ -41,14 +41,8 @@ export class UploadVideoComponent {
     this.Service.errorMessage$.subscribe(errorMessage => {
       this.errorMessage = errorMessage;
     });
-    // Initialize first two tags
-    this.tags.push(this.UploadForm.value.titolo);
+    // Initialize first tag
     this.tags.push(this.getUtente().username);
-  }
-
-  // Method to handle changes to title input field
-  onTitleChange() {
-    this.tags[0] = this.UploadForm.value.titolo;
   }
 
   deleteTag(index: number) {
