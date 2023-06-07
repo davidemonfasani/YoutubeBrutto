@@ -5,6 +5,11 @@ import { Observable, Subject, catchError, map, of, switchMap, tap, throwError } 
 import jwt_decode from 'jwt-decode';
 import { Utente } from '../interfaces/utente';
 import { Video } from '../interfaces/video';
+import { LoginComponent } from '../pages/login/login.component';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from '../pages/register/register.component';
+import { DialogRef } from '@angular/cdk/dialog';
+import { DialogService } from './dialog.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +31,9 @@ export class UserAuthService {
     password: '',
   }
 
-  constructor(private http : HttpClient, private router: Router, private route: ActivatedRoute) {
+  constructor(private http : HttpClient, private router: Router, private route: ActivatedRoute, private dialog: MatDialog, private dialogS : DialogService
+
+    ) {
     }
 
 
@@ -60,8 +67,8 @@ export class UserAuthService {
         localStorage.setItem('token', Response.token);
         console.log('Token:', this.getToken());
         console.log('Is token valid:', this.isValidToken(this.getToken()));
-        this.router.navigateByUrl('/homepage');
         this.isLogged = true;
+        this.dialog.closeAll();
           localStorage.setItem('utente', JSON.stringify(Response.dati))
       },
     });
@@ -89,14 +96,17 @@ export class UserAuthService {
           localStorage.setItem('token', response.token);
           console.log('Token:', this.getToken());
           console.log('Is token valid:', this.isValidToken(this.getToken()));
-          this.router.navigateByUrl('/homepage');
           this.isLogged = true;
+          this.dialog.closeAll();
           localStorage.setItem('utente', JSON.stringify(response.dati))
           // this.utente = response.dati;
           // console.log("questo è l'utente", this.utente)
         },
       });
   }
+
+
+
 
 
 
@@ -156,11 +166,12 @@ export class UserAuthService {
   }
 
 
-
   logOut() {
     localStorage.removeItem('token');
-    localStorage.removeItem('utente')
-    this.router.navigate(['/homepage'])
+    localStorage.removeItem('utente');
+    this.router.navigate(['/homepage']).then(() => {
+      window.location.reload();
+    });
   }
 
 

@@ -23,7 +23,7 @@ import { ChannelComponent } from './pages/channel/channel.component';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 import { PlaylistPopupComponent } from './components/playlist-popup/playlist-popup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { PlaylistpageComponent } from './pages/playlistpage/playlistpage.component';
 
@@ -57,9 +57,12 @@ import { PlaylistpageComponent } from './pages/playlistpage/playlistpage.compone
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

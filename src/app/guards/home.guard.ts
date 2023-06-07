@@ -1,24 +1,33 @@
 import { Injectable } from '@angular/core';
-import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, map, take } from 'rxjs/operators';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { UserAuthService } from '../services/user-auth.service';
+import { DialogService } from '../services/dialog.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { LoginComponent } from '../pages/login/login.component';
 
 @Injectable({
- providedIn: 'root'
+  providedIn: 'root'
 })
-export class homeGuard {
+export class homeGuard implements CanActivate {
+  loginDialogRef: MatDialogRef<LoginComponent> | null = null;
 
- constructor(private auth: UserAuthService, private router: Router) {}
- canActivate: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
- const isvalidtoken = this.auth.verifyToken(localStorage.getItem('token'));
- console.log(isvalidtoken);
- if (isvalidtoken) {
- // validate token here
- return true;
- } else {
- this.router.navigate(['/login']);
- return false;
- }
- }
+  constructor(
+    private auth: UserAuthService,
+    private router: Router,
+    private dialogS: DialogService
+  ) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    const isValidToken = this.auth.verifyToken(localStorage.getItem('token'));
+    console.log(isValidToken);
+
+    if (isValidToken) {
+      // Validate token here
+      return true;
+    } else {
+      this.dialogS.clear()
+      this.dialogS.goLogin()
+      return false;
+    }
+  }
 }
