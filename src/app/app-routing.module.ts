@@ -14,6 +14,7 @@ import { ChannelComponent } from './pages/channel/channel.component';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 import { PlaylistpageComponent } from './pages/playlistpage/playlistpage.component';
 
+
 const routes: Routes = [
   {path: 'homepage', component: HomepageComponent },
   {path: 'search', component: SearchpageComponent },

@@ -10,12 +10,12 @@
     </div>
     <div>
       <input
-        type="text"
-        formControlName="titolo"
-        class="inputtag"
-        placeholder="Titolo"
-        name="titolo"
-      />
+      type="text"
+      formControlName="titolo"
+      class="inputtag"
+      placeholder="Titolo"
+      name="titolo"
+    />
     </div>
     <div>
       <input
@@ -71,12 +71,13 @@
         </div>
       </div>
 
-      <ul>
-        <li *ngFor="let tag of tags; let i = index">
-          {{ tag }}
-          <button (click)="deleteTag(i)">x</button>
-        </li>
-      </ul>
+<ul>
+  <li *ngFor="let tag of tags; let i = index">
+    {{ tag }}
+    <button *ngIf="i > 1" (click)="deleteTag(i)">x</button>
+  </li>
+</ul>
+
     </div>
     <div>
       <button type="submit" class="btn1" (click)="Upload()" [disabled]="!UploadForm.valid">
