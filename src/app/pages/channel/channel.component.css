@@ -1,6 +1,4 @@
 .channel-page {
-
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 99%;
   max-width: 1600px; /* Adjust the maximum width as needed */
   margin: 0 auto;
 }
@@ -51,7 +49,6 @@
 }
 
 .subscribe-button {
-  margin-right: 15%;
   background-color: tomato;
   color: white;
   height: 40px;
@@ -157,3 +154,23 @@ img {
 
 
 
+.row {
+  display: flex;
+  width: calc(17rem*5);
+}
+
+app-videocontainer {
+  min-width: 200px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.morevideos {
+  margin: 0 auto;
+  color: blue;
+  text-align: center;
+}
+
+.morevideos:hover {
+  cursor: pointer;
+}

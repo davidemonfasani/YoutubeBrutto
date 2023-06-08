@@ -4,6 +4,7 @@ import { Playlist } from 'src/app/interfaces/playlist';
 import { Video } from 'src/app/interfaces/video';
 import { ChannelService } from 'src/app/services/channel.service';
 import { UserAuthService } from 'src/app/services/user-auth.service';
+import { VideoService } from 'src/app/services/video.service';
 
 @Component({
   selector: 'app-channel',
@@ -11,11 +12,14 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   styleUrls: ['./channel.component.css']
 })
 export class ChannelComponent {
+  page=1;
+  hasMoreVideos=true;
   user : any; personale : boolean;
   videos : Video[] = []; iscritto: boolean; playlists : Playlist[] = [];banner='';bannerUrl!: SafeStyle;;
   constructor(private channelSer: ChannelService,
      private auth: UserAuthService,
      private sanitizer: DomSanitizer,
+      public vidService:VideoService,
      ) {
     this.iscritto = false;
     this.personale = false;
@@ -46,7 +50,10 @@ export class ChannelComponent {
     this.channelSer.fetchOtherChannel(utenteId)
     .subscribe(
       (response: any) => {
-        this.videos = response.videos;
+        this.videos.push(...response.videos);
+        if (response.videos.length < 12) {
+          this.hasMoreVideos = false;
+        }
         this.user = response.user
         this.playlists = response.playlists
         this.bannerUrl = this.sanitizer.bypassSecurityTrustStyle(`url(${response.banner})`);
@@ -72,7 +79,10 @@ export class ChannelComponent {
     this.channelSer.fetchMyChannel(utenteId)
       .subscribe(
         (response: any) => {
-          this.videos = response.videos;
+          this.videos.push(...response.videos);
+          if (response.videos.length < 12) {
+            this.hasMoreVideos = false;
+          }
           this.user = response.user
           this.playlists = response.playlists
           this.bannerUrl = this.sanitizer.bypassSecurityTrustStyle(`url(${response.banner})`);
@@ -88,6 +98,11 @@ export class ChannelComponent {
           console.error(error);
         }
       );
+
+  }
+  loadMoreVideos() {
+    this.page++;
+    this.fetchVideos();
   }
 
 
@@ -138,7 +153,19 @@ export class ChannelComponent {
     }
   }
 
-
+  fetchVideos(){
+    console.log(this.page)
+    const channelUtenteIdStr = this.channelSer.route.snapshot.queryParamMap.get('utente_id');
+    if (channelUtenteIdStr) {
+    this.channelSer.fetchChannelVideos(channelUtenteIdStr, this.page)
+    .subscribe((response: Video[]) => {
+      this.videos.push(...response);
+      if (response.length < 12) {
+        this.hasMoreVideos = false;
+      }
+    });
+  }
+  }
 
 
 

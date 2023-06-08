@@ -39,6 +39,10 @@ export class ChannelService {
   fetchOtherChannel(utenteId: string): Observable<any> {
     return this.http.get<any>(`http://127.0.0.1:8000/api/utentes/channel?userId=${utenteId}`)
   }
+  fetchChannelVideos(utenteId: string, page: number): Observable<Video[]> {
+    return this.http.get<Video[]>(`http://127.0.0.1:8000/api/utentes/Videos?userId=${utenteId}&page=${page}`)
+  }
+
 
 
 }

@@ -11,8 +11,8 @@
         <div class="title-container">
           <h1>{{ user?.username }}</h1>
           <button *ngIf="!personale" (click)="trySubscribe()" class="subscribe-button">{{ iscritto ? 'Unsubscribe' : 'Subscribe' }}</button>
-
         </div>
+        {{ this.vidService.formatNumber(user?.iscrizioni_count) }} subscribers
       </div>
 
     </div>
@@ -28,9 +28,14 @@
 
       <h1>Video caricati...</h1>
     </div>
-    <div class="video-container">
-      <div class="video-row">
-        <app-videocontainer class="video" *ngFor="let video of videos" [video]="video"></app-videocontainer>
-      </div>
+    <div >
+      <ng-container *ngFor="let video of videos; index as i">
+        <div class="row" *ngIf="i % 5 === 0">
+          <ng-container *ngFor="let item of videos.slice(i, i + 5)">
+            <app-videocontainer [video]="item"></app-videocontainer>
+          </ng-container>
+        </div>
+      </ng-container>
+      <div class="morevideos" (click)="loadMoreVideos()" *ngIf="hasMoreVideos">Load more videos</div>
     </div>
 </div>

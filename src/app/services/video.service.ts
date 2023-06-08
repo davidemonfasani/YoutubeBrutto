@@ -224,15 +224,22 @@ fetchVideosByVideoId(page: number): Observable<Video[]> {
   });
 }
 formatNumber(num: number): string {
-  if (num >= 1e9) {
-    const formattedNum = (num / 1e9).toFixed(1);
-    return formattedNum.endsWith('.0') ? formattedNum.slice(0, -2) + 'Mld' : formattedNum + 'Mld';
-  } else if (num >= 1e6) {
-    const formattedNum = (num / 1e6).toFixed(1);
-    return formattedNum.endsWith('.0') ? formattedNum.slice(0, -2) + 'Mln' : formattedNum + 'Mln';
-  } else {
-    return num.toLocaleString();
+  if( num!==null){
+    if (num >= 1e9) {
+      const formattedNum = (num / 1e9).toFixed(1);
+      return formattedNum.endsWith('.0') ? formattedNum.slice(0, -2) + 'Mld' : formattedNum + 'Mld';
+    } else if (num >= 1e6) {
+      const formattedNum = (num / 1e6).toFixed(1);
+      return formattedNum.endsWith('.0') ? formattedNum.slice(0, -2) + 'Mln' : formattedNum + 'Mln';
+    } else {
+      return num.toLocaleString();
+    }
   }
+  else
+  {
+    return '';
+  }
+
 }
 
 getTimeSince(dateString: string): string {
