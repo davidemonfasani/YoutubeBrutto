@@ -6,4 +6,5 @@ export interface Commento {
   testo : string
   like: number
   utente_pic : string
+  created_at:string
 }

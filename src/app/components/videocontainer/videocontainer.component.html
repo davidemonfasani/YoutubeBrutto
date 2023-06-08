@@ -3,12 +3,22 @@
     <img class="img" src="{{video.linkimage}}" >
     <div class="video-info">
       <img class="user-pic" [src]="video.utente_pic || '../../../assets/images/guest.png'" (click)="goChannel($event)">
-      <h3 class="video-title">  {{video.titolo}}</h3>
-      <div class="username-container" (click)="goChannel($event)">
-        {{video.utente_username}}
-     </div>
+      <div>
+        <div class="video-title" [title]="video.titolo"> {{video.titolo}}</div>
+        <div class="username-container" (click)="goChannel($event)" [title]="video.utente_username">
+          {{video.utente_username}}
+        </div>
+        <div class="row">
+          <div class="visualizzazioni">
+            {{ this.videoservice.formatNumber(video.visualizzazioni) }}
+            visualizzazioni
+          </div>
+          <div class="dot">•</div>
+          <div class="created_at">
+            {{ this.videoservice.getTimeSince(video.created_at) }}
+          </div>
+        </div>
+      </div>
     </div>
-
-
   </div>
 </div>

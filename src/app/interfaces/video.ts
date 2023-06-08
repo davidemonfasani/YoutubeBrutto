@@ -8,4 +8,6 @@ export interface Video {
   utente_pic: string| null,
   utente_id: number,
   utente_iscrizioni_count: number,
+  visualizzazioni:number,
+  created_at:string;
 }

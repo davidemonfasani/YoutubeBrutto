@@ -4,13 +4,25 @@
   justify-content: space-between;
   align-items: flex-start;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  border-radius: 12px;
+  border-radius: 1rem;
   background-color: #f4f4f4;
   border: 1px solid #ccc;
   padding: 8px;
   margin-bottom: 10px;
   margin-top: 10px;
   width: auto; /* Adjust the width as desired */
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.utente_username {
+  font-size: large;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.created_at {
+  font-size: small;
 }
 
 .profile-section {

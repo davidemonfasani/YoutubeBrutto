@@ -44,12 +44,22 @@
           </div>
         </div>
       </div>
-      <div class="views">
-        <!-- Display the views count here -->
-        <span>Views: {{ views}}</span>
+      <div class="description-section">
+        <div class="row">
+          <div class="visualizzazioni">
+            {{ this.vidService.formatNumber(body.visualizzazioni) }}
+            visualizzazioni
+          </div>
+          <div class="dot">•</div>
+          <div class="created_at" [title]="formatDate(body.created_at)">
+            {{ this.vidService.getTimeSince(body.created_at) }}
+          </div>
+
+        </div>
+        <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
+        <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>
       </div>
-      <button class="show-description-button" (click)="toggleDescription()">{{ showDescription ? 'Nascondi descrizione' : 'Mostra descrizione' }}</button>
-      <p class="video-description" [hidden]="!showDescription">{{ body.descrizione }}</p>
+
     </div>
     <div class="comment-section">
       <h3>Sezione commenti:</h3>

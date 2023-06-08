@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Commento } from 'src/app/interfaces/commento';
 import { Utente } from 'src/app/interfaces/utente';
 import { CommentService } from 'src/app/services/comment.service';
+import { VideoService } from 'src/app/services/video.service';
 
 @Component({
   selector: 'app-commento',
@@ -21,9 +22,11 @@ export class CommentoComponent {
     testo : '',
     like: 0,
     utente_pic: '',
+    created_at:'',
   }
   constructor(
     private commService: CommentService,
+    public vidService: VideoService,
   ){
     this.utenteLiked = false;
     this.utente_id= this.getUtente().id === null ? 0 : this.getUtente().id;

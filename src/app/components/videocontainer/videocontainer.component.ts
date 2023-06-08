@@ -22,7 +22,8 @@ export class VideocontainerComponent {
      private router: Router,
       private auth: VideoService,
       private route: ActivatedRoute,
-      private channelSer: ChannelService
+      private channelSer: ChannelService,
+      public videoservice: VideoService
       ) {
 
       }
@@ -41,6 +42,9 @@ ngOnInit(){
     console.log(this.video.utente_id, 'videoutente id ');
     this.auth.goVideo(this.video)
   }
+
+
+
 
 }
 

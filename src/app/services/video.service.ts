@@ -223,6 +223,42 @@ fetchVideosByVideoId(page: number): Observable<Video[]> {
     }
   });
 }
+formatNumber(num: number): string {
+  if (num >= 1e9) {
+    const formattedNum = (num / 1e9).toFixed(1);
+    return formattedNum.endsWith('.0') ? formattedNum.slice(0, -2) + 'Mld' : formattedNum + 'Mld';
+  } else if (num >= 1e6) {
+    const formattedNum = (num / 1e6).toFixed(1);
+    return formattedNum.endsWith('.0') ? formattedNum.slice(0, -2) + 'Mln' : formattedNum + 'Mln';
+  } else {
+    return num.toLocaleString();
+  }
+}
 
+getTimeSince(dateString: string): string {
+  const now = new Date();
+  const dateObject = new Date(dateString);
+  const diff = now.getTime() - dateObject.getTime();
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(months / 12);
+
+  if (years > 0) {
+    return `${years} ann${years > 1 ? 'i' : 'o'} fa`;
+  } else if (months > 0) {
+    return `${months} mes${months > 1 ? 'i' : 'e'} fa`;
+  } else if (days > 0) {
+    return `${days} giorn${days > 1 ? 'i' : 'o'} fa`;
+  } else if (hours > 0) {
+    return `${hours} or${hours > 1 ? 'e' : 'a'} fa`;
+  } else if (minutes > 0) {
+    return `${minutes} minut${minutes > 1 ? 'i' : 'o'} fa`;
+  } else {
+    return `${seconds} second${seconds > 1 ? 'i' : 'o'} fa`;
+  }
+}
 
 }

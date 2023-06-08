@@ -43,20 +43,39 @@
   height: 9rem;
   object-fit: cover;
 }
-
-
-
-
+.video-info{
+  display: flex;
+}
 .username-container {
   display: flex;
   align-items: center;
 }
 
 .user-pic {
-  width: 2.5rem;
-  height: 2.5rem;
   border-radius: 50%;
   margin-right: 0.5rem;
-  float:left;
+  width: 2.5rem;
+  height: 2.5rem;
 }
+
+.video-title
+{
+  font-size: large;
+  font-weight:bold;
+}
+.video-title, .username-container {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px; /* adjust this value to set the maximum width of the text */
+}
+.row {
+  display: flex;
+}
+.visualizzazioni,
+.dot,
+.created_at {
+  font-size: small;
+}
+
 

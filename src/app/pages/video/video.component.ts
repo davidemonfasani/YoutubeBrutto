@@ -38,6 +38,8 @@ export class VideoComponent {
     utente_username : '',
     utente_iscrizioni_count: 0,
     utente_id : 0,
+    visualizzazioni:0,
+    created_at: '',
   };
   idUt : number
   constructor(public vidService : VideoService,
@@ -154,10 +156,10 @@ export class VideoComponent {
     }
     }
     this.onVideoLoad()
-    this.fetchViews()
+    //this.fetchViews()
     this.utente = this.getUtente();
     this.fetchLikes();
-    this.fetchViews();
+    //this.fetchViews();
     this.fetchComments();
 
       //console.log('prendo i commenti di:', this.body.id);
@@ -235,13 +237,14 @@ export class VideoComponent {
   }
 
 
-  fetchViews() {
-    this.vidService.fetchViews(this.body.id)
-      .subscribe((response: { views: number }) => {
-        this.views = response.views;
-        console.log('le views', this.views);
-      });
-  }
+ formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, '0');
+  const monthNames = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+  return `${day} ${month} ${year}`;
+}
 
 
 
