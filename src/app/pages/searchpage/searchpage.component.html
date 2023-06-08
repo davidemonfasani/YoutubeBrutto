@@ -1,4 +1,10 @@
 <div id="restpage">
-  <app-videocontainer *ngFor="let video of videos" [video]="video"></app-videocontainer>
-  </div>
-  <div class="morevideos" (click)="loadMoreVideos()" *ngIf="hasMoreVideos">Load more videos</div>
+  <ng-container *ngFor="let video of videos; index as i">
+    <div class="row" *ngIf="i % 4 === 0">
+      <ng-container *ngFor="let item of videos.slice(i, i + 4)">
+        <app-videocontainer [video]="item"></app-videocontainer>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+<div class="morevideos" (click)="loadMoreVideos()" *ngIf="hasMoreVideos">Load more videos</div>

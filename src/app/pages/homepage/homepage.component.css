@@ -1,28 +1,28 @@
 #restpage {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Update to 4 columns */
-  grid-gap: 5px;
   margin-top: 5%;
-  margin-left: 13%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 7rem;
 }
 
-.separator {
-  grid-column: 1 / -1; /* Span the full width of the grid */
-  height: 1px;
-  background-color: #e9e9e9;
-  margin-left: -2%; /* Adjust the margin as needed */
-  margin-right: 3%;
-  margin-top: 5px !important;
-
+.row {
+  display: flex;
+  width: calc(17rem*4);
 }
+
+app-videocontainer {
+  min-width: 200px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .morevideos {
-  text-align: center;
   margin: 0 auto;
   color: blue;
+  text-align: center;
 }
-.morevideos:hover{
+
+.morevideos:hover {
   cursor: pointer;
-  }
-
-
-
+}

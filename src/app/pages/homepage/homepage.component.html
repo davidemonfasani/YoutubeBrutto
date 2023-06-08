@@ -1,7 +1,10 @@
 <div id="restpage">
-  <ng-container *ngFor="let video of videos; let i = index">
-    <app-videocontainer [video]="video"></app-videocontainer>
-    <div class="separator" *ngIf="(i + 1) % 4 === 0"></div> <!-- Update the condition to display the separator after every 4 videos -->
+  <ng-container *ngFor="let video of videos; index as i">
+    <div class="row" *ngIf="i % 4 === 0">
+      <ng-container *ngFor="let item of videos.slice(i, i + 4)">
+        <app-videocontainer [video]="item"></app-videocontainer>
+      </ng-container>
+    </div>
   </ng-container>
 </div>
 <div class="morevideos" (click)="loadMoreVideos()" *ngIf="hasMoreVideos">Load more videos</div>
