@@ -23,6 +23,10 @@ input[type=radio]:checked + label {
   transform: scale(1.2);
 }
 
+::ng-deep .custom-mat-dialog .mat-mdc-dialog-surface {
+  border-radius: 12px;
+}
+
 #color1 + label {
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9FE4qfNSgca_fD4rKN1Gp5x0Y8plVNocOMZTbq7X5eklyRNNqJD0erTbbQwcvEGrIvEg);
   background-size: cover;

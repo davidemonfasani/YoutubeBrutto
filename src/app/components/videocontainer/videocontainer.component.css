@@ -11,7 +11,7 @@
   justify-content: center;
   transition: box-shadow 0.3s ease;
   height: auto;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
   border-radius: 1rem;
   width: 16rem; /* Set this value equal to the desired width of the video container */
  }
