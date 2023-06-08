@@ -1,10 +1,14 @@
 <div class="video-container" (click)="goVideo()">
   <div class="video-wrapper">
-    <img class="img" src="{{video.linkimage}}">
-    <h3 class="video-title">{{video.titolo}}</h3>
-    <div class="username-container" (click)="goChannel($event)">
-      <img class="user-pic" [src]="video.utente_pic || '../../../assets/images/guest.png'">
-      <h3 class="video-username">{{video.utente_username}}</h3>
+    <img class="img" src="{{video.linkimage}}" >
+    <div class="video-info">
+      <img class="user-pic" [src]="video.utente_pic || '../../../assets/images/guest.png'" (click)="goChannel($event)">
+      <h3 class="video-title">  {{video.titolo}}</h3>
+      <div class="username-container" (click)="goChannel($event)">
+        {{video.utente_username}}
+     </div>
     </div>
+
+
   </div>
 </div>

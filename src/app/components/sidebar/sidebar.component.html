@@ -19,11 +19,14 @@
   [ngClass]="{'active-page': isActive('/subscriptions')}">
   <i class="fa-solid fa-users-rectangle fa-2x" ></i>
 </button>
-<button
-  *ngIf="routesService.getcurrentUrl()"
-  (click)="goHistory()"
-  [ngClass]="{'active-page': isActive('/history')}">
-  <i class="fa-solid fa-clock-rotate-left fa-2x" ></i></button>
+    <button
+    *ngIf="routesService.getcurrentUrl()"
+    (click)="goHistory()"
+    [ngClass]="{'active-page': isActive('/history')}"
+>
+    <i class="fa-solid fa-clock-rotate-left fa-2x" ></i></button>
+
+
     </div>
 
   </div>

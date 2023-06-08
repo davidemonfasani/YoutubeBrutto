@@ -1,4 +1,6 @@
-
+*{
+  --c-tomato:#FFFFFF
+}
 
 .titolo {
   margin: 0;

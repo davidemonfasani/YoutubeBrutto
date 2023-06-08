@@ -48,34 +48,32 @@
 .button-container button {
   height: 50px;
   width: 100%;
-  margin-bottom: 100px; /* Adjust the vertical spacing between buttons as needed */
-  border-right: 0px;
-  border-left: 1px;
-  border-top: 1px;
-  border-bottom: 1px;
+  margin-bottom: 0.6rem; /* Adjust the vertical spacing between buttons as needed */
+  border: 0px;
   border-style: solid;
   border-radius: 10%;
-  background-color: tomato;
+  background-color: transparent;
+
 }
 
 
-.button-container button:hover{
-  background-color: peachpuff;
-  color: white;
+.button-container button:hover {
+  background-color: rgba(255, 100, 100, 0.14);
   cursor: pointer;
+  color: rgb(255, 255, 255)
 }
 
 #firstBut {
-  border-top: 1px;
-  border-bottom: 1px;
-  border-left: 1px;
-  border-style: solid;
   margin-top: 80%;
 }
 i{
-  color: #ffffff;
+  color: rgb(255, 67, 67)
+}
+.active-page {
+  background-color: rgb(255, 0, 0) !important;
+}
+.active-page i {
+  color: rgb(255, 255, 255)
 }
 
-.active-page i {
-  color: black;
-}
+
