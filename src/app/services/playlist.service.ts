@@ -32,7 +32,10 @@ export class PlaylistService {
 
    managePlaylist() {
         const dialogRef = this.dialog.open(PlaylistPopupComponent, {
-      width: '500px', // Adjust the width as per your requirement
+      width: '500px',
+      panelClass: 'custom-mat-dialog',
+
+      // Adjust the width as per your requirement
       // Add any other necessary configuration options for the pop-up
     });
 

@@ -20,6 +20,9 @@
 }
 
 
+
+
+
 .right-corner {
   margin-right: 16px;
   width: 80px;
@@ -53,8 +56,13 @@
 .fa-solid:hover {
   cursor: pointer;
   border-radius: 50%;
-
+  transition: transform 0.3s ease;
 }
+
+.fa-solid:hover {
+  transform: scale(1.2);
+}
+
 
 
 .search {

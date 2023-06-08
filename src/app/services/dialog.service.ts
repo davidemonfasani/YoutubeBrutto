@@ -16,6 +16,7 @@ export class DialogService {
     this.clear()
     this.loginDialogRef = this.dialog.open(LoginComponent, {
       width: '500px',
+      panelClass: 'custom-mat-dialog',
       // Add any other necessary configuration options for the popup
     });
     return this.loginDialogRef.afterClosed();
@@ -25,6 +26,7 @@ export class DialogService {
     this.clear()
     const registerDialog = this.dialog.open(RegisterComponent, {
       width: '500px',
+      panelClass: 'custom-mat-dialog',
       // Add any other necessary configuration options for the popup
     });
     return registerDialog.afterClosed();

@@ -21,9 +21,18 @@
   overflow-y: auto; /* Enable vertical scrolling if needed */
 }
 
+::ng-deep .custom-mat-dialog .mat-mdc-dialog-surface {
+  border-radius: 12px;
+}
+
+
+
+
+
 
 #popup {
   padding: 15px;
+
 }
 
 .creaplaylist select {
@@ -54,7 +63,7 @@
 
 .creaplaylist button {
   width: 100%;
-  background-color: tomato;
+  background-color: #FF0000;
   color: white;
   border: none;
   padding: 10px;
@@ -93,8 +102,8 @@
 
 .check-button {
   background-color: transparent;
-  color: tomato;
-  border: 2px solid tomato;
+  color: #FF0000;
+  border: 2px solid #FF0000;
   padding: 6px 10px;
   border-radius: 4px;
   cursor: pointer;
@@ -106,12 +115,12 @@
 }
 
 .check-button.aggiunto-true {
-  background-color: tomato;
+  background-color: #FF0000;
   color: white;
 }
 
 .check-button:hover {
-  background-color: tomato;
+  background-color: #FF0000;
   color: white;
 }
 
